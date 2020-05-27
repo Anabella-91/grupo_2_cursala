@@ -28,8 +28,8 @@ app.use('/products', productsRouter);
 
 
 // Error 404
-app.use(function (req, res, next) {
-    res.status(404).render('not-found');
+app.use((req, res, next) => {
+    res.status(404).render('not-found', { title: '404 - Error'});
 });
 
 // error handler

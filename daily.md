@@ -1,3 +1,19 @@
+27 de MAYO:
+En proceso:
+-Se esta verificando las rutas y los controladores del CRUD
+-Se estan trabajando los Media Queries de la pagina 404
+Completado:
+-La pagina 404 ya se visualiza correctamente
+-Se arreglaron los Media Queries de la home y de la landing (se verificaron los mismos)
+-Logramos arreglar los errores que se presentaban al levantar el servidor
+-Quedo solucionado el problema que se presentaba con el partial del head, ahora se visualiza correctamente
+Pendientes:
+-campos para la creacion de productos
+-Carpeta data con archivo products.json con los datos de productos
+generados.
+-Definir los campos necesarios para los usuarios
+-Carpeta data con archivo users.json con los datos de usuarios generados.
+
 26 DE MAYO:
 En proceso:
 -Se esta verificando las rutas y los controladores del CRUD 
