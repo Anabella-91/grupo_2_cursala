@@ -16,7 +16,7 @@
         <ul>
             <% for(let i=0; i<errors.length;i++){ %>
                 <li>
-                    <% = errors[i].msg%>
+                    <% errors[i].msg%>
                 </li>
             <% } %>
         </ul>
@@ -34,7 +34,7 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <h2>Inicia sesion</h2>
                 <form action="/login" method="POST">
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" autofocus>
                     <input type="password" name="password" placeholder="Contraseña">
                     <input type="checkbox" name="userLog" placeholder="Recordame">
                     <a href="#">Olvidaste la contraseña?</a>

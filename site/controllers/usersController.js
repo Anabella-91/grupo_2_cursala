@@ -8,14 +8,19 @@ module.exports = {
         res.render('registro', { title: 'Cursala Registro'});
 	   
     },
+    registroUser: function(req, res){
+        let validation = validationResult(req);
+        
+    },
     login:function (req,res){
         res.render('login', { title: 'Cursala Login'});
 	   
     },
     processLogin: function(req, res){
+        let newUser;
         let errors = validationResult(req);
         if(errors.isEmpty()){
-            let usersJson = fs.readFileSync('../users.json');
+            let usersJson = fs.readFileSync('../users.json', {encoding: 'utf-8'});
             let users;
             if(usersJson == ''){
                 users = [];
@@ -26,7 +31,7 @@ module.exports = {
             for(let i=0;i<users.length;i++){
                 if(users[i].email == req.body.email){
                     if(bcrypt.compareSync(req.body.password, users[i].password)){
-                        let newUser = users[i];
+                        newUser = users[i];
                         break;
                     }
                 }
