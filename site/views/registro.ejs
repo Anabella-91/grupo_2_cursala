@@ -11,24 +11,25 @@
   <div class="container">
     <div class="register-container">
       <div class="register">
-        <img src="img/logo.png" alt="Logo-Cursala">
-        <h2>Registrate</h2>
+        <div class="circle-logo">
+          <img src="/images/logo.png" alt="Logo-Cursala">
+        </div>
+        <h2>No tengo cuenta</h2>
         <form action="/registro" method="POST">
           <input type="text" name="nombre" placeholder="Nombre">
           <input type="email" name="email" placeholder="Email">
           <input type="password" name="password" placeholder="Contraseña">
           <input type="password" name="password" placeholder="Confirma contraseña">
-          <input type="submit" name="submit" class="submit" value="REGISTRARSE">
+          <input type="submit" name="submit" class="submit" value="REGISTRARME">
         </form>
       </div>
       <div class="login">
-        <h2>Iniciar Sesión</h2>
-        <div class="login-items">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
+        <h2>Ya tengo cuenta</h2>
         <button class="correo"><i class="fas fa-envelope"></i> Acceder con Correo</button>
-        
+        <div class="login-items">
+          <a href="#"><img class="register_media" src="/images/registro_facebook.png" alt="registro twitter"></a>
+          <a href="#"><img class="register_media" src="/images/registro_twitter.png"></a>
+        </div>
       </div>
     </div>
   </div>
