@@ -1,3 +1,20 @@
+28 de MAYO:
+En proceso:
+-Se esta terminando el CRUD
+-Creamos un formulario de Contacto, se esta trabajando en sus Media Queries y en que parezca una ventana modal
+Completado:
+-Completaron los Media Queries de la pagina 404
+-La pagina 404 ya se visualiza correctamente
+-Se arreglaron los Media Queries de la home y de la landing (se verificaron los mismos)
+-Logramos arreglar los errores que se presentaban al levantar el servidor
+-Quedo solucionado el problema que se presentaba con el partial del head, ahora se visualiza correctamente
+Pendientes:
+-campos para la creacion de productos
+-Carpeta data con archivo products.json con los datos de productos
+generados.
+-Definir los campos necesarios para los usuarios
+-Carpeta data con archivo users.json con los datos de usuarios generados.
+
 27 de MAYO:
 En proceso:
 -Se esta verificando las rutas y los controladores del CRUD
