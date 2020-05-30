@@ -1,0 +1,27 @@
+<div class="contenedor-contacto">
+    <div id="ventana-modal">
+        <form class="form-contacto" action="/mensajes" method="POST">
+            <h3>Envianos un mensaje!</h3>
+        <input class="style-contacto" placeholder="Nombre" type="text" name="nombre" id="nombre-usuario">
+        <input class="style-contacto" placeholder="Email" type="email" name="email" id="mail">
+        <input class="style-contacto" placeholder="Telefono" type="number" name="telefono" id="cel">
+        <select class="style-contacto" name="asunto">
+            <option value="problema-plataforma">Reportar un problema con la plataforma</option>
+            <option value="problema-pago">Reportar un problema con un pago</option>
+            <option value="dudas">Requiero asistencia con el uso de la plataforma</option>
+            <option value="sugerencia">Tengo una sugerencia o comentario</option>
+        </select>
+        <label>Prefiero que me contacten por:</label> <br>
+        <div class="contacto-row">
+        <label>Whatsapp</label>
+        <input type="checkbox" name="canal-contacto" value="whatsapp">
+        <label>Llamada telefonica</label>
+        <input type="checkbox" name="canal-contacto" value="llamada telefonica">
+        <label>Email</label>
+        <input type="checkbox" name="canal-contacto" value="email">
+        </div>
+        <textarea class="style-contacto" name="mensaje">Explique brevemente el motivo de su consulta</textarea>
+        <button class="boton-volver boton-contacto" type="submit">Enviar</button>
+        </form>
+    </div>
+</div>

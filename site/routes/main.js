@@ -9,5 +9,6 @@ router.get('/', controller.home);
 /* GET landing page. */
 router.get('/landing', controller.landing);
 
+
 module.exports = router;
 
