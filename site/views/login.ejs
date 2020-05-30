@@ -11,6 +11,16 @@
     
 </head>
 <body>
+    <% if(typeof errors != 'undefined'){ %>
+        <p style="color:red">Error al ingresar los datos</p>
+        <ul>
+            <% for(let i=0; i<errors.length;i++){ %>
+                <li>
+                    <% = errors[i].msg%>
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
     <div class="container">
         <div class="login-container">
             <div class="login">
@@ -26,6 +36,7 @@
                 <form action="/login" method="POST">
                     <input type="email" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Contraseña">
+                    <input type="checkbox" name="userLog" placeholder="Recordame">
                     <a href="#">Olvidaste la contraseña?</a>
                     <input type="submit" class="submit" value="Ingresar">
                     

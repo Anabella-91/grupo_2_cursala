@@ -24,9 +24,11 @@ module.exports = {
         }
     },
     edit : function (req, res){
+        
         res.render('products/product_edit', { title: 'Cursala - Edicion de Producto'});
+    
     },
-    edit_form: function(req, res){ // a donde se envia el formulario
+    edit_form: function(req, res){
         const { id } = req.params;
         const { name, description, image, category, price } = req.body;
         if (id && name && description && image && category && price) {

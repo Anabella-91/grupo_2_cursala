@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="/stylesheets/registro.css">
 </head>
 <body>
+  <% if(typeof errors != 'undefined'){ %>
+    <p style="color:red">Error al ingresar los datos</p>
+    <ul>
+        <% for(let i=0; i<errors.length;i++){ %>
+            <li>
+                <% = errors[i].msg%>
+            </li>
+        <% } %>
+    </ul>
+<% } %>
   <div class="container">
     <div class="register-container">
       <div class="register">
