@@ -10,7 +10,7 @@
       <div class="carga">
         <img src="/images/logo.png" alt="Logo-Cursala">
         <h2>Formulario Carga de Productos</h2>
-        <form action="/productCarga" method="POST">
+        <form action="/product/:id/edit?_method=PUT" method="POST">
           <label for="nombre">Nombre del curso</label>
           <input type="text" name="nombre" placeholder="Nombre del curso">
           <textarea name="descripcion" id="descripcion" cols="30" rows="4"></textarea>
