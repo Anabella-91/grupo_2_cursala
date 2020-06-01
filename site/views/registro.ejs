@@ -9,11 +9,11 @@
 </head>
 <body>
   <% if(typeof errors != 'undefined'){ %>
-    <p style="color:red">Error al ingresar los datos</p>
+    <p style ="color:red">Error al ingresar los datos</p>
     <ul>
         <% for(let i=0; i<errors.length;i++){ %>
             <li>
-                <% = errors[i].msg%>
+                <% errors[i].msg%>
             </li>
         <% } %>
     </ul>

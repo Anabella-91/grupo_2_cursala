@@ -6,6 +6,10 @@ const controller = require('../controllers/usersController');
 
 /* user registro . */
 router.get('/registro', controller.registro);
+router.post('/registro',[
+    check('name').isLength({min:2}).withMessage('Tu nombre debe contener al menos dos letras'),
+    check('email').isEmail().withMessage('Email invalido')
+], controller.registroUser);
 
 /* user login . */
 router.get('/login', controller.login);
@@ -14,14 +18,6 @@ router.post('/login',[
     check('password').isLength({min:8}).withMessage('La contrasena debe contener 8 caracteres')
 ], controller.processLogin);
 
-/* user check */
-router.get('/check', function(req, res){
-    if(req.session.newUser == undefined){
-        res.send('No estas logueade');
-    }else{
-        res.send('Logueade '+ req.session.newUser)
-    }
-});
 
 /* user carrito . */
 router.get('/carrito', controller.carrito);
