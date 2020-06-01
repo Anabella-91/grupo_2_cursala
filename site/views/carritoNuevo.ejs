@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/head') %>
+    <body>
+    <%- include('./partials/header') %>
+    <main>
+    <div class="container b-gris">
+        <div class="contenedor-comprados shadow1 border-r b-blanco">
+            <h1 class="titulo-carrito">Productos</h1>
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">html</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Front end</li>
+                <li class="precio-compra">$1500</li>
+                </div>
+                <li>
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">CSS</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Front end</li>
+                <li>$1800</li>
+                </div>
+                <li>
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">Photoshop</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Diseño digital</li>
+                <li>$2500</li>
+                </div>
+                <li class="form-delete">
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
+                </li>
+            </ul>
+        <div class="monto-total">
+        <p class="total">Total</p>
+        <p class="cantidad-total">$5800</p>
+        </div>
+        </div>
+    <div class="detalle-pago shadow1 b-blanco border-r">
+        <h2 class="titulo-carrito titulo-pago">Detalle del pago</h2>
+        <div class="contenedor-pago">
+            <form class="form-pago">
+                <label>Nombre del titular</label>
+                <input class="input-carrito input-largo" type="text" name="titule">
+                <label>Numero de la tarjeta</label>
+                <input class="input-carrito input-largo" type="number" name="numero_tarjeta" placeholder="XXXX XXXX XXXX XXXX">
+            <div>  
+                <label class="campo-vencimiento">Fecha venimiento</label>
+                <label class="campo-seguridad">Codigo seguridad</label>
+                <input class="input-carrito input-corto" placeholder="MM/YY" type="number" name="vencimiento">
+                <input class="input-carrito input-corto border-r" placeholder="XXXX" type="number" name="codigo_seguridad">
+            </div>
+                <button class="boton-pago border-r" type="submit">Realizar pago</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    </main>
+    </body>
+</html>

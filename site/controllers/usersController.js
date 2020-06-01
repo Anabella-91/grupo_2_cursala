@@ -47,6 +47,8 @@ module.exports = {
     carrito:function (req,res){
 		
         res.render('carrito', { title: 'Cursala Carrito'});
-	   
+    },
+    carritoNuevo:function (req, res) {
+        res.render('carritoNuevo', { title: 'Cursala Carrito'});
     }
 };

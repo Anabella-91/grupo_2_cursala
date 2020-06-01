@@ -26,4 +26,7 @@ router.get('/check', function(req, res){
 /* user carrito . */
 router.get('/carrito', controller.carrito);
 
+/*users carrito nuevo */
+router.get("/carritonuevo", controller.carritoNuevo);
+
 module.exports = router;
