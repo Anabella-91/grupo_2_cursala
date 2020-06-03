@@ -22,28 +22,28 @@
         </ul>
     <% } %>
     <div class="container">
-        <div class="login-container">
-            <div class="login">
-                <img src="/images/logo.png" alt="Logo-Cursala">
-                <h2>¡Bienvenido de nuevo!</h2>
-                <p>Ingresa tus datos para acceder a los cursos</p>
-                <input type="submit" name="submit" class="submit" value="REGISTRARSE">
+        <div class="register-container">
+          <div class="register">
+            <div class="circle-logo">
+              <img src="/images/logo.png" alt="Logo-Cursala">
             </div>
-            <div class="ingreso">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <h2>Inicia sesion</h2>
-                <form action="/login" method="POST">
-                    <input type="email" name="email" placeholder="Email" autofocus>
-                    <input type="password" name="password" placeholder="Contraseña">
-                    <input type="checkbox" name="userLog" placeholder="Recordame">
-                    <a href="#">Olvidaste la contraseña?</a>
-                    <input type="submit" class="submit" value="Ingresar">
-                    
-                </form>
+            <h2>Bienvenid@!</h2>
+            <form action="/users/login" method="POST">
+              <input type="email" name="email" placeholder="Email">
+              <input type="password" name="password" placeholder="Contraseña">
+              <input type="submit" name="submit" class="submit" value="INGRESAR">
+            </form>
+          </div>
+          <div class="login">
+            <h2>No tengo cuenta</h2>
+            <button class="correo"><i class="fa fa-check" aria-hidden="true"></i>Registrarse</button>
+            <div class="login-items">
+              <a href="#"><img class="register_media" src="/images/registro_facebook.png" alt="registro twitter"></a>
+              <a href="#"><img class="register_media" src="/images/registro_twitter.png"></a>
             </div>
+          </div>
         </div>
-    </div>
-    
+      </div>
+     
 </body>
 </html>
