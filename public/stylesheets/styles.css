@@ -187,7 +187,7 @@ position: relative;}
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 .titulo-curso {
-  font-weight: lighter;
+  font-weight: 380;
   font-size: 1.5em;
   text-transform: uppercase;
   position: absolute;
@@ -358,8 +358,10 @@ position: relative;}
 }
 .form-contacto input {
   width: 300px;
+  background-color: #fff;
 }
 .form-contacto select {
+  background-color: #fff;
   width: 356px;
 }
 .form-contacto input::placeholder, .form-contacto select, .form-contacto textarea {
@@ -374,6 +376,7 @@ position: relative;}
   color: rgba(13, 24, 88, 0.6);
 }
 .form-contacto textarea {
+  background-color: #fff;
   height: 60px;
 }
 /* CARRITO */
@@ -396,7 +399,8 @@ position: relative;}
 .titulo-comprado {
   background-color: #ffa99d;
   padding: 1em 1.8em;
-  width: 5vw;
+  font-weight: 600;
+  width: 7vw;
   text-align: center;
 }
 .curso-comprado {
@@ -422,7 +426,7 @@ position: relative;}
   background-color: none;
 }
 .monto-total {
-  width: 25vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -464,6 +468,7 @@ position: relative;}
 }
 .detalle-pago form label {
   text-transform: uppercase;
+  font-weight: 550;
   font-size: 0.8em;
   color: #0e1856;
   margin-left: 1em;
@@ -531,6 +536,38 @@ position: relative;}
   .form-contacto {
     height: 80vh;
   }
+    /* CARRITO */
+  .detalle-comprado {
+     margin: 1em 0.5em;
+  }
+  .contenedor-comprados {
+    grid-column: 1/ 4;
+    margin: 1em 0 2em 2.8em;
+    width: 98%;
+  }
+  .titulo-pago {
+    margin: 0.5em 0;
+  }
+  .detalle-pago {
+    grid-column: 4 / 8;
+  }
+  .detalle-pago .contenedor-pago {
+    width: 90%;
+    margin: 0 0 0 1.8em;
+  }
+  .form-pago {
+    margin: 0 3em;
+  }
+  .detalle-pago .input-corto {
+    width: 38%;
+    margin-bottom: 3em;
+  }
+  .detalle-pago form label { 
+    margin-left: 0;
+  }
+  .detalle-pago .boton-pago {
+    margin-top: 0em;
+    }
    } 
 @media (max-width: 768px) {
   /* LANDING */
@@ -586,6 +623,29 @@ position: relative;}
   }
   .boton-volver {
     padding: 1em 1.5em;
+  }
+  /*CARRITO*/
+  .contenedor-comprados {
+    margin-left: 0.3em;
+    width: 104%;
+  }
+  .categoria-compra {
+    font-size: 1.3em;
+  }
+  .titulo-comprado {
+    font-size: 0.9em;
+    padding: 1em 1em;
+    width: 9vw;
+  }
+  .monto-total .cantidad-total {
+    font-size: 1.5em;
+  }
+  .form-pago {
+    margin: 0 0 0 1em;
+  }
+  .detalle-pago {
+    grid-column: 4 / 9;
+    margin-right: 0.5em;
   }
 }
 @media (max-width: 425px) {
@@ -651,6 +711,44 @@ position: relative;}
   .boton-volver {
     padding: 1em 1em;
   }
+  /* CARRITO */
+  .form-pago {
+    margin: 0 0.5em 0 0.5em;
+  }
+  .navegacion {
+    display: none;
+  }
+  .container {
+    height: 150vh;
+  }
+  .contenedor-comprados {
+    grid-column: 2 / 8;
+    grid-row: 1 / 4;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 2.5em;
+  }
+  .detalle-pago {
+    grid-column: 1 / 9;
+    grid-row: 4 / 7;
+    margin: -0.8em 1em 2em 1em;
+  }
+  .titulo-comprado {
+    width: 17vw;
+    padding: 1em 1em;
+  }
+  .monto-total .total {
+    margin-block-end: 0.3em;
+  }
+  .titulo-pago {
+    padding-top: 0.8em;
+  }
+  .campo-vencimiento {
+    margin-right: 6em;
+  }
+  .detalle-pago .input-corto {
+    width: 36%;
+  }
 }
 @media (max-width: 375px) {
   /* LANDING */
@@ -674,6 +772,26 @@ position: relative;}
   .boton-volver a {
     font-size: 1.5em;
   }
+  /* CARRITO */ 
+  .titulo-comprado {
+    width: 19vw;
+  }
+  .contenedor-comprados {
+    margin-left: 0.1em;
+  }
+  .detalle-pago {
+    margin-bottom: 3em;
+  }
+  .detalle-pago .contenedor-pago {
+    margin: 0 0 0 0.5em;
+    width: 96%;
+  }
+  .detalle-pago .input-corto {
+    width: 34%;
+  }
+  .campo-vencimiento {
+    margin-right: 5em;
+}
 }
 @media (max-width: 320px) {
 /*contactanos*/
@@ -686,4 +804,17 @@ position: relative;}
 .form-contacto select {
   width: 305px;
 }
+  /*CARRITO */
+  .contenedor-comprados {
+    grid-column: 1 / 9;
+  }
+  .titulo-comprado {
+    width: 22vw;
+  }
+  .detalle-pago .input-corto {
+    width: 32%;
+  }
+  .campo-vencimiento {
+    margin-right: 2.5em;
+  }
 }

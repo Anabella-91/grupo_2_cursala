@@ -18,11 +18,7 @@ router.post('/login',[
     check('password').isLength({min:8}).withMessage('La contrasena debe contener 8 caracteres')
 ], controller.processLogin);
 
-
-/* user carrito . */
-router.get('/carrito', controller.carrito);
-
 /*users carrito nuevo */
-router.get("/carritonuevo", controller.carritoNuevo);
+router.get("/carrito", controller.carrito);
 
 module.exports = router;

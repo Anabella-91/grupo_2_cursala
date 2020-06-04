@@ -1,130 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-
-    <meta charset="utf-8">
-        
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> 
-    
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/carrito.css">
-  </head>
-
-  <body >
-    <header>
-         <h3>Nombre usuario</h3>
-    </header>
-        <div class="con-grid">
-        <nav>
-            <ul>
-                <li> 
-                    <a href="perfil-usuario" title="Su perfil" >
-                        <i class="far fa-user-circle" > </i>
-                    Perfil </a>
+    <%- include('./partials/head') %>
+    <body>
+    <%- include('./partials/header') %>
+    <main>
+    <div class="container b-gris">
+        <div class="contenedor-comprados shadow1 border-r b-blanco">
+            <h1 class="titulo-carrito">Productos</h1>
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">html</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Front end</li>
+                <li class="precio-compra">$1500</li>
+                </div>
+                <li>
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
                 </li>
-                
-                <li><a href="todos-los-cursos" title="Todos los cursos" >
-                    <i class="far fa-bookmark"  ></i>
-                    Todos los cursos</a> </li>
-
-                <li> <a href="cursos-adquiridos" title="Cursos adquiridos">  <i class="fas fa-bookmark"></i> Cursos adquiridos</a>
-                </li>
-                <li><a href="historias-de-compras" title="Historial de compras">  <i class="fas fa-clipboard-check"></i> Historial de compras</a></li>
-
-                <li><a href="carrito-de-compras" title="Carrito">  <i class="fas fa-shopping-cart"></i>Carrito de compras</a></li>
-
-                <li><a href="contactanos" title="Contactanos">  <i class="far fa-comment-dots"></i> 
-                    
-                    Contactanos</a></li>
             </ul>
-            
-           
-         </nav>
-        
-        <section id="Carrito">
-            <div id="container-table">
-                <div class="element1"> <img  src="/images/producto1.png">
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">CSS</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Front end</li>
+                <li>$1800</li>
                 </div>
-                <div class="element2">
-                    <ul>
-                        <li>producto 1</li>
-                        <li>$1050</li>
-                        <li><a href="remover-producto" title="Remover">
-                            <i class="far fa-trash-alt"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <li>
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="detalle-comprado">
+                <li class="titulo-comprado"><span class="curso-comprado">Photoshop</span></li>
+                <div class="comprado-info">
+                <li class="categoria-compra">Diseño digital</li>
+                <li>$2500</li>
                 </div>
-
-                <div class="element3">
-                    <ul>
-                        <li> <select name="cantidad">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            </select>
-                         </li>
-                    
-                        <li>Subtotal: $ xxx</li>
-                    </ul>
-                    
-
-                </div>
-            </div>
-
-            <div id="container-table">
-                <div class="element1"> <img src="/images/producto2.png">
-                </div>
-                
-                <div class="element2"> 
-                    <ul>
-                        <li>producto 2</li>
-                        <li>$650</li>
-                        <li><a href="remover-producto" title="Remover">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                        </li>
-                    </ul>
-                
-                </div>
-                <div class="element3">
-                    <ul>
-                        <li> <select name="cantidad">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            </select>
-                         </li>
-                    
-                        <li>Subtotal: $ xxx</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="container-table">
-                <div>
-                    <form action="/carrito" method="POST">
-                        <input type="submit" name="submit" id="buton-validar" value="VALIDAR">
-                      </form>
-                </div>
-            </div>
-    
-        </section>
-             
-         
+                <li class="form-delete">
+                    <form action="/eliminarProducto" method="POST">
+                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                    </form>
+                </li>
+            </ul>
+        <div class="monto-total">
+        <p class="total">Total</p>
+        <p class="cantidad-total">$5800</p>
         </div>
-
-   <!-- <footer>
-    <img src="img/logo-web.png" width=50% alt="logo">
-    <div>
-    <p id="droite"><a href="./contacto.html" >  Contacto |</a><a href="https://www.facebook.com/">Facebook |</a><a href="https://www.instagram.com/"> Instagram |</a><a href="https://www.twitter.com/">Twitter</a></p>
-     </div>
-
-     </footer>-->
-   </body>
+        </div>
+    <div class="detalle-pago shadow1 b-blanco border-r">
+        <h2 class="titulo-carrito titulo-pago">Detalle del pago</h2>
+        <div class="contenedor-pago">
+            <form class="form-pago">
+                <label>Nombre del titular</label>
+                <input class="input-carrito input-largo" type="text" name="titule">
+                <label>Numero de la tarjeta</label>
+                <input class="input-carrito input-largo" type="number" name="numero_tarjeta" placeholder="XXXX XXXX XXXX XXXX">
+            <div>  
+                <label class="campo-vencimiento">Fecha vencimiento</label>
+                <label class="campo-seguridad">Codigo seguridad</label>
+                <input class="input-carrito input-corto" placeholder="MM/YY" type="number" name="vencimiento">
+                <input class="input-carrito input-corto border-r" placeholder="XXXX" type="number" name="codigo_seguridad">
+            </div>
+                <button class="boton-pago border-r" type="submit">Realizar pago</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    </main>
+    </body>
 </html>
