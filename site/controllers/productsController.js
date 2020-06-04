@@ -18,7 +18,7 @@ module.exports = {
         const newProduct = { id, ...req.body };
         if (id && name && description && image && category && price) {
             products.push(newProduct);
-            res.json(products);
+            res.send('new product');
         } else {
             res.status(500).json({error: 'Hubo un problema, vuelve a intentarlo.'});
         }

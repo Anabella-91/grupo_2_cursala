@@ -1,3 +1,7 @@
+3 de JUNIO:
+- Se actualizan los estilos de la vista login de usuarios
+- Hay que trabajar formulario de detalle de producto
+
 31 de MAYO:
 *En proceso:
 -Se esta trabajando sobre las rutas del CRUD
