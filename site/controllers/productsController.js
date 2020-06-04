@@ -47,6 +47,9 @@ module.exports = {
         }
     },
     delete: function (req, res){
+        //validar que exista el id que me pasaron por la url
+
+        res.redirect('/products');
         const {id} = req.params;
         if (id) {
             _.each(products, (product, i) => {

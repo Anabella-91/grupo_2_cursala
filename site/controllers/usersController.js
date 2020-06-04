@@ -1,4 +1,6 @@
+const fs = require('fs');
 const { check, validationResult, body} = require('express-validator');
+const users = require('../users.json');
 
 module.exports = {
     users: function(req, res){
@@ -9,8 +11,15 @@ module.exports = {
 	   
     },
     registroUser: function(req, res){
-        let validation = validationResult(req);
-        
+        let newUser = {
+            nombre: req.body.nombre,
+            email : req.body.email,
+        }
+        /* Guardar usuario */
+
+        /* Se lo redirige al home */
+        res.redirect('/');
+
     },
     login:function (req,res){
         res.render('login', { title: 'Cursala Login'});
@@ -48,6 +57,14 @@ module.exports = {
         }else{
             return res.render('login', { errors:errors.errors});
         }
+    },
+    edit: function(req, res){
+        let idUser = req.params.idUser; //idUser es por el parametro que colocamos en la ruta
+        let userEdit = users[idUser]; 
+
+        
+        res.send('Perfil editado'); // se lo dirige a la vista de edicion del perfil
+
     },
     carrito:function (req,res){
 		
