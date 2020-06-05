@@ -19,8 +19,6 @@ router.post('/login',[
     check('password').isLength({min:8}).withMessage('La contrasena debe contener 8 caracteres')
 ], controller.processLogin);
 
-<<<<<<< HEAD
-=======
 /* user edit */
 router.get('/edit/:idUser', controller.edit);
 router.put('/edit', function(req, res){
@@ -31,7 +29,6 @@ router.put('/edit', function(req, res){
 /* user carrito . */
 router.get('/carrito', controller.carrito);
 
->>>>>>> 22a4c5b7020fcb2d6d6c640a6bf353aabebaff19
 /*users carrito nuevo */
 router.get("/carrito", controller.carrito);
 

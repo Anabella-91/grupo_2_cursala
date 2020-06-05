@@ -1,9 +1,11 @@
 const _ = require('underscore');
-const products = require('../products.json');
+const fs = require('fs');
+const json_products = fs.readFileSync('./products.json', 'utf-8');
+let products = JSON.parse(json_products);
 
 module.exports = {
     products: function (req, res){
-        res.json(products);
+        res.render('/', {products: products});
     },
     create:function (req,res){
         
@@ -13,20 +15,28 @@ module.exports = {
         res.render('products/product_detail', { title: 'Cursala - Detalle de Producto'});
     },
     create_form: function (req, res){
-        const id = products.length + 1;
-        const { name, description, image, category, price } = req.body;
-        const newProduct = { id, ...req.body };
-        if (id && name && description && image && category && price) {
-            products.push(newProduct);
-            res.send('new product');
-        } else {
-            res.status(500).json({error: 'Hubo un problema, vuelve a intentarlo.'});
+        const { nombre, descripcion, horas, apuntes, precio } = req.body;
+        
+        if (!nombre || !descripcion || !horas || !apuntes || !precio) {
+            res.status(400).send("Debes completar todos los campos");
+            return;
         }
+        const id = products.length + 1;
+        const newProduct = { id, ...req.body };
+
+        // agregando nuevo producto
+        products.push(newProduct);
+        
+        // guardando en archivo json
+        const json_products = JSON.stringify(products);
+        fs.writeFileSync('./products.json', json_products, 'utf-8');
+        
+        return res.redirect('/');
     },
     edit : function (req, res){
         
-        res.render('products/product_edit', { title: 'Cursala - Edicion de Producto'});
-    
+        res.render('products/product_detail', { title: 'Cursala - Edicion de Producto'});
+        
     },
     edit_form: function(req, res){
         const { id } = req.params;
@@ -48,7 +58,7 @@ module.exports = {
     },
     delete: function (req, res){
         //validar que exista el id que me pasaron por la url
-
+        
         res.redirect('/products');
         const {id} = req.params;
         if (id) {

@@ -13,7 +13,7 @@ router.get('/create', controller.create);
 router.get('/:id', controller.detail);
 
 /* Accion de creacion de productos, a donde se envia el formulario */ 
-router.post('/new-product', controller.create_form);
+router.post('/', controller.create_form);
 
 /* Formulario de edicion de productos */ 
 router.get('/:id/edit', controller.edit);
