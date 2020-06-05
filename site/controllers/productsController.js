@@ -13,7 +13,7 @@ module.exports = {
     detail:function (req,res){  
         res.render('products/product_detail', { title: 'Cursala - Detalle de Producto'});
     },
-    create_form: function (req, res){
+    save: function (req, res){
         let { nombre, descripcion, horas, apuntes, precio } = req.body;
         
         if (!nombre || !descripcion || !horas || !apuntes || !precio) {
@@ -33,11 +33,15 @@ module.exports = {
         return res.json(products);
     },
     edit : function (req, res){
-        
+        let idProduct=req.params.id;
+        res.send(idProduct);
+
+
+        let productEditar = products[idProduct];
         res.render('products/product_detail', { title: 'Cursala - Edicion de Producto'});
         
     },
-    edit_form: function(req, res){
+    update: function(req, res){
         const { id } = req.params;
         let { nombre, descripcion, horas, apuntes, precio } = req.body;
         

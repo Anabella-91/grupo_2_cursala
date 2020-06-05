@@ -5,7 +5,31 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1> Detalle de Producto </h1>
-    <p><%= title %></p>
+    <h1><%= title %></h1>
+    <form action="/products/products" method="POST">
+      <label for="nombre">Nombre del curso</label>
+      <input type="text" name="nombre" placeholder="Nombre del curso">
+      <textarea name="descripcion" id="descripcion" cols="30" rows="4"></textarea>
+      
+      <label for="categoria">Categoria</label>
+      <select name="opciones" id="opciones">
+        <option value="a">Opcion A</option>
+        <option value="b">Opcion B</option>
+        <option value="c">Opcion C</option>
+      </select>
+      
+      <label for="horas">Cantidad de horas</label>
+      <input type="text" name="horas" placeholder="Hs del curso">
+      
+      <label for="apuntes">Apuntes disponibles</label>
+      <input type="text" name="apuntes" placeholder="Apuntes disponibles">
+      
+      <label for="apuntes">Cantidad de ejercicios</label>
+      <input type="text" name="cantidad-ejercicios" placeholder="Cantidad ejercicios">
+      
+      <label for="number">Precio</label>
+      <input type="text" name="precio" placeholder="Precio">
+    </form>
+
   </body>
 </html>
