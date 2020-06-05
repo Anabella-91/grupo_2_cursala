@@ -1,37 +1,36 @@
-const _ = require('underscore');
 const fs = require('fs');
 const json_products = fs.readFileSync('./products.json', 'utf-8');
 let products = JSON.parse(json_products);
 
 module.exports = {
-    products: function (req, res){
-        res.render('/', {products: products});
+    list: function(req, res){
+        res.json(products);
     },
     create:function (req,res){
-        
         res.render('products/product_carga', { title: 'Cursala - Carga de Producto'});
+        
     },
     detail:function (req,res){  
         res.render('products/product_detail', { title: 'Cursala - Detalle de Producto'});
     },
     create_form: function (req, res){
-        const { nombre, descripcion, horas, apuntes, precio } = req.body;
+        let { nombre, descripcion, horas, apuntes, precio } = req.body;
         
         if (!nombre || !descripcion || !horas || !apuntes || !precio) {
             res.status(400).send("Debes completar todos los campos");
             return;
         }
-        const id = products.length + 1;
-        const newProduct = { id, ...req.body };
-
+        let id = products.length + 1;
+        let newProduct = { id, ...req.body };
+        
         // agregando nuevo producto
         products.push(newProduct);
         
         // guardando en archivo json
-        const json_products = JSON.stringify(products);
+        let json_products = JSON.stringify(products);
         fs.writeFileSync('./products.json', json_products, 'utf-8');
         
-        return res.redirect('/');
+        return res.json(products);
     },
     edit : function (req, res){
         
@@ -40,34 +39,30 @@ module.exports = {
     },
     edit_form: function(req, res){
         const { id } = req.params;
-        const { name, description, image, category, price } = req.body;
-        if (id && name && description && image && category && price) {
-            _.each(products, (product, i) => {
-                if(product.id === id) {
-                    product.name = name;
-                    product.description = description;
-                    product.image = image;
-                    product.category = category;
-                    product.price = price;
-                }
-            });
-            res.json(products);
-        } else {
-            res.status(500).json({error: 'Hubo un problema, vuelve a intentarlo.'});
-        }
+        let { nombre, descripcion, horas, apuntes, precio } = req.body;
+        
+        products.forEach((product, i) => {
+            if (product.id == id) {
+                product.nombre = nombre;
+                product.descripcion = descripcion;
+                product.horas = horas;
+                product.apuntes = apuntes;
+                product.precio = precio;
+
+            }
+        });
+        res.json('Se guardo exitosamente');
     },
     delete: function (req, res){
-        //validar que exista el id que me pasaron por la url
+        const { id } = req.params;
         
-        res.redirect('/products');
-        const {id} = req.params;
-        if (id) {
-            _.each(products, (product, i) => {
-                if (product.id == id) {
-                    products.splice(i, 1);
-                }
-            });
-            res.json(products);
-        }
+        products.forEach((product, i) => {
+            if(product.id == id) {
+                products.splice(i, 1);
+            }
+        });
+        res.json('Se ha eliminado el producto correctamente');
+        
+        
     }
 };

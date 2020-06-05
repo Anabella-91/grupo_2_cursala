@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+
 const controller = require('../controllers/productsController')
 
 /* Listado de productos */ 
-router.get('/', controller.products);
+router.get('/products', controller.list);
 
 /* Formulario de creacion de productos */
 router.get('/create', controller.create);
@@ -13,7 +14,7 @@ router.get('/create', controller.create);
 router.get('/:id', controller.detail);
 
 /* Accion de creacion de productos, a donde se envia el formulario */ 
-router.post('/', controller.create_form);
+router.post('/products', controller.create_form);
 
 /* Formulario de edicion de productos */ 
 router.get('/:id/edit', controller.edit);
