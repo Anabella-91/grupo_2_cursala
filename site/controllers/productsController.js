@@ -15,6 +15,7 @@ module.exports = {
             id: req.params.id,
             nombre : req.body.nombre,
             descripcion : req.body.descripcion,
+            opciones : req.body.opciones,
             horas : req.body.horas,
             apuntes: req.body.apuntes,
             ejercicios : req.body.ejercicios,
@@ -25,7 +26,9 @@ module.exports = {
     },
     detail:function (req,res){  
         let products = productsData.findAll();       
-        res.render('products/product_detail', { products });
+        let product = products.find(p => p.id === parseInt(req.params.id));
+        
+        res.render('products/product_detail', {products : product});
     },
     edit : function (req, res){
         let products = productsData.findAll();       
@@ -35,11 +38,12 @@ module.exports = {
         
     },
     update: function(req, res){
-        const productId = req.params.id;
+        let productId = req.params.id;
         let product = productsData.findByPK(productId);
         
         product.nombre = req.body.nombre;
         product.descripcion = req.body.descripcion;
+        product.opciones = req.body.opciones;
         product.horas = req.body.horas;
         product.apuntes = req.body.apuntes;
         product.ejercicios = req.body.ejercicios;
@@ -50,10 +54,11 @@ module.exports = {
         return res.redirect('/');
     },
     delete: function (req, res){
-        const { id } = req.params.id;
-        
+        let productId = req.params.id;
+        let products = productsData.findAll();       
+
         products.forEach((product, i) => {
-            if(product.id == id) {
+            if(product.id == productId) {
                 products.splice(i, 1);
             }
         });
