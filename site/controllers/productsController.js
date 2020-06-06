@@ -1,72 +1,63 @@
-const fs = require('fs');
-const json_products = fs.readFileSync('./products.json', 'utf-8');
-let products = JSON.parse(json_products);
+const productsData = require('./../models/product');
+const {check, validationResult, body} = require('express-validator');
 
 module.exports = {
-    list: function(req, res){
-        res.json(products);
+    list: function(req, res){ 
+        let products = productsData.findAll();       
+        return res.send(products);
     },
-    create:function (req,res){
+    formCreate:function (req,res){
         res.render('products/product_carga', { title: 'Cursala - Carga de Producto'});
         
     },
-    detail:function (req,res){  
-        res.render('products/product_detail', { title: 'Cursala - Detalle de Producto'});
-    },
     save: function (req, res){
-        let { nombre, descripcion, horas, apuntes, precio } = req.body;
-        
-        if (!nombre || !descripcion || !horas || !apuntes || !precio) {
-            res.status(400).send("Debes completar todos los campos");
-            return;
-        }
-        let id = products.length + 1;
-        let newProduct = { id, ...req.body };
-        
-        // agregando nuevo producto
-        products.push(newProduct);
-        
-        // guardando en archivo json
-        let json_products = JSON.stringify(products);
-        fs.writeFileSync('./products.json', json_products, 'utf-8');
-        
-        return res.json(products);
+        let product = {
+            id: req.params.id,
+            nombre : req.body.nombre,
+            descripcion : req.body.descripcion,
+            horas : req.body.horas,
+            apuntes: req.body.apuntes,
+            ejercicios : req.body.ejercicios,
+            precio : req.body.precio
+        }         
+        productsData.create(product);
+        return res.redirect('/');
+    },
+    detail:function (req,res){  
+        let products = productsData.findAll();       
+        res.render('products/product_detail', { products });
     },
     edit : function (req, res){
-        let idProduct=req.params.id;
-        res.send(idProduct);
-
-
-        let productEditar = products[idProduct];
-        res.render('products/product_detail', { title: 'Cursala - Edicion de Producto'});
+        let products = productsData.findAll();       
+        let product = products.find(p => p.id === parseInt(req.params.id));
+        
+        res.render('products/product_detail', {products : product});
         
     },
     update: function(req, res){
-        const { id } = req.params;
-        let { nombre, descripcion, horas, apuntes, precio } = req.body;
+        const productId = req.params.id;
+        let product = productsData.findByPK(productId);
         
-        products.forEach((product, i) => {
-            if (product.id == id) {
-                product.nombre = nombre;
-                product.descripcion = descripcion;
-                product.horas = horas;
-                product.apuntes = apuntes;
-                product.precio = precio;
-
-            }
-        });
-        res.json('Se guardo exitosamente');
+        product.nombre = req.body.nombre;
+        product.descripcion = req.body.descripcion;
+        product.horas = req.body.horas;
+        product.apuntes = req.body.apuntes;
+        product.ejercicios = req.body.ejercicios;
+        product.precio = req.body.precio;
+        
+        productsData.update(product);
+        
+        return res.redirect('/');
     },
     delete: function (req, res){
-        const { id } = req.params;
+        const { id } = req.params.id;
         
         products.forEach((product, i) => {
             if(product.id == id) {
                 products.splice(i, 1);
             }
         });
-        res.json('Se ha eliminado el producto correctamente');
         
-        
+        return res.redirect('/');
     }
 };
