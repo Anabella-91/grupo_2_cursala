@@ -34,12 +34,16 @@ module.exports = {
         let products = productsData.findAll();       
         let product = products.find(p => p.id === parseInt(req.params.id));
         
+        
         res.render('products/product_detail', {products : product});
         
     },
     update: function(req, res){
         let productId = req.params.id;
         let product = productsData.findByPK(productId);
+
+        console.log(product);
+        
         
         product.nombre = req.body.nombre;
         product.descripcion = req.body.descripcion;
@@ -50,6 +54,7 @@ module.exports = {
         product.precio = req.body.precio;
         
         productsData.update(product);
+        
         
         return res.redirect('/');
     },

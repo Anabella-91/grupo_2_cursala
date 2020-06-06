@@ -401,11 +401,12 @@
  },
  {
   "id": 51,
-  "nombre": "00",
-  "descripcion": "00",
-  "horas": "00",
-  "apuntes": "00",
-  "ejercicios": "00",
-  "precio": "000"
+  "nombre": "",
+  "descripcion": "",
+  "horas": "",
+  "apuntes": "",
+  "ejercicios": "",
+  "precio": "",
+  "opciones": "a"
  }
 ]
