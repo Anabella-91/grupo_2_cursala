@@ -408,5 +408,15 @@
   "ejercicios": "",
   "precio": "",
   "opciones": "a"
+ },
+ {
+  "id": 52,
+  "nombre": "0000",
+  "descripcion": "",
+  "opciones": "a",
+  "horas": "0000",
+  "apuntes": "0000",
+  "ejercicios": "0000",
+  "precio": "000"
  }
 ]
