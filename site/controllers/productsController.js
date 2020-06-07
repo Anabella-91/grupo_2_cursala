@@ -10,7 +10,7 @@ module.exports = {
         res.render('products/product_carga', { title: 'Cursala - Carga de Producto'});
     },
     detail:function (req,res){  
-        res.render('products/product_detail', { title: 'Cursala - Detalle de Producto'});
+        res.render('detalle', { title: 'Cursala - Detalle de Producto'});
     },
     create_form: function (req, res){
         const id = products.length + 1;

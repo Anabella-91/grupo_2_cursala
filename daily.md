@@ -1,11 +1,31 @@
 3 de JUNIO:
+*En proceso
 - Se actualizan los estilos de la vista login de usuarios
 - Hay que trabajar formulario de detalle de producto
+- Trabajando sobre la vista de detalle de producto
+-Se debe rutear el formulario de contacto
+-Crear funcion que almacene los datos que vienen del formulario de contacto
+*Completado:
+-Se esta trabajando sobre el CSS del carrito de compras y las media queries
+-Se maqueto, armo el css y las media queries el formulario de contacto
+-Completaron los Media Queries de la pagina 404
+-La pagina 404 ya se visualiza correctamente
+-Se arreglaron los Media Queries de la home y de la landing (se verificaron los mismos)
+-Logramos arreglar los errores que se presentaban al levantar el servidor
+-Quedo solucionado el problema que se presentaba con el partial del head, ahora se visualiza correctamente
+*Pendientes:
+-Crear funcion que almacene los datos que vienen del formulario de contacto
+-Rutear el carrito de compras
+-Actualizar el controlador del carrito de compras-> function eliminar productos
+-campos para la creacion de productos
+-Carpeta data con archivo products.json con los datos de productos
+generados.
+-Definir los campos necesarios para los usuarios
+-Carpeta data con archivo users.json con los datos de usuarios generados.
 
 31 de MAYO:
 *En proceso:
 -Se esta trabajando sobre las rutas del CRUD
--Se esta trabajando sobre el CSS del carrito de compras y las media queries
 -Se debe rutear el formulario de contacto
 *Completado:
 -Se maqueto, armo el css y las media queries el formulario de contacto
