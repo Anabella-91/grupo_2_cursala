@@ -39,11 +39,9 @@ module.exports = {
         
     },
     update: function(req, res){
+        let products = productsData.findAll();       
         let productId = req.params.id;
-        let product = productsData.findByPK(productId);
-
-        console.log(product);
-        
+        let product = productsData.findByPK(productId);        
         
         product.nombre = req.body.nombre;
         product.descripcion = req.body.descripcion;
