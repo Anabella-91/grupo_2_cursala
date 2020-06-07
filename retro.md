@@ -1,5 +1,6 @@
 Retrospectiva Estrella de Mar
 
-Conclusiones 1er Sprint:
-Con Trello hemos podido revisar las tareas pendientes y las organizamos para que puedan ser editadas y tomadas por todos los miembros del equipo.
-Notamos que deberiamos informar de forma regular sobre el avance de cada tarea y si advertimos alguna dificultad para poder ayudarnos y solventar dudas, es por eso que nos comunicamos via Slack para notificar sobre los avances correspondientes. 
+Conclusiones 2do Sprint:
+Nuestro objetivo en este sprint es lograr concretar reuniones diarias y cortas de seguimiento.
+Entendimos la importancia de los mockups a la hora de concretar la arquitectura frontend.
+Hemos identificado cuales son nuestras fortalezas individuales y buscamos aprovecharlas al maximo brindandonos asistencia mutua en aquellos puntos que nos cuesten mas. 

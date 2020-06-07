@@ -8,7 +8,7 @@ module.exports = {
         res.render('landing', { title: 'Cursala Landing'});
     },
     mensaje: function (req, res, next){
-        let mensaje = {
+        let mensajeForm = {
             nombre: req.body.nombre,
             email: req.body.email,
             telefono: req.body.telefono,
@@ -16,8 +16,15 @@ module.exports = {
             canalContacto: req.body.canalContacto,
             mensaje: req.body.mensaje
         };
-        let mensajeJSON = JSON.stringify(mensaje);
-        fs.appendFileSync("mensajes.json", mensajeJSON);
+        let mensajes = [];
+        let archivoMensajes = fs.readFileSync("mensajes.json", {encoding: "utf-8"});
+        if (archivoMensajes != ""){
+            mensajes = JSON.parse(archivoMensajes);
+        } 
+        mensajes.push(mensajeForm);
+        let mensajeJSON = JSON.stringify(mensajes);
+        fs.writeFileSync("mensajes.json", mensajeJSON);
+        
         res.redirect('/');
     }
 };
