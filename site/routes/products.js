@@ -1,26 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
+
 const controller = require('../controllers/productsController')
 
 /* Listado de productos */ 
-router.get('/', controller.products);
+router.get('/', controller.list);
 
 /* Formulario de creacion de productos */
-router.get('/create', controller.create);
+router.get('/create', controller.formCreate);
+/* Accion de creacion de productos, a donde se envia el formulario */ 
+router.post('/', controller.save);
 
 /* Detalle de un producto en particular */
 router.get('/:id', controller.detail);
 
-/* Accion de creacion de productos, a donde se envia el formulario */ 
-router.post('/new-product', controller.create_form);
-
 /* Formulario de edicion de productos */ 
 router.get('/:id/edit', controller.edit);
-
 /* Accion de edicion, a donde se envia el formulario */
-router.put('/:id', controller.edit_form);
-
+router.put('/:id', controller.update);
 /* Accion de borrado de producto */
 router.delete('/:id', controller.delete);
 
