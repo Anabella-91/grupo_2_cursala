@@ -29,7 +29,4 @@ router.put('/edit', function(req, res){
 /* user carrito . */
 router.get('/carrito', controller.carrito);
 
-/*users carrito nuevo */
-router.get("/carrito", controller.carrito);
-
 module.exports = router;
