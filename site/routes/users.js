@@ -26,7 +26,13 @@ router.put('/edit', function(req, res){
 });
 
 
+/*Rutas del carrito */
 /* user carrito . */
 router.get('/carrito', controller.carrito);
+
+router.post('/eliminarProducto', controller.eliminarProducto);
+
+/*Rutas admnistrador*/
+router.get('/admin/administracion_home', controller.administracionHome);
 
 module.exports = router;
