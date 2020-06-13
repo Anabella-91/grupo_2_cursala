@@ -1,3 +1,7 @@
+11 de JUNIO:
+*En proceso: Crear vista de back office para el administrador.
+*Completado: se creo y actualizo el link al tablero de Trello en el respositorio.
+
 7 de JUNIO:
 *Completado:
 -Se esta trabajando sobre el CSS del carrito de compras y las media queries

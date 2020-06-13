@@ -56,14 +56,6 @@
   "precio": 65
  },
  {
-  "id": 8,
-  "nombre": "in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis",
-  "descripcion": "tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet",
-  "horas": 1685.35,
-  "apuntes": "pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede",
-  "precio": 52
- },
- {
   "id": 9,
   "nombre": "vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede",
   "descripcion": "vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit",
@@ -417,6 +409,40 @@
   "horas": "55555",
   "apuntes": "0000",
   "ejercicios": "0000",
+<<<<<<< HEAD
   "precio": "555555"
+=======
+  "precio": "000"
+ },
+ {
+  "id": 8,
+  "nombre": "ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor",
+  "descripcion": "",
+  "horas": "4068.68",
+  "apuntes": "luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec",
+  "precio": "65",
+  "opciones": "a",
+  "ejercicios": ""
+ },
+ {
+  "id": 53,
+  "nombre": "Nuevo Curso",
+  "descripcion": "",
+  "opciones": "a",
+  "horas": "10",
+  "apuntes": "20",
+  "ejercicios": "4",
+  "precio": "340"
+ },
+ {
+  "id": 54,
+  "nombre": "Nuevo Curso",
+  "descripcion": "",
+  "opciones": "a",
+  "horas": "10",
+  "apuntes": "2",
+  "ejercicios": "10",
+  "precio": "200"
+>>>>>>> 9023435efe5c3b811f011682073cfc590d38b3a7
  }
 ]

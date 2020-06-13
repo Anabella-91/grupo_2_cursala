@@ -67,7 +67,12 @@ module.exports = {
 
     },
     carrito:function (req,res){
-		
         res.render('carrito', { title: 'Cursala Carrito'});
+    },
+    eliminarProducto: function (req, res){
+        res.send("Deletear producto");  
+    },
+    administracionHome: function (req, res) {
+        res.render('admin_home.ejs', {title: 'Cursala | administracion'});
     }
 };
