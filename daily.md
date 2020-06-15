@@ -1,3 +1,15 @@
+15 de JUNIO:
+*En proceso: 
+-Se esta trabajando con las Media Queries de la vista de perfil de usuario
+-Vista de edicion de perfil en proceso de construccion
+-Solucionando inconvenientes con Sequelize
+*Completado: 
+-Se actualizo el tablero de Trello con todas las tareas de este sprint
+-se creo y actualizo el link al tablero de Trello en el respositorio.
+-Crear vista de back office para el administrador.
+-Se modificaron las rutas hacia el back office administrador
+-Se esta creando una vista de perfil de usuario
+
 14 de JUNIO:
 *En proceso: 
 -Se esta creando una vista de perfil de usuario

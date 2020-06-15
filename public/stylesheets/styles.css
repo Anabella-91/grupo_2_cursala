@@ -544,6 +544,8 @@ position: relative;}
 .dato-usuario {
   color: rgba(13, 24, 88, 0.6);
   margin-bottom: 2em;
+  line-height: 0.3em;
+  margin-bottom: 3.2em;
 }
 .icono-camara, .icono-lapiz {
   width: 20px;
@@ -699,6 +701,18 @@ position: relative;}
   .detalle-pago .boton-pago {
     margin-top: 0em;
     }
+  /*Vista del perfil */
+    .profile-contenedor {
+      width: 70vw;
+    }
+    .user-data {
+      width: 28vw;
+      height: 51vh; 
+    }
+    .dato-usuario {
+      font-size: 1.1em;
+      margin-bottom: 2.6em;
+    }
    } 
 @media (max-width: 768px) {
   /* LANDING */
@@ -777,6 +791,13 @@ position: relative;}
   .detalle-pago {
     grid-column: 4 / 9;
     margin-right: 0.5em;
+  }
+  /* VISTA PERFIL */
+  .profile-contenedor {
+    width: 85vw;
+  }
+  .user-data {
+    width: 38vw;
   }
 }
 @media (max-width: 425px) {
@@ -880,6 +901,20 @@ position: relative;}
   .detalle-pago .input-corto {
     width: 36%;
   }
+  /* vista perfil */
+  .profile-contenedor {
+    width: 85vw;
+    height: 90vh;
+    margin-top: 3em;
+    flex-direction: column;
+  }
+  .profile-picture {
+    width: 200px;
+    margin-right: 0;
+  }
+  .user-data {
+    width: 45vw;
+  }
 }
 @media (max-width: 375px) {
   /* LANDING */
@@ -923,6 +958,10 @@ position: relative;}
   .campo-vencimiento {
     margin-right: 5em;
 }
+  /*Vista perfil */
+  .user-data {
+    width: 52vw;
+  }
 }
 @media (max-width: 320px) {
 /*contactanos*/
@@ -948,4 +987,10 @@ position: relative;}
   .campo-vencimiento {
     margin-right: 2.5em;
   }
+  /* VISTA PERFIL */
+  .user-data {
+    width: 60vw; 
+  } 
+  .profile-contenedor {
+    width: 90vw; }
 }
