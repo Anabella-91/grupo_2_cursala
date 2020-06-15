@@ -406,9 +406,12 @@
   "nombre": "0000",
   "descripcion": "",
   "opciones": "a",
-  "horas": "0000",
+  "horas": "55555",
   "apuntes": "0000",
   "ejercicios": "0000",
+<<<<<<< HEAD
+  "precio": "555555"
+=======
   "precio": "000"
  },
  {
@@ -440,5 +443,6 @@
   "apuntes": "2",
   "ejercicios": "10",
   "precio": "200"
+>>>>>>> 9023435efe5c3b811f011682073cfc590d38b3a7
  }
 ]
