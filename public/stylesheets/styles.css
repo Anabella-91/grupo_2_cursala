@@ -515,8 +515,62 @@ position: relative;}
   padding: 1em 0;
   width: 100%;
 }
+/*PERFIL */
+.profile-contenedor {
+  width: 55vw;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+.user-image {
+  position: relative;
+}
+.profile-picture {
+  border-radius: 10px;
+  width: 280px;
+  margin-right: 2em;
+}
+.user-data {
+  width: 20vw;
+  height: 45vh;
+}
+.campo-perfil {
+  width: 50%;
+  color: #0e1856;
+  text-transform: uppercase;
+}
+.dato-usuario {
+  color: rgba(13, 24, 88, 0.6);
+  margin-bottom: 2em;
+}
+.icono-camara, .icono-lapiz {
+  width: 20px;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.boton-editar {
+  border: 1px solid #459cd1;
+}
+.boton-editar:hover {
+  background-color: #459cd1;
+}
+.boton-editar:hover p {
+  color: #fff;
+}
+.boton-editar a {
+  color:#459cd1;
+  text-align: center;
+}
+.boton-editar p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding: 0.5em 0.2em;
+}
 /*HOME ADMINISTRACION */
-  .panel-control {
+  .contenedor {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -568,6 +622,7 @@ position: relative;}
     font-family: 'Roboto', sans-serif;
     font-size: 1.4em;
   }
+
 /* MEDIA QUERIES */
 @media (max-width: 1024px){  
   /* LANDING */

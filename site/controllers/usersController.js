@@ -66,6 +66,9 @@ module.exports = {
         res.send('Perfil editado'); // se lo dirige a la vista de edicion del perfil
 
     },
+    perfil: function(req, res) {
+        res.render('profile', {title: 'Cursala | Perfil'});
+    },
     carrito:function (req,res){
         res.render('carrito', { title: 'Cursala Carrito'});
     },
@@ -73,6 +76,6 @@ module.exports = {
         res.send("Deletear producto");  
     },
     administracionHome: function (req, res) {
-        res.render('admin_home.ejs', {title: 'Cursala | administracion'});
+        res.render('admin_home', {title: 'Cursala | administracion'});
     }
 };

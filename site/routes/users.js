@@ -25,7 +25,7 @@ router.put('/edit', function(req, res){
     res.send('Fui por put');
 });
 
-
+router.get('/profile', controller.perfil);
 /*Rutas del carrito */
 /* user carrito . */
 router.get('/carrito', controller.carrito);
