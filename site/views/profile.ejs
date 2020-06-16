@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+        <%- include('./partials/head'); %>
+    <body>
+        <%- include('./partials/header'); %>
+        <div class="contenedor b-gris">
+            <div class="b-blanco shadow1 profile-contenedor border-r">
+                <div class="user-image">
+                    <a href="#">
+                <img class="icono-camara" src="/images/icono-foto.svg">
+                <img class="profile-picture" src="/images/profile_pic.png" alt="imagen-usuario">
+                    </a>
+                </div>
+                <div class="user-data">
+                <p class="campo-perfil">Nombre: </p><p class="dato-usuario"> Usuario de Test</p>
+                <p class="campo-perfil">Email:</p><p class="dato-usuario"> usuariotest@gmail.com</p>
+                <p class="campo-perfil">Contraseña: </p><p class="dato-usuario"> xxxxxxx</p>
+                <div class="boton-editar border-r">
+                    <a href="/users/edit_profile">
+                    <p>Editar perfil</p> 
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,34 +1,42 @@
 <!DOCTYPE html>
-<html>
-        <%- include ('./partials/head') %>
+    <html>
+         <%- include('./partials/head'); %>
     <body>
-    <div class="container">
-        <%- include ('./partials/header') %>
-        <div class="cuerpo-central">
-        <main>
+    <div class="container b-gris">
+        <%- include('./partials/header'); %>
             <div class="detalle-titulo shadow1 b-blanco">
                 <h2 class="titulo"> < HTML ></h2>
                 <img class="detalle-ilustracion" src="/images/ilus-html.svg" alt="ilustracion html">
             </div>
+        <div class="container-rutas">
             <h3 class="titulo2">Contenidos del curso</h3>
-            <div class="ruta-aprendizaje shadow1 b-blanco">
-                <ul class="rutas">
-                    <li>Sintaxis HTML</li>
-                    <li>Etiquetas meta y de seccion</li>
-                    <li>Etiquetas a nivel texto</li>
-                    <li>Contenedio embebido</li>
-                    <li>Atributos</li>
-                    <li>Etiquetas nuevas y obsoletas</li>
-                    <li>Enlaces y tipos de rutas</li>
-                    <li>Anclas o Marcadores</li>
-                    <li>Formularios</li>
-                    <li>Imagenes dinamicas</li>
-                    <li>Meta viewport</li>
-                    <li>API's HTML</li>
-                </ul>
-            </div>
-   
-        </main>
+                <div class="ruta-aprendizaje shadow1 b-blanco">
+                    <ul class="rutas">
+                        <li>Sintaxis HTML</li>
+                        <li>Etiquetas meta y de seccion</li>
+                        <li>Etiquetas a nivel texto</li>
+                        <li>Contenedio embebido</li>
+                        <li>Atributos</li>
+                        <li>Etiquetas nuevas y obsoletas</li>
+                        <li>Enlaces y tipos de rutas</li>
+                        <li>Anclas o Marcadores</li>
+                        <li>Formularios</li>
+                        <li>Imagenes dinamicas</li>
+                        <li>Meta viewport</li>
+                        <li>API's HTML</li>
+                    </ul>
+                </div>
         </div>
+            <div class="detalle-resumen b-blanco shadow1 border-r">
+                <ul>
+                    <li><img class="detalle-icon" src="/images/reloj.svg"><p>Cantidad de horas de video</p><p>50 hs</p></li>
+                    <li><img class="detalle-icon" src="/images/apuntes.svg"><p>Apuntes disponibles</p><p>20</p></li>
+                    <li><img class="detalle-icon" src="/images/ejercicios.svg">Cantidad de ejercicios disponibles</p><p>60</p></li>
+                </ul>
+                <form>
+                <button class="boton-pago border-r" type="submit"><img class="cart-icon" src="/images/cart.svg">Agregar al carrito</button>
+                </form>
+            </div>
+
     </div>
     </body>
