@@ -15,21 +15,20 @@
         </div>
         <h2>No tengo cuenta</h2>
         <form action="/users/perfil" method="POST">
+          <div><%= errors.nombre ? errors.nombre.msg: '' %></div>
           <input type="text" name="nombre" placeholder="Nombre" value="<%= body.nombre ? body.nombre: ''%>">
-          <div><%= errors.name ? errors.name.msg: '' %></div>
-          <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
-          <div><%= errors.email ? errors.email.msg: '' %></div>
 
-          <input type="password" name="password" placeholder="Contraseña">
+          <div><%= errors.email ? errors.email.msg: '' %></div>
+          <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
+
           <div><%= errors.password ? errors.password.msg: '' %></div>
+          <input type="password" name="password" placeholder="Contraseña">
 
           <input type="password" name="password2" placeholder="Confirma contraseña">
 
           <p>Foto de perfil</p>
-          <input type="file" name="imagen">
           <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
-
-          <label for="imagen" class="submit">Subir imagen</label>
+          <input type="file" name="imagen">
 
           <input type="submit" name="submit" class="submit" value="REGISTRARME">
         </form>

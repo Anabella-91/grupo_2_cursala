@@ -8,35 +8,29 @@ const db = require('./../database/models');
 
 
 module.exports = {
-    users: function(req, res){
-        let users = usersData.findAll();       
-        return res.send(users);
-    },
     register:function (req,res){
         res.render('registro', {errors : {}, body : {}});
         
     },
     registerUser: function(req, res){
-        let errors = validationResult(req)
+        let validation = validationResult(req)
         
-        if (!errors.isEmpty()) {
-            return res.render('registro', {errors : errors.mapped(), body: req.body});
+        if (!validation.isEmpty()) {
+            return res.render('registro', {errors : validation.mapped(), body: req.body});
         }
         
-        let imagenUser = '';
+        let imagen = '';
         if (req.file) {
-            imagen = req.file.path.replace('public/', '/');
+            imagen = req.file;
         }
-        
-        const hashedPassword = bcryptjs.hashSync(req.body.password, 10)
         
         let user = {
-            nombre: req.body.nombre,
-            email: req.body.email,
-            password: hashedPassword,
-            imagen: imagenUser
-        }
-
+            email : req.body.email,
+            name : req.body.name,
+            password : bcryptjs.hashSync(req.body.password, 5),
+            imagen :  imagen
+        } 
+        
         //login user
         db.User.create(user)
                 .then(function(){
@@ -53,13 +47,13 @@ module.exports = {
                 })
     },
     login:function (req,res){
-        res.render('login', { title: 'Cursala Login'}, {errors : {}, body : {}});
+        res.render('login', {errors : {}, body : {}});
     },
     processLogin: function(req, res){
         
-        let errors = validationResult(req);
+        let validation = validationResult(req);
         
-        if(!errors.isEmpty()){
+        if(!validation.isEmpty()){
             return res.render('login', {errors : validation.mapped(), body : req.body});
         }
         
@@ -78,10 +72,7 @@ module.exports = {
         return res.redirect('/');
     },
     edit: function(req, res){
-        let idUser = req.params.idUser; 
-        let userEdit = users[idUser]; 
-        
-        
+       
         res.send('Perfil editado'); 
         
     },

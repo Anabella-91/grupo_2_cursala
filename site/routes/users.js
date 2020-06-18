@@ -5,7 +5,6 @@ const { check, validationResult, body} = require('express-validator');
 const multer = require('multer');
 const authMid = require('./../middlewares/auth');
 const guestMid = require('./../middlewares/guest');
-const rememberMid = require('./../middlewares/remember');
 const controller = require('../controllers/usersController');
 const db = require('./../database/models');
 
@@ -39,8 +38,6 @@ const upload = multer({
     }
 });
 
-/* users */
-router.get('/list', controller.users);
 
 /* user registro . */
 router.get('/registro', guestMid, controller.register);
@@ -55,12 +52,11 @@ router.post('/perfil', guestMid, upload.single('imagen'),[
         })
     }),
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
-    check('password', 'Las contraseñas no coinciden')
-    .custom((value, { req }) => {
+    check('password2', 'Las contraseñas no coinciden').custom((value, { req }) => {
         return value === req.body.password2
     }),
     body('imagen').custom((value, { req }) => {
-        if(req.file != undefined){
+        if(req.file){
             const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
             const ext = path.extname(req.file.originalname)
             return acceptedExtensions.includes(ext);
@@ -71,13 +67,11 @@ router.post('/perfil', guestMid, upload.single('imagen'),[
 
 /* user login . */
 router.get('/login', guestMid, controller.login);
-router.post('/login', guestMid, [
+router.post('/perfil', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.User.findOne({where :{email : value}}).then(user => {
-            if (user == null) {
-                return Promise.reject('Wrong credentials');
-            } else if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
+           if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
                 return Promise.reject('Wrong credentials');
             }
         })
