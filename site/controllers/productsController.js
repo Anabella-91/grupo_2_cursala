@@ -1,4 +1,4 @@
-const productsData = require('./../models/product');
+const productsData = require('./../models/Product');
 const {check, validationResult, body} = require('express-validator');
 
 module.exports = {

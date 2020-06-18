@@ -86,6 +86,10 @@ body{
     background-color: #fff;
     border: 2px solid #459cd1;
 }
+.register .remember{
+    margin: auto;
+    width: 5%;
+}
 .login{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;

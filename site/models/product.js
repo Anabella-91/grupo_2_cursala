@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const fileData = path.join(__dirname, '../products.json');
+const fileData = path.join(__dirname, '../data/products.json');
 
 let productData = {
     findAll : function () {
@@ -42,7 +42,6 @@ let productData = {
             return product.id == id;
         });
     },
-    
     update : function(editProduct) {
         let array = this.findAll();
         
