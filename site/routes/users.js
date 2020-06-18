@@ -72,8 +72,8 @@ router.post('/perfil', guestMid, upload.single('imagen'),[
 /* user login . */
 router.get('/login', guestMid, controller.login);
 router.post('/login', guestMid, [
-    check('password', 'Invalid Password, min 4 characters').isLength({min:4}).bail(),
-    check('email', 'Invalid Email').isEmail().custom((value, { req }) => {
+    check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
+    check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.User.findOne({where :{email : value}}).then(user => {
             if (user == null) {
                 return Promise.reject('Wrong credentials');

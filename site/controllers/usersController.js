@@ -38,11 +38,11 @@ module.exports = {
         }
 
         //login user
-        db.User.create(usuario)
+        db.User.create(user)
                 .then(function(){
                     res.locals.log = true;
                     req.session.log = true;
-                    req.session.userEmail = usuario.email;
+                    req.session.userEmail = user.email;
 
 
                     return res.redirect('/perfil');
@@ -87,6 +87,7 @@ module.exports = {
     },
     perfil: function(req, res) {
         res.render('profile', {title: 'Cursala | Perfil'});
+        return res.send(req.session);
     },
     carrito:function (req,res){
         res.render('carrito', { title: 'Cursala Carrito'});

@@ -14,9 +14,9 @@
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <h2>No tengo cuenta</h2>
-        <form action="/users" method="POST">
+        <form action="/users/perfil" method="POST">
           <input type="text" name="nombre" placeholder="Nombre" value="<%= body.nombre ? body.nombre: ''%>">
-          <div><%= errors.nombre ? errors.nombre.msg: '' %></div>
+          <div><%= errors.name ? errors.name.msg: '' %></div>
           <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
           <div><%= errors.email ? errors.email.msg: '' %></div>
 
@@ -27,9 +27,9 @@
 
           <p>Foto de perfil</p>
           <input type="file" name="imagen">
-          <label for="imagen">Subir imagen</label>
           <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
 
+          <label for="imagen" class="submit">Subir imagen</label>
 
           <input type="submit" name="submit" class="submit" value="REGISTRARME">
         </form>
