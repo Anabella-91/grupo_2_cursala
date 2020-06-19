@@ -13,7 +13,7 @@ const db = require('./../database/models');
 /*  Creando almacenamiento de imagenes con Multer */
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
-        const folder = path.join(__dirname, '../public/imagenes');
+        const folder ='/public/images';
         cb(null, folder);
     },
     filename : (req, file, cb) => {
@@ -26,15 +26,19 @@ const upload = multer({
     fileFilter: (req, file, cb) => { //fileFilter es la validacion para que se suba la imagen
         const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
         const ext = path.extname(file.originalname);
+        console.log(req.file);
+
         if (acceptedExtensions.includes(ext)){
             //subiendo imagen
-            cb(null, true);
+            return cb(null, true);
+
         } else {
             //guardando imagen en body
             req.file = file;
             cb(null, false); //no se sube imagen
             
         }
+        
     }
 });
 
@@ -60,9 +64,12 @@ router.post('/perfil', guestMid, upload.single('imagen'),[
             const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
             const ext = path.extname(req.file.originalname)
             return acceptedExtensions.includes(ext);
+        }else{
+            body('imagen').withMessage('La imagen debe tener uno de los siguientes formatos: JPG, JPEG, PNG')
+            console.log(req.file);
+            
         }
-        return false;
-    }).withMessage('La imagen debe tener uno de los siguientes formatos: JPG, JPEG, PNG'),
+    })
 ], controller.registerUser);
 
 /* user login . */
@@ -71,7 +78,9 @@ router.post('/perfil', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.User.findOne({where :{email : value}}).then(user => {
-           if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
+            if (user == null) {
+                return Promise.reject('Wrong credentials');
+            } else if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
                 return Promise.reject('Wrong credentials');
             }
         })

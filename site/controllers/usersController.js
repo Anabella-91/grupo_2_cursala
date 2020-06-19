@@ -21,9 +21,9 @@ module.exports = {
         
         let imagen = '';
         if (req.file) {
-            imagen = req.file;
+            imagen = req.file;        
         }
-        
+
         let user = {
             email : req.body.email,
             name : req.body.name,
