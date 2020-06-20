@@ -43,12 +43,13 @@ module.exports = {
                     req.session.log = true;
                     req.session.userEmail = user.email;
 
-
-                    return res.redirect('/perfil');
+                    console.log('user registrado');
+                    
+                    return res.redirect('/users/perfil');
                 })
                 .catch(function(error){
                     console.error(error);
-                    return res.redirect('/registro')
+                    return res.redirect('/users/registro')
                 })
     },
     login:function (req,res){
@@ -75,10 +76,15 @@ module.exports = {
         req.session.userEmail = req.body.email;
         
         console.log('Login user');
-        return res.redirect('/');
+        return res.redirect('/users/perfil');
     },
     edit: function(req, res){
         let user = db.Users.findByPk(req.params.id); 
+        if (user === null) {
+            console.log('User not found!');
+          } else {
+            console.log(user); 
+          }
         
         return res.render('profile', {user:user}, req.session);
         
@@ -97,9 +103,10 @@ module.exports = {
         return res.redirect('/users/admin/administracion_home' + req.params.id);
     },
     perfil: function(req, res) {
-        let user = db.Users.findAll(); 
-        
-        return res.render('profile', {user:user});
+        let users = db.Users.findAll().then(function(user){
+            return res.render('profile', {user: user});
+        });
+
     },
     carrito:function (req,res){
         res.render('carrito', { title: 'Cursala | Carrito'});
@@ -109,5 +116,13 @@ module.exports = {
     },
     administracionHome: function (req, res) {
         res.render('admin_home', {title: 'Cursala | administracion'});
+    },
+    deleteUser: function (req, res){
+        db.Users.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        return res.redirect('/users/admin/administracion_home');
     }
 };

@@ -74,7 +74,7 @@ router.post('/registro', guestMid, upload.single('imagen'),[
 
 /* user login . */
 router.get('/login', guestMid, controller.login);
-router.post('/perfil', guestMid, [
+router.post('/login', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.Users.findOne({where :{email : value}}).then(user => {
@@ -105,5 +105,7 @@ router.post('/eliminarProducto', controller.eliminarProducto);
 
 /*Rutas admnistrador*/
 router.get('/admin/administracion_home', controller.administracionHome);
+router.delete('/deleteUser/:id', controller.deleteUser);
+
 
 module.exports = router;
