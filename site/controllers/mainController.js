@@ -2,10 +2,10 @@ const fs = require('fs');
 
 module.exports = {
 	home:function (req,res, next){
-        res.render('home', { title: 'Cursala Home'});   
+        res.render('home', { title: 'Cursala | Home'});   
     },
     landing:function (req,res,next){
-        res.render('landing', { title: 'Cursala Landing'});
+        res.render('landing', { title: 'Cursala | Landing'});
     },
     mensaje: function (req, res, next){
         let mensajeForm = {

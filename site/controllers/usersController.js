@@ -52,7 +52,12 @@ module.exports = {
                 })
     },
     login:function (req,res){
+<<<<<<< HEAD
+        res.render('login', { title: 'Cursala | Login'});
+	   
+=======
         res.render('login', {errors : {}, body : {}});
+>>>>>>> c8118cf58811db23a01de5d2a013ef41846a150f
     },
     processLogin: function(req, res){
         
@@ -101,7 +106,7 @@ module.exports = {
         return res.render('profile', {user:user});
     },
     carrito:function (req,res){
-        res.render('carrito', { title: 'Cursala Carrito'});
+        res.render('carrito', { title: 'Cursala | Carrito'});
     },
     eliminarProducto: function (req, res){
         res.send("Deletear producto");  
