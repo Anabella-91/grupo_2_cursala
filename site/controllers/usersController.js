@@ -7,7 +7,7 @@ module.exports = {
         res.json(users);
     },
 	registro:function (req,res){
-        res.render('registro', { title: 'Cursala Registro'});
+        res.render('registro', { title: 'Cursala | Registro'});
 	   
     },
     registroUser: function(req, res){
@@ -22,7 +22,7 @@ module.exports = {
 
     },
     login:function (req,res){
-        res.render('login', { title: 'Cursala Login'});
+        res.render('login', { title: 'Cursala | Login'});
 	   
     },
     processLogin: function(req, res){
@@ -70,7 +70,7 @@ module.exports = {
         res.render('profile', {title: 'Cursala | Perfil'});
     },
     carrito:function (req,res){
-        res.render('carrito', { title: 'Cursala Carrito'});
+        res.render('carrito', { title: 'Cursala | Carrito'});
     },
     eliminarProducto: function (req, res){
         res.send("Deletear producto");  
