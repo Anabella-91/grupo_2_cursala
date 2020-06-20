@@ -47,12 +47,7 @@ module.exports = {
                 })
     },
     login:function (req,res){
-<<<<<<< HEAD
-        res.render('login', { title: 'Cursala | Login'});
-	   
-=======
         res.render('login', {errors : {}, body : {}});
->>>>>>> c8118cf58811db23a01de5d2a013ef41846a150f
     },
     processLogin: function(req, res){
         
