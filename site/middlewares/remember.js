@@ -1,4 +1,4 @@
-module.exports = function rememberMid (req, res, next){
+module.exports = (req, res, next) => {
     if (req.cookies['remember']) {
         req.session.log = true;
         req.session.userEmail = req.cookies['remember'];

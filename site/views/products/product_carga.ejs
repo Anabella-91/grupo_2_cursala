@@ -15,11 +15,13 @@
           <input type="text" name="nombre" placeholder="Nombre del curso" required>
           <textarea name="descripcion" id="descripcion" cols="30" rows="4"></textarea>
           
-          <label for="categoria">Categoria</label>
-          <select name="opciones" id="opciones">
-            <option value="a">Opcion A</option>
-            <option value="b">Opcion B</option>
-            <option value="c">Opcion C</option>
+          <label for="categories">Categoria</label>
+          <select name="categories" id="opciones">
+            <% for(let i=0; i<categories.length;i++){ %>
+              <option value="<%= categories[i].id %>">
+                <% categories.name %>
+              </option>
+            <% } %>
           </select>
           
           <label for="horas">Cantidad de horas</label>

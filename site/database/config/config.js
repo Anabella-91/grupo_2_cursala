@@ -2,7 +2,7 @@ module.exports = {
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_cursala",
+    "database": "cursala",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": 0
