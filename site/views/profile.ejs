@@ -3,6 +3,8 @@
         <%- include('./partials/head'); %>
     <body>
         <%- include('./partials/header'); %>
+
+
         <div class="contenedor b-gris">
             <div class="b-blanco shadow1 profile-contenedor border-r">
                 <div class="user-image">
@@ -12,6 +14,7 @@
                     </a>
                 </div>
                 <div class="user-data">
+                    <h1>Hola<%= userLogueado.email %>!</h1>
                 <p class="campo-perfil">Nombre: </p><p class="dato-usuario"> Usuario de Test</p>
                 <p class="campo-perfil">Email:</p><p class="dato-usuario"> usuariotest@gmail.com</p>
                 <p class="campo-perfil">Contraseña: </p><p class="dato-usuario"> xxxxxxx</p>

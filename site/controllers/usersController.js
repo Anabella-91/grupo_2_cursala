@@ -1,73 +1,89 @@
 const fs = require('fs');
 const { check, validationResult, body} = require('express-validator');
-const users = require('../users.json');
+const usersData = require('./../models/User');
+const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcrypt");
+const db = require('./../database/models');
+
+
 
 module.exports = {
-    users: function(req, res){
-        res.json(users);
+    register:function (req,res){
+        res.render('registro', {errors : {}, body : {}});
+        
     },
-	registro:function (req,res){
-        res.render('registro', { title: 'Cursala | Registro'});
-	   
-    },
-    registroUser: function(req, res){
-        let newUser = {
-            nombre: req.body.nombre,
-            email : req.body.email,
+    registerUser: function(req, res){
+        let validation = validationResult(req)
+        
+        if (!validation.isEmpty()) {
+            return res.render('registro', {errors : validation.mapped(), body: req.body});
         }
-        /* Guardar usuario */
+        
+        let imagen = '';
+        if (req.file) {
+            imagen = req.file;        
+        }
 
-        /* Se lo redirige al home */
-        res.redirect('/');
+        let user = {
+            email : req.body.email,
+            name : req.body.name,
+            password : bcryptjs.hashSync(req.body.password, 5),
+            imagen :  imagen
+        } 
+        
+        //login user
+        db.User.create(user)
+                .then(function(){
+                    res.locals.log = true;
+                    req.session.log = true;
+                    req.session.userEmail = user.email;
 
+
+                    return res.redirect('/perfil');
+                })
+                .catch(function(error){
+                    console.error(error);
+                    return res.redirect('/registro')
+                })
     },
     login:function (req,res){
+<<<<<<< HEAD
         res.render('login', { title: 'Cursala | Login'});
 	   
+=======
+        res.render('login', {errors : {}, body : {}});
+>>>>>>> c8118cf58811db23a01de5d2a013ef41846a150f
     },
     processLogin: function(req, res){
-        let newUser;
-        let errors = validationResult(req);
-        if(errors.isEmpty()){
-            let usersJson = fs.readFileSync('../users.json', {encoding: 'utf-8'});
-            let users;
-            if(usersJson == ''){
-                users = [];
-            }else{
-                users = JSON.parse(usersJson);
-            }
-
-            for(let i=0;i<users.length;i++){
-                if(users[i].email == req.body.email){
-                    if(bcrypt.compareSync(req.body.password, users[i].password)){
-                        newUser = users[i];
-                        break;
-                    }
-                }
-            }
-            if(newUser == undefined){
-                return res.render('/login', {errors:[
-                    {msg: 'Credenciales invalidas'}
-                ]});
-            }
-
-            req.session.users = newUser;
-            res.render('Sucess');
-
-        }else{
-            return res.render('login', { errors:errors.errors});
+        
+        let validation = validationResult(req);
+        
+        if(!validation.isEmpty()){
+            return res.render('login', {errors : validation.mapped(), body : req.body});
         }
+        
+        // cookie remember
+        if (req.body.remember) {
+            //creando cookie por 90 dias
+            res.cookie('remember', req.body.email,  {expires: new Date(Date.now() + 1000*60*60*24*90)});
+        }
+        
+        //user login
+        req.session.log = true;
+        res.locals.log = true;
+        req.session.userEmail = req.body.email;
+        
+        console.log('Login user');
+        return res.redirect('/');
     },
     edit: function(req, res){
-        let idUser = req.params.idUser; //idUser es por el parametro que colocamos en la ruta
-        let userEdit = users[idUser]; 
-
+       
+        res.send('Perfil editado'); 
         
-        res.send('Perfil editado'); // se lo dirige a la vista de edicion del perfil
-
     },
     perfil: function(req, res) {
         res.render('profile', {title: 'Cursala | Perfil'});
+        return res.send(req.session);
     },
     carrito:function (req,res){
         res.render('carrito', { title: 'Cursala | Carrito'});

@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!-- CSS -->
   <link rel="stylesheet" href="/stylesheets/registro.css">
 </head>
 <body>
-  <% if(typeof errors != 'undefined'){ %>
-    <p style ="color:red">Error al ingresar los datos</p>
-    <ul>
-        <% for(let i=0; i<errors.length;i++){ %>
-            <li>
-                <% errors[i].msg%>
-            </li>
-        <% } %>
-    </ul>
-<% } %>
   <div class="container">
     <div class="register-container">
       <div class="register">
@@ -25,11 +14,22 @@
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <h2>No tengo cuenta</h2>
-        <form action="/users/registro" method="POST">
-          <input type="text" name="nombre" placeholder="Nombre">
-          <input type="email" name="email" placeholder="Email">
+        <form action="/users/perfil" method="POST">
+          <div><%= errors.nombre ? errors.nombre.msg: '' %></div>
+          <input type="text" name="nombre" placeholder="Nombre" value="<%= body.nombre ? body.nombre: ''%>">
+
+          <div><%= errors.email ? errors.email.msg: '' %></div>
+          <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
+
+          <div><%= errors.password ? errors.password.msg: '' %></div>
           <input type="password" name="password" placeholder="Contraseña">
-          <input type="password" name="password" placeholder="Confirma contraseña">
+
+          <input type="password" name="password2" placeholder="Confirma contraseña">
+
+          <p>Foto de perfil</p>
+          <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
+          <input type="file" name="imagen">
+
           <input type="submit" name="submit" class="submit" value="REGISTRARME">
         </form>
       </div>

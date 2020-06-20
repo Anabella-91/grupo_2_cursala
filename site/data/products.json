@@ -390,6 +390,8 @@
   "horas": 4485.86,
   "apuntes": "sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus",
   "precio": 43
+<<<<<<< HEAD:site/data/products.json
+=======
  },
  {
   "id": 51,
@@ -444,5 +446,6 @@
   "ejercicios": "10",
   "precio": "200"
 >>>>>>> 9023435efe5c3b811f011682073cfc590d38b3a7
+>>>>>>> 75a6fca8b5ad25ff401a24e8996ac5f8b834e31e:site/products.json
  }
 ]
