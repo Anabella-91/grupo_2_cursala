@@ -9,8 +9,6 @@ const rememberMid = require('./middlewares/remember');
 const sessionMid = require('./middlewares/session');
 
 
-
-
 var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');

@@ -1,71 +1,77 @@
 const productsData = require('./../models/Product');
 const {check, validationResult, body} = require('express-validator');
+const db = require('./../database/models');
 
 module.exports = {
-    list: function(req, res){ 
-        let products = productsData.findAll();       
-        return res.send(products);
-    },
     formCreate:function (req,res){
-        res.render('products/product_carga', { title: 'Cursala - Carga de Producto'});
-        
+        // Categorias para mostrar en el form de carga de cursos
+        db.Categories.findAll().then(function(categories){
+            return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories: categories})
+        });
     },
-    save: function (req, res){
-        let product = {
-            id: req.params.id,
+    save: function (req, res) {
+        db.Products.create({
             nombre : req.body.nombre,
             descripcion : req.body.descripcion,
-            opciones : req.body.opciones,
+            categories : req.body.categories,
             horas : req.body.horas,
             apuntes: req.body.apuntes,
             ejercicios : req.body.ejercicios,
-            precio : req.body.precio
-        }         
-        productsData.create(product);
-        return res.redirect('/users/admin/administracion_home');
-    },
-    detail:function (req,res){  
-        let products = productsData.findAll();       
-        let product = products.find(p => p.id === parseInt(req.params.id));
-        
-        res.render('products/product_detail', {products : product});
-    },
-    edit : function (req, res){
-        let products = productsData.findAll();       
-        let product = products.find(p => p.id === parseInt(req.params.id));
-        
-        
-        res.render('products/product_detail', {products : product});
+            precio : req.body.precio,
+            id_category: req.body.categories
+        })
+            
+            return res.redirect('/users/admin/administracion_home');
         
     },
-    update: function(req, res){
-        let products = productsData.findAll();       
-        let productId = req.params.id;
-        let product = productsData.findByPK(productId);        
-        
-        product.nombre = req.body.nombre;
-        product.descripcion = req.body.descripcion;
-        product.opciones = req.body.opciones;
-        product.horas = req.body.horas;
-        product.apuntes = req.body.apuntes;
-        product.ejercicios = req.body.ejercicios;
-        product.precio = req.body.precio;
-        
-        productsData.update(product);
-        
-        
-        return res.redirect('/users/admin/administracion_home');
-    },
-    delete: function (req, res){
-        let productId = req.params.id;
-        let products = productsData.findAll();       
-
-        products.forEach((product, i) => {
-            if(product.id == productId) {
-                products.splice(i, 1);
-            }
-        });
-        
-        return res.redirect('/users/admin/administracion_home');
-    }
-};
+        list: function(req, res){
+            db.Products.findAll().then(function(product){
+                res.render('products/product_list', {product: product})
+            })
+        },
+        detail:function (req,res){  
+            db.Products.findByPk(req.params.id, {
+                // le decimos que incluya las relaciones, para que aparezcan las categorias y usuarios
+                include:[{association:'category'}, {association: 'users'}]
+            }).then(function(product){
+                
+                res.render('products/product_detail', {product : product});
+            })       
+            },
+        edit : function (req, res){
+            // se hacen dos pedidos asincronicos, el producto y la categoria
+            let product = db.Products.findByPk(req.params.id); 
+            let productCategory = db.Products.findAll();
+            
+            // con el Promise se hacen los dos pedidos juntos y despues (then)
+            Promise.all([product, productCategory]).then(function([product, categories]){
+                res.render('products/product_detail', {product : product, categories : categories});
+            });            
+        },
+        update: function(req, res){
+            db.Products.update({
+                nombre : req.body.nombre,
+                descripcion : req.body.descripcion,
+                categories : req.body.categories,
+                horas : req.body.horas,
+                apuntes: req.body.apuntes,
+                ejercicios : req.body.ejercicios,
+                precio : req.body.precio,
+                id_category: req.body.categories
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            });
+            
+            return res.redirect('/users/admin/administracion_home' + req.params.id);
+        },
+        delete: function (req, res){
+            db.Products.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            return res.redirect('/users/admin/administracion_home');
+        }
+    };

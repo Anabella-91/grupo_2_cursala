@@ -1,13 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define('User', {
+  const User = sequelize.define('Users', {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     name: {
+      allowNull: false,
       type: DataTypes.STRING(50)
     },
     email: {
+      allowNull: false,
       type : DataTypes.STRING(50)
     },
     password : {
+      allowNull: false,
       type : DataTypes.STRING(200)
     }
   }, 
@@ -15,8 +23,16 @@ module.exports = (sequelize, DataTypes) => {
     timestamps : false,
     tableName : 'users'
   });
-  Model.associate = function(models) {
-    // associations can be defined here
+  User.associate = function(models) {
+    User.belongsToMany(models.Products,{
+      as: 'products',
+      through: 'orders',
+      foreignKey: 'user_id',
+      otherKey: 'product_id',
+      timestamps: false
+    })
   };
-  return Model;
+  return User;
 };
+
+

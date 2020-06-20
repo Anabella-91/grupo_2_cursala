@@ -3,17 +3,17 @@ var router = express.Router();
 const path = require('path');
 const { check, validationResult, body} = require('express-validator');
 const multer = require('multer');
+const bcryptjs = require('bcryptjs');
 const authMid = require('./../middlewares/auth');
 const guestMid = require('./../middlewares/guest');
 const controller = require('../controllers/usersController');
 const db = require('./../database/models');
 
 
-
 /*  Creando almacenamiento de imagenes con Multer */
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
-        const folder ='/public/images';
+        const folder ='../public/images/users';
         cb(null, folder);
     },
     filename : (req, file, cb) => {
@@ -26,12 +26,13 @@ const upload = multer({
     fileFilter: (req, file, cb) => { //fileFilter es la validacion para que se suba la imagen
         const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
         const ext = path.extname(file.originalname);
-        console.log(req.file);
+        console.log('/// validando imagen ///');
 
         if (acceptedExtensions.includes(ext)){
             //subiendo imagen
             return cb(null, true);
-
+            console.log('good');
+            
         } else {
             //guardando imagen en body
             req.file = file;
@@ -42,21 +43,20 @@ const upload = multer({
     }
 });
 
-
 /* user registro . */
 router.get('/registro', guestMid, controller.register);
-router.post('/perfil', guestMid, upload.single('imagen'),[
+router.post('/registro', guestMid, upload.single('imagen'),[
     check('nombre', 'Ingresa al menos 2 caracteres').isLength({min:2}),
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
-        return db.User.findOne({where :{email : value}}).then(user => {
+        return db.Users.findOne({where :{email : value}}).then(user => {
             if (user != null){
                 return Promise.reject('Este correo se encuentra en uso');
             }
         })
     }),
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
-    check('password2', 'Las contraseñas no coinciden').custom((value, { req }) => {
+    check('password', 'Las contraseñas no coinciden').custom((value, { req }) => {
         return value === req.body.password2
     }),
     body('imagen').custom((value, { req }) => {
@@ -77,7 +77,7 @@ router.get('/login', guestMid, controller.login);
 router.post('/perfil', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
-        return db.User.findOne({where :{email : value}}).then(user => {
+        return db.Users.findOne({where :{email : value}}).then(user => {
             if (user == null) {
                 return Promise.reject('Wrong credentials');
             } else if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
@@ -88,13 +88,15 @@ router.post('/perfil', guestMid, [
     
 ],controller.processLogin);
 
-/* user edit */
-router.get('/edit/:idUser', controller.edit);
-router.put('/edit', function(req, res){
-    res.send('Fui por put');
-});
+/* Lectura de usuarios */
+router.post('/usersList', controller.list);
 
-router.get('/perfil', authMid, controller.perfil);
+/* Edicion de usuarios */
+router.get('/edit/:id', controller.edit);
+router.post('/edit/:id', controller.update);
+
+router.get('/perfil', controller.perfil);
+
 /*Rutas del carrito */
 /* user carrito . */
 router.get('/carrito', controller.carrito);
