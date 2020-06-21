@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <!-- CSS -->
-    <link rel="stylesheet" href="/stylesheets/login.css">
-
-</head>
+    <%- include('./partials/head'); %>
 <body>
-    <div class="container">
-        <div class="register-container">
-          <div class="register">
-            <div class="circle-logo">
+<div class="container-formRegister b-register">
+  <div class="register-container b-blanco shadow1">
+    <div class="register">
+        <div class="circle-logo b-register">
               <img src="/images/logo.png" alt="Logo-Cursala">
-            </div>
-            <h2>Bienvenid@!</h2>
+        </div>
+            <h2 class="c-celeste">Bienvenid@!</h2>
             <form action="" method="POST">
               <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
               <div><%= errors.email ? errors.email.msg : ''%></div>
               <input type="password" name="password" placeholder="Contraseña">
               <div><%= errors.password ? errors.password.msg : ''%></div>
               <input type="checkbox" name="remember" id="remember" class="remember">
-              <label class="" for="remember">Recordame</label>
-              <input type="submit" name="submit" class="submit" value="INGRESAR">
+              <label class="c-ATransparente" for="remember">Recordame</label>
+              <input type="submit" name="submit" class="submit ingresar" value="INGRESAR">
             </form>
-          </div>
-          <div class="login">
-            <h2>No tengo cuenta</h2>
-            <button class="correo"><i class="fa fa-check" aria-hidden="true"></i>Registrarse</button>
-            <div class="login-items">
+    </div>
+      <div class="login b-celeste">
+        <h2 class="c-blanco">No tengo cuenta</h2>
+        <button class="correo"><i class="fa fa-check" aria-hidden="true"></i>Registrarse</button>
+          <div class="login-items">
               <a href="#"><img class="register_media" src="/images/registro_facebook.png" alt="registro twitter"></a>
               <a href="#"><img class="register_media" src="/images/registro_twitter.png"></a>
-            </div>
           </div>
-        </div>
       </div>
+  </div>
+</div>
      
 </body>
 </html>
