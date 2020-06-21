@@ -3,6 +3,7 @@
 -Se esta optimizando el css para rehusar mas codigo
 -Vista de edicion de perfil en proceso de construccion
 -Se esta trabajando las media queries del login y del registro
+-Media queries de la vista de administracion
 *Completado: 
 -Se actualizo el tablero de Trello con todas las tareas de este sprint
 -se creo y actualizo el link al tablero de Trello en el respositorio.
@@ -12,6 +13,7 @@
 -Se creo la base de datos y s elinkearon las rutas
 -Se completaron las Media Queries de la vista de perfil de usuario
 -Se adicciono el partial del head al login y al register, se unifico el css
+
 
 20 de JUNIO:
 *En proceso: 

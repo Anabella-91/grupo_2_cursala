@@ -309,8 +309,9 @@ body {
 .fa-check {
   padding-right: 0.8em;
 }
-
-
+.register .ingresar {
+  margin: 10px 0 10px 11%;
+} 
 /* HOME */
 /* PARTIAL HEADER NAV */
 .navegacion {
@@ -869,6 +870,14 @@ body {
       font-size: 1.1em;
       margin-bottom: 2.6em;
     }
+    /*REGISTRARSE */
+    .register .register-button {
+      margin: 10px 0 10px 34%;
+    }
+    /*LOG IN */
+    .ingresar-container {
+      width: 726px;
+    }
    } 
 @media (max-width: 768px) {
   /* LANDING */
@@ -954,6 +963,20 @@ body {
   }
   .user-data {
     width: 38vw;
+  }
+  /* REGISTRO */
+  .register-container {
+    width: 700px;
+  }
+  .login {
+    width: 25vw;
+  }
+  .register .submit {
+    margin: 10px 0 10px 32%;
+  }
+  /* LOG IN */
+  .register .ingresar {
+    margin: 10px 0 10px 12%;
   }
 }
 @media (max-width: 425px) {
@@ -1071,6 +1094,51 @@ body {
   .user-data {
     width: 45vw;
   }
+  /* REGISTRO */
+  .container-formRegister {
+    height: 124vh;
+    padding: 2px;
+  }
+  .register-container {
+    width: 400px;
+    height: 100vh; 
+    margin-top: 1em;
+    flex-direction: column;
+  }
+  .circle-logo {
+    margin-top: -185px;
+    margin-left: 34%;
+    width: 120px;
+    height: 120px;
+  }
+  .register img {
+    width: 110px;
+    height: 95px;
+  }
+  .login {
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    padding: 0;
+    width: 400px;
+  }
+  .login h2 {
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+  }
+  .login .correo {
+    margin: 0.4em 0;
+    width: 75%;
+  }
+  /*LOG IN */
+  .container-logRegister {
+    height: 100vh;
+  }
+  .ingresar-container {
+    height: 75vh;
+  }
+  .register .ingresar {
+    margin: 10px 0 10px 9%;
+  }
 }
 @media (max-width: 375px) {
   /* LANDING */
@@ -1118,6 +1186,29 @@ body {
   .user-data {
     width: 52vw;
   }
+  /* REGISTER */
+  .register-container {
+    height: 110vh;
+  }
+  .register-container {
+    width: 350px;
+  }
+  .circle-logo {
+    margin-left: 31%;
+  }
+  .login {
+    width: 350px;
+  }
+  .register .submit {
+    margin: 10px 0 10px 27%;
+  }
+  /*LOG IN */
+  .ingresar-container{
+    height: 70vh;
+  }
+  .container-logRegister .register .ingresar {
+    margin: 10px 0 10px 18%;
+  }
 }
 @media (max-width: 320px) {
 /*contactanos*/
@@ -1148,5 +1239,26 @@ body {
     width: 60vw; 
   } 
   .profile-contenedor {
-    width: 90vw; }
+    width: 90vw; 
+  }
+  /* REGISTER */
+  .register-container {
+    width: 300px;
+  }
+  .login {
+    width: 300px;
+  }
+  .register .submit {
+    margin: 10px 0 10px 24%;
+}
+  .circle-logo {
+    margin-left: 28%;
+  }
+  .login .correo {
+    height: 5vh;
+  }
+  .login h2 {
+    font-size: 1.3em;
+  }
+
 }
