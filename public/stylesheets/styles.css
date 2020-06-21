@@ -1,8 +1,6 @@
 body {
   font: 14px 'Roboto', Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00B7FF;
+  position: relative;
 }
 /* GRID */
 .container {
@@ -20,6 +18,41 @@ a {
 .landing-container {
   height: 100vh;
   position: relative;
+}
+/* ESTILOS GENERALES*/
+.b-celeste {
+  background-color: #459cd1;
+}
+.b-blanco {
+  background-color: #fff;
+}
+.b-gris {
+  background-color: #f8f9fc;
+}
+.b-azul {
+  background-color: #0e1856;
+}
+.b-rosa {
+  background-color: #ffa99d;
+}
+.shadow1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+.titulo-shadow {
+  text-shadow: 4px 0px #FFF;
+}
+.c-blanco {
+  color: #fff;
+}
+.c-celeste {
+  color: #459cd1;;
+}
+.c-azul {
+  color: #0e1856;
+}
+.c-ATransparente {
+  color: rgba(13, 24, 88, 0.5)
 }
 /*LANDING- MENU*/
 .nav-landing {
@@ -51,7 +84,6 @@ a {
 }
 .nav-landing li a {
   font-size: 1.2em;
-  color: #fff;
 }
 /* Ilustracion y texto de la landing*/
 .cuerpo-header {
@@ -75,9 +107,7 @@ a {
 }
 .titulo {
   text-transform: uppercase;
-  color: #0e1856;
   font-size: 5em;
-  text-shadow: 4px 0px #FFF;
 }
 .texto {
   line-height: 0.8em;
@@ -86,7 +116,6 @@ a {
 .hashtag {
   font-size: 2em;
   text-align: center;
-  color: #fff;
 }
 .primera-linea {
   margin-top: 10%;
@@ -119,7 +148,6 @@ a {
 }
 /* landing porque cursala */
 .titulo_dos {
-  color: #0e1856;
   font-size: 2.3em;
   text-align: center;
 }
@@ -172,37 +200,111 @@ a {
   color: black;
 }
 /* VISTA DEL FORMULARIO DE REGISTRO */
+.b-register {
+  background-color: #f1f1f1;
+}
+.container-formRegister {
+  width: 100%;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-container{
+  display: flex;
+  width: 750px;
+  height: auto;
+  border-radius: 10px;
+}
+.register img{
+  margin-top: 2em;
+  width: 130px;   
+}
+.circle-logo {
+  position: relative;
+  margin-top: -190px;
+  margin-left: 30%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 
-/* HOME */
-/* BODY */
-body {
-  font-family: 'Roboto', sans-serif;
-position: relative;}
-/* estilos generales */
-.b-celeste {
-  background-color: #459cd1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
-.b-blanco {
-  background-color: #fff;
+.register {
+  flex: 1;
+  padding: 20px 20px 10px 20px;
+  position: relative;
+  margin-top: 100px;
 }
-.b-gris {
-  background-color: #f8f9fc;
+.register h2{
+  font-weight: 650;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
 }
-.b-azul {
-  background-color: #0e1856;
+.register input{
+  width: 92%;
+  font-size: 1em;
+  margin-bottom: 18px;
+  padding: 0.6em 1em;
+  border-radius: 10px;
+  background-color: #f2f2f2;
 }
-.b-rosa {
-  background-color: #ffa99d;
+.register input::placeholder {
+  color: rgba(13, 24, 88, 0.5);
 }
-.shadow1 {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+.register .submit{
+  width: auto;
+  padding: 0.6em 1.5em;
+  font-weight: 600;
+  background: #459cd1;
+  color: #fff;
+  font-size: 1em;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+  cursor: pointer;
+  margin: 10px 0 10px 30%;
 }
-.titulo {
+.register .submit:hover{
   color: #0e1856;
-  text-shadow: 4px 0px #FFF;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #459cd1;
 }
-  /* HEADER- NAV*/
+.login{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #459cd1;
+  padding: 3.8em 2em;
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.login .register_media {
+  width: 38px;
+  margin-right: 1em;
+}
+.login .correo {
+  width: 100%;
+  height: 10%;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+.login .fa-envelope {
+  padding-right: 0.8em; 
+}
+.login .correo:hover {
+  background-color: #fff;
+  color: #0e1856;
+}
+/* HOME */
+/* PARTIAL HEADER NAV */
 .navegacion {
   z-index: 10;
   position: absolute;
@@ -243,12 +345,12 @@ position: relative;}
   font-size: 1.2em;
   color: black;
 }
+/*HOME "/" */
 /* CUERPO PRINCIPAL */
 .todos-cursos {
   display: flex;
 }
 .contenedor-curso {
-  background-color: #fff;
   width: 90%;
   position: relative;
   margin: 5% auto 5% auto;
@@ -263,7 +365,6 @@ position: relative;}
   top: -45px;
   padding: 0 2% 0 1%;
   margin-left: 2%;
-  background-color: #fff;
 }
 .curso {
   margin: 2%;
@@ -303,7 +404,6 @@ position: relative;}
   bottom: 4%
 }
 .detalle-default p {
-  color: grey;
   line-height: 30px;
   padding-top: 18%;
   font-size: 1.3em;
@@ -394,18 +494,15 @@ position: relative;}
   width: 60vw;
 }
 .texto-ops {
-  color: #fff;
   font-size: 2.5em;
 }
 .boton-volver {
   margin-top: 4%;
   padding: 1em 3em;
   border-radius: 15px;
-  color: #fff;
 }
 .boton-volver a {
   font-size: 1.5em;
-  color: #fff;
 }
 /* FORMULARIO DE CONTACTO */
 #openModal {
@@ -437,9 +534,6 @@ position: relative;}
   border-radius: 10px;
   padding: 1em 5em;
   }
-.form-contacto h3 {
-  color: #0e1856;
-}
 .style-contacto {
   padding: 0.6em 2em;
   margin-bottom: 1em;
@@ -447,10 +541,8 @@ position: relative;}
 }
 .form-contacto input {
   width: 300px;
-  background-color: #fff;
 }
 .form-contacto select {
-  background-color: #fff;
   width: 356px;
 }
 .form-contacto input::placeholder, .form-contacto select, .form-contacto textarea::placeholder {
@@ -472,7 +564,6 @@ position: relative;}
   border-radius: 20px;
 }
 .titulo-carrito {
-  color: #0e1856;
   font-weight: 550;
   font-size: 25px;
   text-align: center;
@@ -506,7 +597,6 @@ position: relative;}
 }
 .categoria-compra {
   font-size: 1.5em;
-  color: #459cd1;
 }
 .detalle-comprado img {
   width: 28px;
@@ -523,11 +613,9 @@ position: relative;}
 }
 .monto-total .total {
   font-size: 1.5em;
-  color: rgba(13, 24, 88, 0.5);
 }
 .monto-total .cantidad-total {
   font-size: 2em;
-  color: #0e1856;
 }
 .detalle-pago {
   grid-column: 4 / 7;
@@ -557,7 +645,6 @@ position: relative;}
   text-transform: uppercase;
   font-weight: 550;
   font-size: 0.8em;
-  color: #0e1856;
   margin-left: 1em;
 }
 .input-carrito {
@@ -574,7 +661,6 @@ position: relative;}
 }
 .boton-pago {
   margin-top: 2em;
-  color: #fff;
   padding: 1em 0;
   width: 100%;
 }
@@ -683,7 +769,6 @@ position: relative;}
     width: 32px;
   }
   .container-administration a p {
-    color: #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 1.4em;
   }

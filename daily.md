@@ -1,3 +1,7 @@
+21 de JUNIO:
+*En proceso:
+-Se esta optimizando el css para rehusar mas codigo
+
 20 de JUNIO:
 *En proceso: 
 -Estamos trabajando en completar los partials que faltaban y unificando el css
