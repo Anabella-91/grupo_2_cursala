@@ -101,11 +101,13 @@ router.get('/perfil', controller.perfil);
 /* user carrito . */
 router.get('/carrito', controller.carrito);
 
+/* User logout*/
+router.post('/logout', controller.logOut);
+
 router.post('/eliminarProducto', controller.eliminarProducto);
 
 /*Rutas admnistrador*/
 router.get('/admin/administracion_home', controller.administracionHome);
-router.delete('/deleteUser/:id', controller.deleteUser);
 
 
 module.exports = router;

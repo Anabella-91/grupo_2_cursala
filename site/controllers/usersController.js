@@ -3,20 +3,23 @@ const { check, validationResult, body} = require('express-validator');
 const usersData = require('./../models/User');
 const bcryptjs = require("bcryptjs");
 const bcrypt = require("bcrypt");
+const loginService = require('../services/loginService');
+const tokenService = require('../services/tokenService');
 const db = require('./../database/models');
 
 
+
 module.exports = {
-    list: function(req, res){
+    list: (req, res) => {
         db.Users.findAll().then(function(user){
             res.render('user_list', {user: user})
         })
     },
-    register:function (req,res){
+    register: (req,res) => {
         res.render('registro', {errors : {}, body : {}});
         
     },
-    registerUser: function(req, res){
+    registerUser: (req, res) => {
         let validation = validationResult(req)
         
         if (!validation.isEmpty()) {
@@ -39,24 +42,21 @@ module.exports = {
         //login user
         db.Users.create(user)
                 .then(function(){
-                    res.locals.log = true;
-                    req.session.log = true;
-                    req.session.userEmail = user.email;
+                    loginService.loginUser(req, res, user);
 
-                    console.log('user registrado');
-                    
                     return res.redirect('/users/perfil');
                 })
                 .catch(function(error){
                     console.error(error);
+
                     return res.redirect('/users/registro')
-                })
+                });
     },
-    login:function (req,res){
+    login: (req,res) => {
 	   
         res.render('login', {errors : {}, body : {}});
     },
-    processLogin: function(req, res){
+    processLogin: (req, res) => {
         
         let validation = validationResult(req);
         
@@ -64,21 +64,25 @@ module.exports = {
             return res.render('login', {errors : validation.mapped(), body : req.body});
         }
         
-        // cookie remember
-        if (req.body.remember) {
-            //creando cookie por 90 dias
-            res.cookie('remember', req.body.email,  {expires: new Date(Date.now() + 1000*60*60*24*90)});
-        }
-        
-        //user login
-        req.session.log = true;
-        res.locals.log = true;
-        req.session.userEmail = req.body.email;
-        
-        console.log('Login user');
-        return res.redirect('/users/perfil');
+        // login user
+         db.Users.findOne({where : {email : req.body.email}})
+         .then( async (user) => {
+             //guardando cookie
+             if (req.body.remember) {
+                 //cookie creada que expira en 90 dias
+                 await tokenService.generateToken(res, user);
+             }
+
+             loginService.loginUser(req, res, user);
+
+             console.log('User login');
+             return res.redirect('/users/perfil');
+         }).catch((error) => {
+             console.error(error);
+             return res.redirect('users/login');
+         });
     },
-    edit: function(req, res){
+    edit: (req, res) => {
         let user = db.Users.findByPk(req.params.id); 
         if (user === null) {
             console.log('User not found!');
@@ -89,7 +93,7 @@ module.exports = {
         return res.render('profile', {user:user}, req.session);
         
     },
-    update: function(req, res){
+    update: (req, res) => {
         db.Users.update({
             name : req.body.nombre,
             email : req.body.descripcion,
@@ -102,27 +106,24 @@ module.exports = {
         
         return res.redirect('/users/admin/administracion_home' + req.params.id);
     },
-    perfil: function(req, res) {
-        let users = db.Users.findAll().then(function(user){
+    perfil: (req, res) => {
+        db.Users.findAll().then(function(user){
             return res.render('profile', {user: user});
+            
         });
-
     },
-    carrito:function (req,res){
+    carrito: (req,res) => {
         res.render('carrito', { title: 'Cursala | Carrito'});
     },
-    eliminarProducto: function (req, res){
+    eliminarProducto: (req, res) => {
         res.send("Deletear producto");  
     },
-    administracionHome: function (req, res) {
+    administracionHome: (req, res) => {
         res.render('admin_home', {title: 'Cursala | administracion'});
     },
-    deleteUser: function (req, res){
-        db.Users.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        return res.redirect('/users/admin/administracion_home');
+    logOut: (req, res) => {
+
+    loginService.logOutSession(req, res);
+
     }
 };
