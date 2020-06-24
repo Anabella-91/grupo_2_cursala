@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/product-carga.css'>
-</head>
+<title><%= title %></title>
+<%- include('../partials/head'); %>
 <body>  
-  <div class="container">
-    <div class="carga-container">
-      <div class="carga">
-        <img src="/images/logo.png" alt="Logo-Cursala">
-        <h2>Formulario Carga de Productos</h2>
+  <div class="container-formRegister b-register">
+    <div class="register-container b-blanco shadow1">
+      <div class="register">
+        <div class="circle-logo b-register">
+          <img src="/images/logo.png" alt="Logo-Cursala">
+        </div>
         <form action="/products" method="POST">
           <label for="nombre">Nombre del curso</label>
           <input type="text" name="nombre" placeholder="Nombre del curso" required>
-          <textarea name="descripcion" id="descripcion" cols="30" rows="4"></textarea>
+          <label for="descripcion">Descripcion del curso</label><br>
+          <textarea name="descripcion" id="descripcion" cols="100" rows="10"></textarea><br>
           
-          <label for="categories">Categoria</label>
-          <select name="categories" id="opciones">
-            <% for(let i=0; i<categories.length;i++){ %>
-              <option value="<%= categories[i].id %>">
-                <% categories.name %>
-              </option>
-            <% } %>
-          </select>
           
-          <label for="horas">Cantidad de horas</label>
-          <input type="text" name="horas" placeholder="Hs del curso" required>
+            
+            <label for="horas">Cantidad de horas</label>
+            <input type="text" name="horas" placeholder="Hs del curso" required>
+            
+            <label for="apuntes">Apuntes disponibles</label>
+            <input type="text" name="apuntes" placeholder="Apuntes disponibles" required>
+            
+            <label for="apuntes">Cantidad de ejercicios</label>
+            <input type="text" name="ejercicios" placeholder="Cantidad ejercicios" required>
+            
+            <label for="number">Precio</label>
+            <input type="text" name="precio" placeholder="Precio" required>
+            <input type="reset" name="reset" class="submit" value="RESET">
+            <input type="submit" name="submit" class="submit" value="ENVIAR">
+          </form>
           
-          <label for="apuntes">Apuntes disponibles</label>
-          <input type="text" name="apuntes" placeholder="Apuntes disponibles" required>
-          
-          <label for="apuntes">Cantidad de ejercicios</label>
-          <input type="text" name="ejercicios" placeholder="Cantidad ejercicios" required>
-          
-          <label for="number">Precio</label>
-          <input type="text" name="precio" placeholder="Precio" required>
-          <input type="reset" name="reset" class="submit" value="RESET">
-          <input type="submit" name="submit" class="submit" value="ENVIAR">
-        </form>
-        
-      </body>
-      </html>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+  </html>

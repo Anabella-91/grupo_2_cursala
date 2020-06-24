@@ -4,25 +4,34 @@ const db = require('./../database/models');
 
 module.exports = {
     formCreate:function (req,res){
-        // Categorias para mostrar en el form de carga de cursos
-        db.Categories.findAll().then(function(categories){
-            return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories: categories})
-        });
+        let categories = db.Categories.findAll();
+        
+        return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories:categories});
     },
     save: function (req, res) {
-        db.Products.create({
-            nombre : req.body.nombre,
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()){
+            return res.send(errors.mapped());
+        }            
+
+        let product = {
+            name : req.body.nombre,
             descripcion : req.body.descripcion,
             categories : req.body.categories,
             horas : req.body.horas,
-            apuntes: req.body.apuntes,
+            apuntes : req.body.apuntes,
             ejercicios : req.body.ejercicios,
-            precio : req.body.precio,
-            id_category: req.body.categories
-        })
-            
-            return res.redirect('/users/admin/administracion_home');
-        
+            precio : req.body.precio
+        } 
+
+        db.Products.create(product)
+            .then(function(){
+                return res.redirect('/users/admin/administracion_home');
+            }).catch(function(error){
+                console.error(error);
+                return res.redirect('/products/create')
+            });
     },
         list: function(req, res){
             db.Products.findAll().then(function(product){
@@ -49,22 +58,23 @@ module.exports = {
             });            
         },
         update: function(req, res){
+            let product = db.Products.findByPk(id);
+
             db.Products.update({
-                nombre : req.body.nombre,
+                name : req.body.nombre,
                 descripcion : req.body.descripcion,
                 categories : req.body.categories,
                 horas : req.body.horas,
                 apuntes: req.body.apuntes,
                 ejercicios : req.body.ejercicios,
-                precio : req.body.precio,
-                id_category: req.body.categories
+                precio : req.body.precio
             }, {
                 where: {
                     id: req.params.id
                 }
             });
             
-            return res.redirect('/users/admin/administracion_home' + req.params.id);
+            return res.redirect('/users/admin/administracion_home', {product: product});
         },
         delete: function (req, res){
             db.Products.destroy({

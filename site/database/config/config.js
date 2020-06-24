@@ -1,8 +1,8 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "cursala",
+    "password": "cursala2020",
+    "database": "cursala_database",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": 0

@@ -1262,3 +1262,8 @@ body {
   }
 
 }
+
+/* Formulario Creacion productos */
+#descripcion {
+  border: 1px solid;
+}
