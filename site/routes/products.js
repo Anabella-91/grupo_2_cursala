@@ -8,7 +8,7 @@ router.get('/create', controller.formCreate);
 router.post('/', controller.save);
 
 /* Lectura de productos */
-router.post('/', controller.list);
+router.post('/list', controller.list);
 
 /* Detalle de un producto */
 router.get('/:id', controller.detail);

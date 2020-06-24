@@ -26,7 +26,7 @@ module.exports = {
     },
         list: function(req, res){
             db.Products.findAll().then(function(product){
-                res.render('products/product_list', {product: product})
+                return res.render('products/product_list', {product})
             })
         },
         detail:function (req,res){  
