@@ -194,11 +194,31 @@ body {
   text-align: center;
 }
 .nav-cursos ul li:hover {
-  background-color: #459cd1;
+  background-color: rgba(69, 155, 209, 0.486);
 }
 .nav-cursos ul li a {
   color: black;
 }
+.landing-cursos {
+  width: 30vw;
+}
+.landing-cursoInfo {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 4em;
+}
+.landing-cursoInfo .titulo-landing {
+  width: 5vw;
+  font-size: 2.5em;
+}
+.landing-cursoInfo p {
+  width: 30vw;
+}
+.landing-cursoInfo ul li {
+  margin-bottom: 0.8em;
+  padding: 0.2em 0.4em;
+  text-align: center;
+} 
 /* VISTA DEL FORMULARIO DE REGISTRO */
 .b-register {
   background-color: #f1f1f1;
