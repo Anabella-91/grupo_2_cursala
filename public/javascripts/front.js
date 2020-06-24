@@ -1,1 +1,3 @@
-console.log("Me encuentro en el archivo public, en la carpeta js");
+let back = document.getElementById("back");
+
+console.log(back)
