@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <!-- CSS -->
-  <link rel="stylesheet" href="/stylesheets/registro.css">
-</head>
+  <%- include('./partials/head'); %>
 <body>
-  <div class="container">
-    <div class="register-container">
+  <div class="container-formRegister b-register">
+    <div class="register-container b-blanco shadow1">
       <div class="register">
-        <div class="circle-logo">
+        <div class="circle-logo b-register">
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
-        <h2>No tengo cuenta</h2>
+        <h2 class="c-celeste">No tengo cuenta</h2>
         <form action="" method="POST" enctype="multipart/form-data">
           <div><%= errors.nombre ? errors.nombre.msg: '' %></div>
           <input type="text" name="nombre" placeholder="Nombre" value="<%= body.nombre ? body.nombre: ''%>">
@@ -26,15 +21,15 @@
 
           <input type="password" name="password2" placeholder="Confirma contraseña">
 
-          <p>Foto de perfil</p>
+          <p class="c-ATransparente">Foto de perfil</p>
           <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
-          <input type="file" name="imagen">
+          <input class="register-image c-ATransparente" type="file" name="imagen">
 
-          <input type="submit" name="submit" class="submit" value="REGISTRARME">
+          <input type="submit" name="submit" class="submit register-button" value="REGISTRARME">
         </form>
       </div>
-      <div class="login">
-        <h2>Ya tengo cuenta</h2>
+      <div class="login b-celeste">
+        <h2 class="c-blanco">Ya tengo cuenta</h2>
         <button class="correo"><i class="fas fa-envelope"></i> Acceder con Correo</button>
         <div class="login-items">
           <a href="#"><img class="register_media" src="/images/registro_facebook.png" alt="registro twitter"></a>
