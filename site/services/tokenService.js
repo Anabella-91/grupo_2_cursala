@@ -3,7 +3,6 @@ const bcryptjs = require('bcryptjs');
 
 module.exports = {
     generateToken : async (res, user) => {
-        //TO-DO delete previous tokens
 
         let token = bcryptjs.hashSync(('_' + user.id + Date.now()), 2);
         let expires = new Date(Date.now() + 1000*60*60*24*90);
