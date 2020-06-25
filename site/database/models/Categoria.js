@@ -17,10 +17,13 @@ module.exports = (sequelize, DataTypes) => {
   });
   Category.associate = function(models) {
     // aca va la relacion con la tabla de productos
+  
     Category.hasMany(models.Products, {
       as: 'products',
-      foreignKey: 'category_id'
+      foreignKey: 'id_category'
     });
+    
   };
+  
   return Category;
 };

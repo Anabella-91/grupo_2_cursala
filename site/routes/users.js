@@ -79,17 +79,15 @@ router.post('/login', guestMid, [
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.Users.findOne({where :{email : value}}).then(user => {
             if (user == null) {
-                return Promise.reject('Wrong credentials');
+                return Promise.reject('Credenciales invalidas');
             } else if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
-                return Promise.reject('Wrong credentials');
+                return Promise.reject('Credenciales invalidas');
             }
         })
     }),
     
 ],controller.processLogin);
 
-/* Lectura de usuarios */
-router.post('/usersList', controller.list);
 
 /* Edicion de usuarios */
 router.get('/edit/:id', controller.edit);

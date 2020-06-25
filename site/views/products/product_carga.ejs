@@ -9,22 +9,28 @@
         <div class="circle-logo b-register">
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
-        <form action="/products" method="POST">
+        <form action="/products/list" method="POST">
           <label for="nombre">Nombre del curso</label>
           <input type="text" name="nombre" placeholder="Nombre del curso" required>
           <label for="descripcion">Descripcion del curso</label><br>
-          <textarea name="descripcion" id="descripcion" cols="100" rows="10"></textarea><br>
+          <textarea name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
           
-          
+          <label for="categories">Categoria del curso</label>
+              <select name="categories" id="category">
+                <option value="">Elige una</option>
+                <% for(let category of categories ) { %>
+                  <option value="<%= category.id %>"><%= category.name %></option>
+                <% } %>
+              </select><br>
             
-            <label for="horas">Cantidad de horas</label>
-            <input type="text" name="horas" placeholder="Hs del curso" required>
+          <label for="horas">Cantidad de horas</label>
+            <input type="text" name="horas" placeholder="Hs del curso">
             
             <label for="apuntes">Apuntes disponibles</label>
-            <input type="text" name="apuntes" placeholder="Apuntes disponibles" required>
+            <input type="text" name="apuntes" placeholder="Apuntes disponibles">
             
             <label for="apuntes">Cantidad de ejercicios</label>
-            <input type="text" name="ejercicios" placeholder="Cantidad ejercicios" required>
+            <input type="text" name="ejercicios" placeholder="Cantidad ejercicios">
             
             <label for="number">Precio</label>
             <input type="text" name="precio" placeholder="Precio" required>

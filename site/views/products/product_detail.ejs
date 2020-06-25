@@ -10,39 +10,40 @@
     <input type="text" name="nombre" placeholder="Nombre del curso" value="<%= product.nombre %>">
     <textarea name="descripcion" id="descripcion" cols="30" rows="4" value="<%= product.descripcion %>"></textarea>
     
-    <label for="categories">Categoria</label>
-    <select name="categories" id="opciones">
-      <% for(let i=0; i<categories.length;i++){ %>
-        <option value="<%= categories[i].id %>">
-          <% categories.name %>
+    <label for="categories">Categorias</label>
+    <select name="categories" id="category">
+      <option value="">--Selecciona--</option>
+      <% for(let category of categories ) { %>
+        <option value="<%= category.id %>" 
+          <%= category.name %>
         </option>
-        <% } %>
-      </select>
+          <% } %>
+        </select>
+        
+        <label for="horas">Cantidad de horas</label>
+        <input type="text" name="horas" placeholder="Hs del curso" value="<%= product.horas %>">
+        
+        <label for="apuntes">Apuntes disponibles</label>
+        <input type="text" name="apuntes" placeholder="Apuntes disponibles" value="<%= product.apuntes %>">
+        
+        <label for="apuntes">Cantidad de ejercicios</label>
+        <input type="text" name="ejercicios" placeholder="Cantidad ejercicios" value="<%= product.ejercicios %>">
+        
+        <label for="number">Precio</label>
+        <input type="text" name="precio" placeholder="Precio" value="<%= product.precio %>">
+        <input type="submit" name="delete" value="ELIMINAR">
+        <input type="submit" name="guardar" value="GUARDAR">
+        
+      </form>
       
-      <label for="horas">Cantidad de horas</label>
-      <input type="text" name="horas" placeholder="Hs del curso" value="<%= product.horas %>">
+      <a href="/products/edit/<%= product.id %>">
+        <button>Editar Producto (ADMIN)</button>
+      </a>
+      <form action="/products/delete/<%= product.id %>" method="POST">
+        <input type="submit">Eliminar Producto (ADMIN)</input>
+      </form>
       
-      <label for="apuntes">Apuntes disponibles</label>
-      <input type="text" name="apuntes" placeholder="Apuntes disponibles" value="<%= product.apuntes %>">
       
-      <label for="apuntes">Cantidad de ejercicios</label>
-      <input type="text" name="ejercicios" placeholder="Cantidad ejercicios" value="<%= product.ejercicios %>">
-      
-      <label for="number">Precio</label>
-      <input type="text" name="precio" placeholder="Precio" value="<%= product.precio %>">
-      <input type="submit" name="delete" value="ELIMINAR">
-      <input type="submit" name="guardar" value="GUARDAR">
-      
-    </form>
-
-    <a href="/products/edit/<%= product.id %>">
-      <button>Editar Producto (ADMIN)</button>
-    </a>
-    <form action="/products/delete/<%= product.id %>" method="POST">
-      <input type="submit">Eliminar Producto (ADMIN)</input>
-    </form>
-
+    </body>
+    </html>
     
-  </body>
-  </html>
-  
