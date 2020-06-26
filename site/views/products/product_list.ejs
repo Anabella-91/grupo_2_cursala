@@ -1,13 +1,13 @@
 <%- include('./partials/header') %>
 
-<h1>Listado de Productos</h1>
-<ul>
-    <% for(let i = 0; i < product.length; i++){ %>
-        <li>
-            <a href="/products/list/<%= product[i].id %>">
-                <%= product[i].name %>
+<h1>Listado de Cursos</h1>
+<div>
 
-            </a>
-        </li>
+    <% for(let i of product) { %>
+        <a href="/products/list/<%= i.id %>">
+            <%= i.name %>
+        </a>
+    
     <% } %>
-</ul>
+
+  </div>
