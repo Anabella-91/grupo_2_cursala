@@ -150,13 +150,14 @@ body {
 .titulo_dos {
   font-size: 2.3em;
   text-align: center;
+  margin-bottom: 1em;
 }
 .cursala-info {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  margin: 0 36px;
+  margin: 0 48px;
 }
 .curso-details {
   width: 20vw;
@@ -811,6 +812,9 @@ body {
   .landing-text .hashtag {
     font-size: 2em;
   }
+  .curso-details {
+    width: 25vw;
+  }
   /* HOME */
   .navegacion {
     width: 95vw;
@@ -919,6 +923,12 @@ body {
   .social-media .line {
     left: 50%;
   }
+  .nav-cursos ul {
+    margin: 0 0;
+  }
+  .cursala-info {
+    margin: 0 18px;
+  }
   /* HOME*/
   .navegacion {
     width: 100vw;
@@ -1020,6 +1030,37 @@ body {
   }
   .social-media .line {
     height: 100px;
+  }
+  .curso-details {
+    width: 35vw;
+  } 
+  .cursala-info {
+    margin: 0 6px;
+  }
+  .nav-cursos ul {
+    padding-inline-start: 0px;
+  }
+  .titulo-landing {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  .landing-cursoInfo {
+    margin: 2em 0em;
+    justify-content: space-evenly;
+  }
+  .landing-cursoInfo .titulo-landing {
+    font-size: 1.5em;
+    margin-right: 0.8em;
+    margin-top: 2em;
+  }
+  .landing-cursoInfo p {
+    width: 50vw;
+  }
+  .landing-cursoInfo ul {
+    padding-inline-start: 0px;
+  }
+  .curso-details {
+    width: 38vw;
   }
   /*HOME*/
   .navegacion {
@@ -1174,6 +1215,12 @@ body {
     flex-direction: row;
     bottom: 2%;
   }
+  .landing-cursoInfo .titulo-landing {
+    margin-right: 1em;
+  }
+  .curso-details {
+    margin: 0 0.5em 0.5em 0;
+  }
   /* HOME */
   .curso {
     padding: 1em 0.5em;
@@ -1231,6 +1278,19 @@ body {
   }
 }
 @media (max-width: 320px) {
+/*landing */
+.cursala-info {
+  margin: 0 2px;
+}
+.curso-details {
+  margin: 0 0.2em 0.2em 0;
+}
+.landing-cursoInfo .titulo-landing {
+  display: none;
+}
+.nombre-destacado {
+  font-weight: 600;
+}
 /*contactanos*/
 .form-contacto {
   width: 98vw;
