@@ -35,16 +35,17 @@ module.exports = {
         console.log(user);
         
         //login user
-        db.Users.create(user)
-        .then(function(){
+        db.Users.create(user).then(function(){
+
             loginService.loginUser(req, res, user);
+            console.log('user registrado');
             
-            return res.redirect('/users/perfil');
+            return res.render('/users/perfil');
         })
         .catch(function(error){
             console.error(error);
             
-            return res.redirect('/users/registro')
+            return res.render('/users/registro')
         });
     },
     login: async (req,res) => {
@@ -79,7 +80,7 @@ module.exports = {
     edit: (req, res) => {
         let user = db.Users.findByPk(req.params.id); 
         if (user === null) {
-            console.log('User not found!');
+            console.log('Usuario no encontrado!');
         } else {
             console.log(user); 
         }
@@ -98,11 +99,11 @@ module.exports = {
             }
         });
         
-        return res.redirect('/users/admin/administracion_home' + req.params.id);
+        return res.render('/users/admin/administracion_home' + req.params.id);
     },
     perfil: (req, res) => {
         if (req.file) {
-        user.imagen = req.file.path.replace('public/', '/');
+        user.imagen = req.file;
     
         db.Users.findOne({where : {email : req.body.email}}).then(async(user) => {
         return res.render('profile', {user: user, errors : {}, body : {}});

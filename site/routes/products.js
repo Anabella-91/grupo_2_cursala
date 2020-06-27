@@ -8,8 +8,6 @@ const { check, validationResult, body} = require('express-validator');
 router.get('/create', controller.formCreate);
 router.post('/', controller.save);
 
-/* Lectura de productos */
-router.get('/list', controller.list);
 
 /* Detalle de un producto */
 router.get('/:id', controller.detail);

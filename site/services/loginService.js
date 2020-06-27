@@ -9,7 +9,7 @@ module.exports = {
     },
     loginUser: (req, res, user) => {
         let date = new Date(Date.now() + this.minutesPerSession);
-
+        
         req.session.cookie.expires = date;
         req.session.cookie.maxAge = this.minutesPerSession;
 
@@ -26,8 +26,8 @@ module.exports = {
             let date = new Date(Date.now() - 100);
             req.session.cookie.expires = date;
             req.session.cookie.maxAge = -100;
-        }
+        };
 
         res.redirect('/users/login');
     }
-}
+};

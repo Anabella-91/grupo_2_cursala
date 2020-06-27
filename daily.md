@@ -225,3 +225,8 @@ Pendientes:
 generados.
 -Definir los campos necesarios para los usuarios
 -Carpeta data con archivo users.json con los datos de usuarios generados.
+
+27 DE JUNIO
+- Se trabaja hace 3 dias con las rutas de usuarios y productos. Cuando se quiere crear un nuevo producto surge el error:
+SequelizeAccessDeniedError: Access denied for user ''@'localhost' (using password: NO), parece un problema con la base de datos aunque tiene password.
+- La ruta de usuarios no registra y no se encuentra el error, puede ser que este relacionado a loginService, aunque ese codigo se revisa y se considera que esta ok. 

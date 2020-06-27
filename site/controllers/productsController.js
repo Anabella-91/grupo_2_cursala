@@ -33,40 +33,6 @@ module.exports = {
             return res.render('/products/create')
         });
     },
-    list: (req, res) => {
-        if (req.query.busqueda) {
-            
-            db.Products.findAll({
-                where : {
-                    name : {
-                        [Op.like] : '%' + req.query.busqueda + '%'
-                    }
-                },
-                order : [
-                    ['name', 'ASC']
-                ]
-            })
-            .then(function(product) {
-                return res.render('products/list', { product });
-            })
-        } else {
-            //sino se selecciona todos los products
-            db.Products.findAll({
-                order : [
-                    ['name', 'ASC']
-                ],
-                // para la asociacion dentro del modelo Product.js
-                include : ['category']
-            })
-            .then(function(product) {
-                return res.render('products/list', { product });
-            })
-            .catch(function(error){
-                console.log(error);
-                
-            });
-        }
-    },
     detail: (req,res) => {  
     
         db.Products.findByPk(req.params.id, {
