@@ -1,9 +1,71 @@
+23 de JUNIO:
+*En proceso:
+-La importacion y exportacion de la base de datos nos genera errores que estamos intentando solucionar
+-Media queries de la nueva seccion de la landing
+*Completado: 
+-Se actualizo el tablero de Trello con todas las tareas de este sprint
+-se creo y actualizo el link al tablero de Trello en el respositorio.
+-Crear vista de back office para el administrador.
+-Se modificaron las rutas hacia el back office administrador
+-Se esta creando una vista de perfil de usuario
+-Se creo la base de datos y s elinkearon las rutas
+-Se completaron las Media Queries de la vista de perfil de usuario
+-Se adicciono el partial del head al login y al register, se unifico el css
+-Adicionamos los partials que faltaban al registro y login
+-Unificamos el CSS del login y del registro en el style.css
+-Construimos la vista de edicion de perfil
+-Adiccion de la seccion con la informacion de todos los cursos en la landing
+-Media queries del registro y del log in
+-Seteando las rutas accesibles solo sin login
+-Rutas accesibles solo con login redireccionan a loguearte
+
+22 de JUNIO:
+*En proceso:
+-Seteando las rutas accesibles solo sin login
+-Rutas accesibles solo con login redireccionan a loguearte
+-La importacion y exportacion de la base de datos nos genera errores que estamos intentando solucionar
+-Adiccion de la seccion cursos en la landing
+-Media queries del registro y del log in
+*Completado: 
+-Se actualizo el tablero de Trello con todas las tareas de este sprint
+-se creo y actualizo el link al tablero de Trello en el respositorio.
+-Crear vista de back office para el administrador.
+-Se modificaron las rutas hacia el back office administrador
+-Se esta creando una vista de perfil de usuario
+-Se creo la base de datos y s elinkearon las rutas
+-Se completaron las Media Queries de la vista de perfil de usuario
+-Se adicciono el partial del head al login y al register, se unifico el css
+-Adicionamos los partials que faltaban al registro y login
+-Unificamos el CSS del login y del registro en el style.css
+-Construimos la vista de edicion de perfil
+
+
+20 de JUNIO:
+*En proceso: 
+-Seteando las rutas accesibles solo sin login
+-Rutas accesibles solo con login redireccionan a loguearte
+-Estamos trabajando en completar los partials que faltaban y unificando el css
+-Vista de edicion de perfil en proceso de construccion
+-Solucionando inconvenientes con Sequelize
+-Arreglo de partials que se desconfiguraron al agregar los middlewares
+*Completado: 
+-Se actualizo el tablero de Trello con todas las tareas de este sprint
+-se creo y actualizo el link al tablero de Trello en el respositorio.
+-Crear vista de back office para el administrador.
+-Se modificaron las rutas hacia el back office administrador
+-Se esta creando una vista de perfil de usuario
+-Se creo la base de datos y s elinkearon las rutas
+-Se completaron las Media Queries de la vista de perfil de usuario
+-Middleware que redirija al admin al iniciar sesion al back office de administracion
+
+
 21 de JUNIO:
 *En proceso:
 -Se esta optimizando el css para rehusar mas codigo
 -Vista de edicion de perfil en proceso de construccion
 -Se esta trabajando las media queries del login y del registro
 -Media queries de la vista de administracion
+-Creacion de un middleware que redirija al admin al iniciar sesion al back office de administracion
 *Completado: 
 -Se actualizo el tablero de Trello con todas las tareas de este sprint
 -se creo y actualizo el link al tablero de Trello en el respositorio.
