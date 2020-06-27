@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Token = sequelize.define('Token', {
+  const Token = sequelize.define('Tokens', {
     userId: DataTypes.STRING,
     token: DataTypes.STRING,
     expiresAt: DataTypes.DATE
