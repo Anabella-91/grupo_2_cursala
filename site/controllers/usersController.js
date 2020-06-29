@@ -11,14 +11,15 @@ const db = require('./../database/models');
 
 module.exports = {
     register: (req,res) => {
+
         res.render('registro', {errors : {}, body : {}});
         
     },
     registerUser: (req, res) => {
-        let validation = validationResult(req)
-        
-        if (!validation.isEmpty()) {
-            return res.render('registro', {errors : validation.mapped(), body: req.body});
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.render('registro', {errors : errors.mapped(), body: req.body});
         }
         
         let imagen = '';
@@ -48,15 +49,15 @@ module.exports = {
             return res.render('/users/registro')
         });
     },
-    login: async (req,res) => {
+    login: (req,res) => {
         res.render('login', {errors : {}, body : {}});
     },
     processLogin: (req, res) => {
         
-        let validation = validationResult(req);
+        let errors = validationResult(req);
         
-        if(!validation.isEmpty()){
-            return res.render('login', {errors : validation.mapped(), body : req.body});
+        if(!errors.isEmpty()){
+            return res.render('login', {errors : errors.mapped(), body : req.body});
         }
         
         // login user

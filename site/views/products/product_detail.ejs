@@ -7,7 +7,7 @@
   <h1>Detalle de <%= product.name %></h1>
   <form action="/<%= product.id %>?_method=PUT" method="POST">
     <label for="nombre">Nombre del curso</label>
-    <input type="text" name="nombre" placeholder="Nombre del curso" value="<%= product.nombre %>">
+    <input type="text" name="nombre" placeholder="Nombre del curso" value="<%= product.name %>">
     <textarea name="descripcion" id="descripcion" cols="30" rows="4" value="<%= product.descripcion %>"></textarea>
     
     <label for="categories">Categorias</label>
