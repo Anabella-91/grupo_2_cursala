@@ -6,10 +6,10 @@
 
         <div class="contenedor b-gris">
             <div class="b-blanco shadow1 profile-contenedor border-r">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="nombre" class="dato-usuario" placeholder="Nombre" value="<%= body.nombre %>">
+                <form action="users/perfil" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="nombre" class="dato-usuario" placeholder="Nombre" value="<%= user.name %>">
           
-                    <input type="email" name="email" class="dato-usuario" placeholder="Email" value="<%= body.email %>">
+                    <input type="email" name="email" class="dato-usuario" placeholder="Email" value="<%= user.email %>">
                               
                     <div class="user-image">
                         <img class="profile-picture" src="<%= user.imagen %>" alt="imagen-usuario">

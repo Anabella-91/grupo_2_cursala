@@ -13,7 +13,7 @@ const db = require('./../database/models');
 /*  Creando almacenamiento de imagenes con Multer */
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
-        const folder ='../public/images/users';
+        const folder ='public/images/users';
         cb(null, folder);
     },
     filename : (req, file, cb) => {
@@ -90,13 +90,10 @@ router.post('/login', guestMid, [
 
 
 /* Edicion de usuarios */
-router.get('/edit/:id', controller.edit);
-router.post('/edit/:id', controller.update);
-
-router.get('/perfil', controller.perfil);
+router.get('/perfil/:id', controller.perfil);
+router.post('/perfil', controller.update);
 
 /*Rutas del carrito */
-/* user carrito . */
 router.get('/carrito', controller.carrito);
 
 /* User logout*/

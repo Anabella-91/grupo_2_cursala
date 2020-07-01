@@ -15,7 +15,7 @@ module.exports = {
         res.render('registro', {errors : {}, body : {}});
         
     },
-    registerUser: (req, res) => {
+    registerUser: (req, res) => { 
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -41,7 +41,7 @@ module.exports = {
             loginService.loginUser(req, res, user);
             console.log('user registrado');
             
-            return res.render('/users/perfil');
+            return res.render('profile');
         })
         .catch(function(error){
             console.error(error);
@@ -50,6 +50,7 @@ module.exports = {
         });
     },
     login: (req,res) => {
+
         res.render('login', {errors : {}, body : {}});
     },
     processLogin: (req, res) => {
@@ -72,45 +73,21 @@ module.exports = {
             loginService.loginUser(req, res, user);
             
             console.log('User login');
-            return res.render('/users/perfil');
+            return res.render('/users/perfil', {user:user});
         }).catch((error) => {
             console.error(error);
             return res.render('users/login');
         });
     },
-    edit: (req, res) => {
-        let user = db.Users.findByPk(req.params.id); 
-        if (user === null) {
-            console.log('Usuario no encontrado!');
-        } else {
-            console.log(user); 
-        }
-        
-        return res.render('profile', {user:user}, req.session);
-        
-    },
-    update: (req, res) => {
-        db.Users.update({
-            name : req.body.nombre,
-            email : req.body.descripcion,
-            password : req.body.categories
-        }, {
-            where: {
-                id: req.params.id
-            }
-        });
-        
-        return res.render('/users/admin/administracion_home' + req.params.id);
-    },
-    perfil: (req, res) => {
-        if (req.file) {
-        user.imagen = req.file;
+    perfil: async (req, res) => {
+        await db.Users.findByPk(req.params.id, { include : { all : true, nested : true}}).then(function(user){
+                res.render('profile', {user : user});
+            });        
     
-        db.Users.findOne({where : {email : req.body.email}}).then(async(user) => {
-        return res.render('profile', {user: user, errors : {}, body : {}});
-    
-        });
-    }
+    },
+    update: async (req, res) => {
+        
+        return res.render('profile');
     },
     carrito: (req,res) => {
         res.render('carrito', { title: 'Cursala | Carrito'});
