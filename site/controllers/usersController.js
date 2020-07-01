@@ -24,7 +24,7 @@ module.exports = {
         
         let imagen = '';
         if (req.file) {
-            imagen = req.file;        
+            imagen = req.file.path;        
         }
         
         let user = {
@@ -33,7 +33,7 @@ module.exports = {
             password : bcryptjs.hashSync(req.body.password, 5),
             imagen :  imagen
         } 
-        console.log(user);
+        console.log(req.file);
         
         //login user
         db.Users.create(user).then(function(){
@@ -41,7 +41,7 @@ module.exports = {
             loginService.loginUser(req, res, user);
             console.log('user registrado');
             
-            return res.render('profile');
+            return res.render('profile', {user:user});
         })
         .catch(function(error){
             console.error(error);
@@ -73,10 +73,10 @@ module.exports = {
             loginService.loginUser(req, res, user);
             
             console.log('User login');
-            return res.render('/users/perfil', {user:user});
+            return res.render('profile', {user:user});
         }).catch((error) => {
             console.error(error);
-            return res.render('users/login');
+            return res.render('login');
         });
     },
     perfil: async (req, res) => {
