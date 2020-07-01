@@ -923,6 +923,9 @@ body {
   .social-media .line {
     left: 50%;
   }
+  .landing-cursoInfo .titulo-landing {
+    margin-right: 1.2em;
+  }
   .nav-cursos ul {
     margin: 0 0;
   }
@@ -1050,7 +1053,7 @@ body {
   }
   .landing-cursoInfo .titulo-landing {
     font-size: 1.5em;
-    margin-right: 0.8em;
+    margin-right: 3.2em;
     margin-top: 2em;
   }
   .landing-cursoInfo p {
@@ -1061,6 +1064,7 @@ body {
   }
   .curso-details {
     width: 38vw;
+    margin: 0 0.5em 0.5em 0;
   }
   /*HOME*/
   .navegacion {
@@ -1216,7 +1220,7 @@ body {
     bottom: 2%;
   }
   .landing-cursoInfo .titulo-landing {
-    margin-right: 1em;
+    display: none;
   }
   .curso-details {
     margin: 0 0.5em 0.5em 0;

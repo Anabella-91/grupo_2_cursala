@@ -11,6 +11,7 @@ window.addEventListener("load", function(){
     
 
     backend.addEventListener("click", function () {
+        backend.style.backgroundColor = ""
         tituloLanding.innerHTML = "Back End";
         pDesarrolloLanding.innerHTML = "El desarollo <span>Back end</span>  refiere a la capa de acceso de datos de un software o cualquier dispositivo, que no es directamente accesible por los usuarios, además contiene la lógica de la aplicación que maneja dichos datos. Esta capa accede al servidor, que es una aplicación especializada que entiende la forma como el navegador solicita cosas.</p>"
         let categoriaCurso = document.querySelectorAll(".categoriaCurso");
