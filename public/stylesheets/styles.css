@@ -14,7 +14,6 @@ body {
 .cuerpo-central { grid-area: cuerpo-central; }
 .detalles { grid-area: detalles; }
 .navegacion { grid-area: navegacion; }
-
 .landing-container {
   height: 100vh;
   position: relative;
@@ -50,6 +49,9 @@ body {
 }
 .c-azul {
   color: #0e1856;
+}
+.c-rosa {
+  color: #ffa99d;
 }
 .c-ATransparente {
   color: rgba(13, 24, 88, 0.5)
@@ -371,11 +373,17 @@ body {
 .menu li:hover a, .boton-volver:hover a {
   color: #fff;
 }
-.menu li a {
+.menu li:hover {
+  color: #fff;
+}
+.menu li {
   font-size: 1.2em;
   color: black;
 }
-/*HOME "/" */
+.menu li a{
+  color: black;
+}
+/*HOME */
 /* CUERPO PRINCIPAL */
 .todos-cursos {
   display: flex;
@@ -541,19 +549,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
   background-color:  rgba(13, 24, 88, 0.5);
-  transition: all .5s;
-  display: flex;
   justify-content: center;
   align-items: center;
-  opacity:0;
-  pointer-events:none;
+  display: none;
 }
-#openModal:target{
-  opacity:1;
-  pointer-events:auto;
+#closeContacto {
+  font-size: 3em;
 }
 .form-contacto {
   height: 70vh;
