@@ -24,16 +24,17 @@ module.exports = {
         
         let imagen = '';
         if (req.file) {
-            imagen = req.file.path;        
+            imagen = req.file.path.replace('public\\images\\users\\', '');        
         }
         
+
         let user = {
             name : req.body.nombre,
             email : req.body.email,
             password : bcryptjs.hashSync(req.body.password, 5),
             imagen :  imagen
         } 
-        console.log(req.file);
+        
         
         //login user
         db.Users.create(user).then(function(){
@@ -80,14 +81,14 @@ module.exports = {
         });
     },
     perfil: async (req, res) => {
-        await db.Users.findByPk(req.params.id, { include : { all : true, nested : true}}).then(function(user){
-                res.render('profile', {user : user});
-            });        
-    
+        await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
+            res.render('profile', {user : user});
+        });                
     },
     update: async (req, res) => {
-        
-        return res.render('profile');
+        await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
+            res.render('profile', {user : user});
+        });
     },
     carrito: (req,res) => {
         res.render('carrito', { title: 'Cursala | Carrito'});
