@@ -13,7 +13,7 @@ const db = require('./../database/models');
 /*  Creando almacenamiento de imagenes con Multer */
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
-        const folder ='../public/images/users';
+        const folder ='public/images/users';
         cb(null, folder);
     },
     filename : (req, file, cb) => {
@@ -31,7 +31,6 @@ const upload = multer({
         if (acceptedExtensions.includes(ext)){
             //subiendo imagen
             return cb(null, true);
-            console.log('good');
             
         } else {
             //guardando imagen en body
@@ -46,7 +45,6 @@ const upload = multer({
 /* user registro . */
 router.get('/registro', guestMid, controller.register);
 router.post('/registro', guestMid, upload.single('imagen'),[
-    check('nombre', 'Ingresa al menos 2 caracteres').isLength({min:2}),
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
         return db.Users.findOne({where :{email : value}}).then(user => {
@@ -54,10 +52,6 @@ router.post('/registro', guestMid, upload.single('imagen'),[
                 return Promise.reject('Este correo se encuentra en uso');
             }
         })
-    }),
-    check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
-    check('password', 'Las contraseñas no coinciden').custom((value, { req }) => {
-        return value === req.body.password2
     }),
     body('imagen').custom((value, { req }) => {
         if(req.file){
@@ -90,13 +84,10 @@ router.post('/login', guestMid, [
 
 
 /* Edicion de usuarios */
-router.get('/edit/:id', controller.edit);
-router.post('/edit/:id', controller.update);
-
-router.get('/perfil', controller.perfil);
+router.get('/perfil', authMid, upload.single('imagen'), controller.perfil);
+router.post('/perfil', controller.update);
 
 /*Rutas del carrito */
-/* user carrito . */
 router.get('/carrito', controller.carrito);
 
 /* User logout*/

@@ -9,17 +9,16 @@
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <h2 class="c-celeste">No tengo cuenta</h2>
-        <form action="/users/perfil" method="POST" enctype="multipart/form-data">
-          <div><%= errors.nombre ? errors.nombre.msg: '' %></div>
-          <input type="text" name="nombre" placeholder="Nombre" value="<%= body.nombre ? body.nombre: ''%>">
+        <div class="errores"><ul></ul></div>
+        <form class="registro" action="/users/registro" method="POST" enctype="multipart/form-data">
+          <input class="nombre" type="text" name="nombre" placeholder="Nombre">
 
           <div><%= errors.email ? errors.email.msg: '' %></div>
           <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
 
-          <div><%= errors.password ? errors.password.msg: '' %></div>
-          <input type="password" name="password" placeholder="Contraseña">
+          <input class="contraseña" type="password" name="password" placeholder="Contraseña">
 
-          <input type="password" name="password2" placeholder="Confirma contraseña">
+          <input class="contraseñaB" type="password" name="password2" placeholder="Confirma contraseña">
 
           <p class="c-ATransparente">Foto de perfil</p>
           <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
@@ -38,6 +37,6 @@
       </div>
     </div>
   </div>
-  
+  <script src="/javascripts/registro.js" type="text/javascript"></script>
 </body>
 </html>

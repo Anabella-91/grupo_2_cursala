@@ -6,34 +6,19 @@
 
         <div class="contenedor b-gris">
             <div class="b-blanco shadow1 profile-contenedor border-r">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="nombre" class="dato-usuario" placeholder="Nombre" value="<%= body.nombre %>">
-          
-                    <input type="email" name="email" class="dato-usuario" placeholder="Email" value="<%= body.email %>">
-                              
-                    <div class="user-image">
-                        <img class="profile-picture" src="<%= user.imagen %>" alt="imagen-usuario">
-                    </div>      
-                    <div class="boton-editar border-r">
-                        <a href="/users/editProfile">
-                        <p>Editar perfil</p> 
-                        </a>
-                    </div>
-       
-                  </form>
-          
-                <!--<div class="user-data">
-                    <h1>Hola<%= user.name %>!</h1>
-                <p class="campo-perfil">Nombre: </p><p class="dato-usuario"> Usuario de Test</p>
-                <p class="campo-perfil">Email:</p><p class="dato-usuario"> usuariotest@gmail.com</p>
-                <p class="campo-perfil">Contraseña: </p><p class="dato-usuario"> xxxxxxx</p>
+        
+                <div class="user-data">
+                    <h1>Hola <%= user.name %>!</h1>
+                <p class="campo-perfil">Nombre:</p><p class="dato-usuario"><% user.name %></p>
+                <p class="campo-perfil">Email:</p><p class="dato-usuario"><% user.email %></p>
+                <img src="<% user.imagen %>" alt="imagen-perfil">
                 <div class="boton-editar border-r">
                     <a href="/users/editProfile">
                     <p>Editar perfil</p> 
                     </a>
                 </div>
                 </div>
-            -->
+            
             </div>
         </div>
     </body>
