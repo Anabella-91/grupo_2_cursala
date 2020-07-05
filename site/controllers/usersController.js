@@ -35,7 +35,7 @@ module.exports = {
             imagen :  imagen
         } 
         
-        
+
         //login user
         db.Users.create(user).then(function(user){
 

@@ -31,11 +31,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      admin : {
-        type : Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
       }
     });
   },
