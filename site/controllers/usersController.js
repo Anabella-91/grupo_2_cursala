@@ -37,7 +37,7 @@ module.exports = {
         
         
         //login user
-        db.Users.create(user).then(function(){
+        db.Users.create(user).then(function(user){
 
             loginService.loginUser(req, res, user);
             console.log('user registrado');

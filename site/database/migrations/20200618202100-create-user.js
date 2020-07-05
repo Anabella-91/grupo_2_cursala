@@ -9,15 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       email: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING
       },
       password: {
         type: Sequelize.STRING
       },
       imagen: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
@@ -27,6 +31,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      admin : {
+        type : Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
       }
     });
   },
