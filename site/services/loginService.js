@@ -1,5 +1,3 @@
-const tokenService = require('./tokenService');
-
 module.exports = {
     minutesPerSession : 120000,
     restartSessionTime:  (req) => {

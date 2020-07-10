@@ -24,13 +24,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      admin : {
+        type : Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
       }
     });
   },

@@ -4,7 +4,7 @@ const router = express.Router();
 const controller = require('../controllers/mainController')
 
 /* GET home page. */
-router.get('/', controller.home);
+router.get('/home', controller.home);
 
 /* GET landing page. */
 router.get('/landing', controller.landing);

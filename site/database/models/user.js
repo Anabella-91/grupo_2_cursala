@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     imagen : {
       allowNull: false,
       type : DataTypes.STRING(400)
+    }, 
+    admin : {
+      type: DataTypes.BOOLEAN
     }
   }, 
   {
@@ -28,9 +31,9 @@ module.exports = (sequelize, DataTypes) => {
     tableName : 'users'
   });
   User.associate = function(models) {
-   
+    
     
   };
-
+  
   return User;
 };

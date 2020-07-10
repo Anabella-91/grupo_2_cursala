@@ -9,9 +9,11 @@ const rememberMid = require('./middlewares/remember');
 const sessionMid = require('./middlewares/session');
 
 
+
 var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+
 
 var app = express();
 
@@ -21,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(session({
-  secret : 'secret', 
+  secret : 'Cursala', 
   resave: false, 
   saveUninitialized: false
 }));
