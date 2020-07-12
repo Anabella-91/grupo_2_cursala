@@ -1,3 +1,8 @@
+2 Julio:
+*En proceso:
+-Se esta trabajando con javascript para convertir el formulario de contacto en una ventana modal
+-Se esta adicionando JS a los formularios para lograr validaciones en el front tambien.
+
 23 de JUNIO:
 *En proceso:
 -La importacion y exportacion de la base de datos nos genera errores que estamos intentando solucionar
