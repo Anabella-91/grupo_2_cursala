@@ -36,18 +36,17 @@ module.exports = {
         } 
         
 
-        //login user
-        db.Users.create(user).then(function(user){
+        db.Users.create(user).then(function(usuario){
 
-            loginService.loginUser(req, res, user);
+            loginService.loginUser(req, res, usuario);
             console.log('user registrado');
             
-            return res.render('profile', {user:user});
+            return res.redirect('/users/perfil');
         })
         .catch(function(error){
             console.error(error);
             
-            return res.render('/users/registro')
+            return res.redirect('/users/registro')
         });
     },
     login: (req,res) => {
@@ -81,9 +80,13 @@ module.exports = {
         });
     },
     perfil: async (req, res) => {
-        await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
-            res.render('profile', {user : user});
-        });                
+
+
+        res.render('profile');
+
+        //await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
+            //res.render('profile', {user : user});
+        //});                
     },
     update: async (req, res) => {
         await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {

@@ -21,26 +21,7 @@ const storage = multer.diskStorage({
     }, 
 });
 /* Constante para subir imagen en la ruta */
-const upload = multer({
-    storage: storage,
-    fileFilter: (req, file, cb) => { //fileFilter es la validacion para que se suba la imagen
-        const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-        const ext = path.extname(file.originalname);
-        console.log('/// validando imagen ///');
-
-        if (acceptedExtensions.includes(ext)){
-            //subiendo imagen
-            return cb(null, true);
-            
-        } else {
-            //guardando imagen en body
-            req.file = file;
-            cb(null, false); //no se sube imagen
-            
-        }
-        
-    }
-});
+const upload = multer({storage: storage});
 
 /* user registro . */
 router.get('/registro', guestMid, controller.register);
@@ -53,17 +34,6 @@ router.post('/registro', guestMid, upload.single('imagen'),[
             }
         })
     }),
-    body('imagen').custom((value, { req }) => {
-        if(req.file){
-            const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-            const ext = path.extname(req.file.originalname)
-            return acceptedExtensions.includes(ext);
-        }else{
-            body('imagen').withMessage('La imagen debe tener uno de los siguientes formatos: JPG, JPEG, PNG')
-            console.log(req.file);
-            
-        }
-    })
 ], controller.registerUser);
 
 /* user login . */
@@ -84,7 +54,7 @@ router.post('/login', guestMid, [
 
 
 /* Edicion de usuarios */
-router.get('/perfil', authMid, upload.single('imagen'), controller.perfil);
+router.get('/perfil', authMid, controller.perfil);
 router.post('/perfil', controller.update);
 
 /*Rutas del carrito */
