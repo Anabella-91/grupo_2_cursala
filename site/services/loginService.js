@@ -12,6 +12,7 @@ module.exports = {
         req.session.cookie.maxAge = this.minutesPerSession;
 
         res.locals.log = true;
+        res.locals.user = user;
         req.session.log = true;
         req.session.user = user;
 

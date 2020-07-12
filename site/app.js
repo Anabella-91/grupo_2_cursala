@@ -28,17 +28,21 @@ app.use(session({
   saveUninitialized: false
 }));
 
-// Middlewares
+// Middleware session
 app.use(sessionMid);
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Middleware cookie
+app.use(rememberMid);
+
 app.use(express.static(path.join(__dirname, '/../public')));
+
 app.use(methodOverride('_method'));
 
-app.use(rememberMid);
 
 
 app.use('/', mainRouter);
