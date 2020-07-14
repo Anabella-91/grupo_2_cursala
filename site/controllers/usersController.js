@@ -103,8 +103,14 @@ module.exports = {
         res.render('admin_home', {title: 'Cursala | administracion'});
     },
     logOut: (req, res) => {
-        
-        loginService.logOutSession(req, res);
+        console.log(req.session);
+        if (req.session) {
+            let date = new Date(Date.now() - 100);
+            req.session.cookie.expires = date;
+            req.session.cookie.maxAge = -100;
+        };
+
+        res.redirect('/users/login');
         
     }
 };

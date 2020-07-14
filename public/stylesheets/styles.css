@@ -717,6 +717,13 @@ body {
   width: 20vw;
   height: 45vh;
 }
+.user-data img{
+  width: 20vw;
+  height: 30vh;
+}
+.user-data p{
+  display: inline;
+}
 .campo-perfil {
   width: 50%;
   color: #0e1856;
