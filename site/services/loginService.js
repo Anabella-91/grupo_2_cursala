@@ -17,8 +17,8 @@ module.exports = {
         req.session.user = user;
 
     },
-    rememberUser: (user) => {
-
+    checkAdmin: (user) => {
+        
     },
     /*logOutSession: (req, res) => {
         if (req.session) {

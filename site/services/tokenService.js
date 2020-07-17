@@ -12,6 +12,7 @@ module.exports = {
     },
     getUserByToken : (token) => {
         //devuelve el usuari dado un token
+        
 
     },
     checkUserToken : (user) => {

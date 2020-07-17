@@ -28,7 +28,7 @@ module.exports = {
         }
         
 
-        let user = {
+        let usuario = {
             name : req.body.nombre,
             email : req.body.email,
             password : bcryptjs.hashSync(req.body.password, 5),
@@ -36,12 +36,12 @@ module.exports = {
         } 
         
 
-        db.Users.create(user).then(function(usuario){
+        db.Users.create(usuario).then(function(user){
 
-            loginService.loginUser(req, res, usuario);
+            loginService.loginUser(req, res, user);
             console.log('user registrado');
             
-            return res.redirect('/users/perfil');
+            return res.redirect('/users/perfil', {user:user});
         })
         .catch(function(error){
             console.error(error);
@@ -73,7 +73,7 @@ module.exports = {
             loginService.loginUser(req, res, user);
             
             console.log('User login');
-            return res.render('profile', {user:user});
+            return res.render('profile');
         }).catch((error) => {
             console.error(error);
             return res.render('login');
@@ -99,8 +99,18 @@ module.exports = {
     eliminarProducto: (req, res) => {
         res.send("Deletear producto");  
     },
-    administracionHome: (req, res) => {
-        res.render('admin_home', {title: 'Cursala | administracion'});
+    administracionHome: async (req, res) => {
+        let user = await db.Users.findOne({email: req.body.email});
+        let admin = await db.Users.findOne({where : {admin : true}})
+
+            console.log(admin);
+
+            if(user.email == admin.email){
+                res.render('admin_home', {title: 'Cursala | administracion'});
+            }else{
+                res.send('No tenes permisos para esta pagina');
+            };
+    
     },
     logOut: (req, res) => {
         console.log(req.session);

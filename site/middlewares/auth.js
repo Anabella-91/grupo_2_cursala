@@ -1,6 +1,6 @@
-module.exports = function authMid (req, res, next) {
+module.exports = function (req, res, next) {
 
-    if (!req.session.log) {
+    if (req.isAuthenticated) {
 		return res.redirect('/users/login');
   }
 
