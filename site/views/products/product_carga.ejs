@@ -3,39 +3,40 @@
 <title><%= title %></title>
 <%- include('../partials/head'); %>
 <body>  
+  <%- include('../partials/header'); %>
+
   <div class="container-formRegister b-register">
     <div class="register-container b-blanco shadow1">
       <div class="register">
         <div class="circle-logo b-register">
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
-        <form action="/products/list" method="POST">
+        <form action="/products/create" method="POST" class="form-create">
           <label for="nombre">Nombre del curso</label>
           <input type="text" name="nombre" placeholder="Nombre del curso" required>
           <label for="descripcion">Descripcion del curso</label><br>
-          <textarea name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
+          <textarea placeholder="Acerca de este curso..."name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
           
           <label for="categories">Categoria del curso</label>
-              <select name="categories" id="category">
-                <option value="">Elige una</option>
-                <% for(let category of categories ) { %>
-                  <option value="<%= category.id %>"><%= category.name %></option>
-                <% } %>
-              </select><br>
+          <select name="categories" id="category">
+            <option value="">Elige una</option><br>
+            <% for(let category of categories ) { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% } %>
+            </select><br>
             
-          <label for="horas">Cantidad de horas</label>
-            <input type="text" name="horas" placeholder="Hs del curso">
-            
-            <label for="apuntes">Apuntes disponibles</label>
-            <input type="text" name="apuntes" placeholder="Apuntes disponibles">
+            <label for="horas">Cantidad de horas</label>
+            <input type="text" name="horas" placeholder="Ej. 140 total horas">
             
             <label for="apuntes">Cantidad de ejercicios</label>
-            <input type="text" name="ejercicios" placeholder="Cantidad ejercicios">
+            <input type="text" name="ejercicios" placeholder="Ej. 50 ejercicios practicos">
             
             <label for="number">Precio</label>
-            <input type="text" name="precio" placeholder="Precio" required>
-            <input type="reset" name="reset" class="submit" value="RESET">
-            <input type="submit" name="submit" class="submit" value="ENVIAR">
+            <input type="text" name="precio" placeholder="$" required>
+            <a href="/users/admin/administracion_home"><input type="button" id="submitb" value="Dashboard"></a>
+            <input type="reset" name="reset" id="submitb" value="BORRAR">
+            <input type="submit" name="submit" id="submitb" value="ENVIAR">
+            
           </form>
           
         </div>

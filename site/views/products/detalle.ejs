@@ -1,11 +1,11 @@
 <!DOCTYPE html>
     <html>
-         <%- include('./partials/head'); %>
+         <%- include('../partials/head'); %>
     <body>
     <div class="container b-gris">
-        <%- include('./partials/header'); %>
+        <%- include('../partials/header'); %>
             <div class="detalle-titulo shadow1 b-blanco">
-                <h2 class="titulo"> < HTML ></h2>
+                <h2 class="titulo"><%= product.name %></h2>
                 <img class="detalle-ilustracion" src="/images/ilus-html.svg" alt="ilustracion html">
             </div>
         <div class="container-rutas">
@@ -29,13 +29,18 @@
         </div>
             <div class="detalle-resumen b-blanco shadow1 border-r">
                 <ul>
-                    <li><img class="detalle-icon" src="/images/reloj.svg"><p>Cantidad de horas de video</p><p>50 hs</p></li>
-                    <li><img class="detalle-icon" src="/images/apuntes.svg"><p>Apuntes disponibles</p><p>20</p></li>
-                    <li><img class="detalle-icon" src="/images/ejercicios.svg">Cantidad de ejercicios disponibles</p><p>60</p></li>
+                    <li><img class="detalle-icon" src="/images/reloj.svg"><p><%= product.horas %></p></li>
+                    <li><p><%= product.descripcion %></p></li>
+                    <li><img class="detalle-icon" src="/images/marketing.svg"><p><%= product.category.name %></p></li>
+                    <li><img class="detalle-icon" src="/images/ejercicios.svg"><p><%= product.ejercicios %></p></li>
+                    <li><img class="detalle-icon" src="/images/pesos.svg"><p><%= product.precio %></p></li>
                 </ul>
-                <form>
-                <button class="boton-pago border-r" type="submit"><img class="cart-icon" src="/images/cart.svg">Agregar al carrito</button>
-                </form>
+                <a href=""><img class="detalle-icon" src="/images/cart.svg">Agregar al carrito</a>
+                <div class="admin">
+                <a href="/products/edit/<%= product.id %>">Editar</a>
+                </div>
+    
+            
             </div>
 
     </div>

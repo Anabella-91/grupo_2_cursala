@@ -3,6 +3,11 @@ const {check, validationResult, body} = require('express-validator');
 const db = require('./../database/models');
 
 module.exports = {
+    index: (req, res) => {
+        db.Products.findAll().then((products)=>{
+            return res.render('index', {products:products});
+        })
+    },
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
         
@@ -13,70 +18,68 @@ module.exports = {
         
         if (!errors.isEmpty()){
             return res.send(errors.mapped());
-        }            
+        };            
         
         let product = {
             name : req.body.nombre,
             descripcion : req.body.descripcion,
-            categories : req.body.categories,
             horas : req.body.horas,
-            apuntes : req.body.apuntes,
             ejercicios : req.body.ejercicios,
-            precio : req.body.precio
-        } 
+            precio : req.body.precio,
+            id_category : req.body.categories,
+        };
         
         db.Products.create(product)
         .then(function(){
-            return res.render('/users/admin/administracion_home');
+            return res.redirect('index');
         }).catch(function(error){
             console.error(error);
-            return res.render('/products/create')
+            return res.redirect('/products/create');
         });
+        
     },
     detailProduct: (req,res) => {  
-    
         db.Products.findByPk(req.params.id, {
-            // le decimos que incluya las relaciones para que aparezcan las categorias
-            include:[{association:'category'}]
-        }).then(function(product){                                                                                                     
-            res.render('products/product_detail', {product : product});
-        })       
-        
-    },
-    editProduct : async (req, res) => {
-        // se hacen dos pedidos asincronicos, el producto y la categoria
-        let product = db.Products.findByPk(req.params.id); 
-        let productCategory = await db.Products.findAll();
-        
-        // con el Promise se hacen los dos pedidos juntos y despues (then)
-        Promise.all([product, productCategory]).then(function([product, categories]){
-            res.render('products/product_detail', {product : product, categories : categories});
-        });            
-    },
-    updateProduct: async (req, res) => {
-        let product = await db.Products.findByPk(id);
-        let productId = req.params.id;
-        
-        db.Products.update({
-            name : req.body.nombre,
-            descripcion : req.body.descripcion,
-            categories : req.body.categories,
-            horas : req.body.horas,
-            apuntes: req.body.apuntes,
-            ejercicios : req.body.ejercicios,
-            precio : req.body.precio
+            include: ['category']
+        }).then(product => {
+            return res.render('products/detalle', {product : product});
+        }).catch(function(error){
+            console.error(error);
+            return res.redirect('index');
         });
         
-        await productsData.save();
-        
-        return res.redirect('/users/admin/administracion_home', {product: product});
     },
-    deleteProduct: (req, res) => {
-        db.Products.destroy({
-            where: {
-                id: req.params.id
-            }
+    editProduct: (req, res) => {
+        let product = db.Products.findByPk(req.params.id);
+        let category = db.Categories.findAll();
+        
+        Promise.all([product, category]).then(datos => {
+            res.render('products/product_edit', {product:datos[0] , category:datos[1]});
         })
-        return res.redirect('/users/admin/administracion_home');
+    },
+    updateProduct: (req, res) => {
+            db.Products.update({
+            name : req.body.nombre,
+            descripcion : req.body.descripcion,
+            horas : req.body.horas,
+            ejercicios : req.body.ejercicios,
+            precio : req.body.precio,
+            id_category : req.body.categories,
+        
+        }, {where : { id: req.params.id }});
+
+    
+        return res.redirect('/products/index');
+    
+        
+},
+deleteProduct: (req, res) => {
+    db.Products.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+        return res.redirect('/products/index');
+    
     }
 };

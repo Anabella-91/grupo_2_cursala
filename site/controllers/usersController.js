@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { check, validationResult, body} = require('express-validator');
 const usersData = require('./../models/User');
 const bcryptjs = require("bcryptjs");
@@ -35,7 +34,6 @@ module.exports = {
             imagen :  imagen
         } 
         
-
         db.Users.create(usuario).then(function(user){
 
             loginService.loginUser(req, res, user);
@@ -48,6 +46,7 @@ module.exports = {
             
             return res.redirect('/users/registro')
         });
+
     },
     login: (req,res) => {
 
