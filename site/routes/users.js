@@ -54,7 +54,7 @@ router.post('/login', guestMid, [
 
 
 /* Edicion de usuarios */
-router.get('/perfil', authMid, controller.perfil);
+router.get('/perfil', controller.perfil);
 router.post('/perfil', controller.update);
 
 /*Rutas del carrito */

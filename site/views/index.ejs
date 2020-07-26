@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<%- include('./partials/head'); %>
 
-  <body>
-    <h1><%= title %></h1>
-    <p>Bienvenido a la HOME de CURSALA</p>
-    <p><a href="/landing"> Landing de Cursala</a></p>
-    <p><a href="/products/detail"> detalle de producto</a></p>
-    <p><a href="/users/registro"> registro de usuario</a></p>
-    <p><a href="/users/carrito"> carrito del usuario</a></p>
-    <p><a href="/products/carga"> carga de producto</a></p>
+<body>
+  <%- include('./partials/header'); %>
 
+  <div class="container-cursos">
+
+    <h1>Nuestros Cursos</h1>
+    <ul>
+      <% for (let i=0; i< products.length; i++){ %>
+        <h3>
+          <a href="/products/<%= products[i].id %>"><%= products[i].name %></a>
+        </h3>
+        <p>
+          <%= products[i].descripcion %>
+        </p>
+        <p>
+          <img src="/images/pesos.svg" alt=""><%= products[i].precio %>
+        </p>
+        <% } %>
+      </ul>
+    </div>
   </body>
-</html>
+  </html>

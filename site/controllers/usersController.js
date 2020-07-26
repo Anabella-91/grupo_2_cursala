@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { check, validationResult, body} = require('express-validator');
 const usersData = require('./../models/User');
 const bcryptjs = require("bcryptjs");
@@ -28,26 +27,26 @@ module.exports = {
         }
         
 
-        let user = {
+        let usuario = {
             name : req.body.nombre,
             email : req.body.email,
             password : bcryptjs.hashSync(req.body.password, 5),
             imagen :  imagen
         } 
         
+        db.Users.create(usuario).then(function(user){
 
-        db.Users.create(user).then(function(usuario){
-
-            loginService.loginUser(req, res, usuario);
+            loginService.loginUser(req, res, user);
             console.log('user registrado');
             
-            return res.redirect('/users/perfil');
+            return res.redirect('/users/perfil', {user:user});
         })
         .catch(function(error){
             console.error(error);
             
             return res.redirect('/users/registro')
         });
+
     },
     login: (req,res) => {
 
@@ -73,7 +72,7 @@ module.exports = {
             loginService.loginUser(req, res, user);
             
             console.log('User login');
-            return res.render('profile', {user:user});
+            return res.render('profile');
         }).catch((error) => {
             console.error(error);
             return res.render('login');
@@ -99,12 +98,28 @@ module.exports = {
     eliminarProducto: (req, res) => {
         res.send("Deletear producto");  
     },
-    administracionHome: (req, res) => {
-        res.render('admin_home', {title: 'Cursala | administracion'});
+    administracionHome: async (req, res) => {
+        let user = await db.Users.findOne({email: req.body.email});
+        let admin = await db.Users.findOne({where : {admin : true}})
+
+            console.log(admin);
+
+            if(user.email == admin.email){
+                res.render('admin_home', {title: 'Cursala | administracion'});
+            }else{
+                res.send('No tenes permisos para esta pagina');
+            };
+    
     },
     logOut: (req, res) => {
-        
-        loginService.logOutSession(req, res);
+        console.log(req.session);
+        if (req.session) {
+            let date = new Date(Date.now() - 100);
+            req.session.cookie.expires = date;
+            req.session.cookie.maxAge = -100;
+        };
+
+        res.redirect('/users/login');
         
     }
 };

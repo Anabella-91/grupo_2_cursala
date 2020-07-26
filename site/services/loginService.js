@@ -17,10 +17,10 @@ module.exports = {
         req.session.user = user;
 
     },
-    rememberUser: (user) => {
-
+    checkAdmin: (user) => {
+        
     },
-    logOutSession: (req, res) => {
+    /*logOutSession: (req, res) => {
         if (req.session) {
             let date = new Date(Date.now() - 100);
             req.session.cookie.expires = date;
@@ -29,4 +29,5 @@ module.exports = {
 
         res.redirect('/users/login');
     }
+    */
 };

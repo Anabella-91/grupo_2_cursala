@@ -1,22 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productsController')
-const { check, validationResult, body} = require('express-validator');
 
+// Lectura
+router.get('/index', controller.index);
 
-/* Formulario de creacion de productos */
+// Formulario de creacion de productos 
 router.get('/create', controller.createProduct);
-router.post('/', controller.saveProduct);
+router.post('/create', controller.saveProduct);
 
-/* Detalle de un producto */
+// Detalle de un producto 
 router.get('/:id', controller.detailProduct);
 
-/* Actualizacion de producto para el admin */ 
-router.get('/:id', controller.editProduct);
-router.post('/:id', controller.updateProduct);
+// Actualizacion de producto para el admin 
+router.get('/edit/:id', controller.editProduct);
+router.put('/edit/:id', controller.updateProduct);
 
-/* Accion de borrado de producto */
-router.delete('/delete/:id', controller.deleteProduct);
+// Accion de borrado de producto 
+router.post('/delete/:id', controller.deleteProduct);
 
 
 module.exports = router;

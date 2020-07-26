@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); %>
+<body>
+    <%- include('../partials/header'); %>
+    
+    <div class="container-formRegister b-register">
+        <div class="register-container b-blanco shadow1">
+            <div class="register">
+                <div class="circle-logo b-register">
+                    <img src="/images/logo.png" alt="Logo-Cursala">
+                </div>
+                <h1>Editar Curso</h1>
+                <form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" class="form-create">
+                    <label for="nombre">Nombre del curso</label>
+                    <input type="text" name="nombre" value="<%= product.name %>">
+                    <label for="descripcion">Descripcion del curso</label><br>
+                    <textarea name="descripcion" value="<%= product.descripcion %>"></textarea><br>
+                    
+                    <label for="categories">Categoria</label>
+                    <select name="categories" id="category">
+                        <% for(let i=0; i < category.length; i++) { %>
+                            <% if(category[i].id == product.id_category) { %>
+                                <option value="<%= category[i].id %>" selected>
+                                    <%= category[i].name %>
+                                </option>
+                                <% } else { %> 
+                                    <option value="<%= category[i].id %>">
+                                        <%= category[i].name %>
+                                    </option>
+                                    <% } %>
+                                    
+                                    <% } %>
+                                </select><br>
+                                
+                                <label for="horas">Cantidad de horas</label>
+                                <input type="text" name="horas" value="<%= product.horas %>">
+                                
+                                <label for="apuntes">Cantidad de ejercicios</label>
+                                <input type="text" name="ejercicios"value="<%= product.ejercicios %>">
+                                
+                                <label for="number">Precio</label>
+                                <input type="text" name="precio" value="<%= product.precio %>">
+                                <a href="/users/admin/administracion_home"><button>Dashboard</button></a>
+                                <a href="/products/edit/<%= product.id %>"><button type="submit">EDITAR</button></a>
+                                <form action="/products/delete/<%= product.id %>" method="POST">
+                                    <button type="submit">ELIMINAR</button>
+                                </form>
+
+
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </body>
+            </html>
