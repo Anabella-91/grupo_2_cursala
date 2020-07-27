@@ -1,8 +1,13 @@
-const fs = require('fs');
+ db = require('../database/models');
 
 module.exports = {
 	home:function (req,res, next){
-        res.render('home', { title: 'Cursala | Home'});   
+        let cursos = db.Products.findAll();
+        let categorias = db.Categories.findAll();
+        Promise.all([cursos, categorias])
+        .then(function([cursos, categorias]){
+            res.render('home', { title: 'Cursala | Home', cursos:cursos, categorias:categorias}); 
+        })  
     },
     landing:function (req,res,next){
         res.render('landing', { title: 'Cursala | Landing'});

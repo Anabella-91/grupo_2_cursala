@@ -7,79 +7,63 @@
             <div class="cuerpo-central">
                 <main>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco">Front end</h2>
-                    <div class="todos-cursos">
-                        <div class="curso b-rosa">
-                            <a href="#">html</a>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[0].name%></h2>
+                     <div class="todos-cursos">
+                    <% for (let i = 0; i < cursos.length; i++) { %>
+                        <% if(cursos[i].id_category == 1) {%>
+                            <div class="curso b-rosa">
+                            <a href="/cursos/detalle/<%=cursos[i].id%>"><%=cursos[i].name%></a>
                         </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Css</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Javascript</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">React</a>
-                        </div>
+                        <% } %>
+                    <% } %>
                     </div>
                     </div>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco">Back end</h2>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[1].name%></h2>
                     <div class="todos-cursos">
-                        <div class="curso b-rosa">
-                            <a href="#">php</a>
+                        <% for (let i = 0; i < cursos.length; i++) { %>
+                        <% if(cursos[i].id_category == 2) {%>
+                            <div class="curso b-rosa">
+                            <a href="/cursos/detalle/<%=cursos[i].id%>"><%=cursos[i].name%></a>
                         </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Java</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">.Net</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Python</a>
-                        </div>
+                        <% } %>
+                    <% } %>
                     </div>
                     </div>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco">DISEÑO UX / UI</h2>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[2].name%></h2>
                     <div class="todos-cursos">
-                        <div class="curso b-rosa">
-                            <a href="#">Diseño</a>
+                        <% for (let i = 0; i < cursos.length; i++) { %>
+                        <% if(cursos[i].id_category == 3) {%>
+                            <div class="curso b-rosa">
+                            <a href="/cursos/detalle/<%=cursos[i].id%>"><%=cursos[i].name%></a>
                         </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Redaccion</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Wireframes</a>
-                        </div>
+                        <% } %>
+                    <% } %>
                     </div>
                     </div>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco">Marketing Digital</h2>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[3].name%></h2>
                     <div class="todos-cursos">
-                        <div class="curso b-rosa">
-                            <a href="#">Community</a>
+                        <% for (let i = 0; i < cursos.length; i++) { %>
+                        <% if(cursos[i].id_category == 4) {%>
+                            <div class="curso b-rosa">
+                            <a href="/cursos/detalle/<%=cursos[i].id%>"><%=cursos[i].name%></a>
                         </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Storytelling</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">seo</a>
-                        </div>
+                        <% } %>
+                    <% } %>
                     </div>
                     </div>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco">Diseño digital</h2>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[4].name%></h2>
                     <div class="todos-cursos">
-                        <div class="curso b-rosa">
-                            <a href="#">Photoshop</a>
+                        <% for (let i = 0; i < cursos.length; i++) { %>
+                        <% if(cursos[i].id_category == 5) {%>
+                            <div class="curso b-rosa">
+                            <a href="/cursos/detalle/<%=cursos[i].id%>"><%=cursos[i].name%></a>
                         </div>
-                        <div class="curso b-rosa">
-                            <a href="#">Illustator</a>
-                        </div>
-                        <div class="curso b-rosa">
-                            <a href="#">After Effects</a>
-                        </div>
+                        <% } %>
+                    <% } %>
                     </div>
                     </div>
                 </main>
