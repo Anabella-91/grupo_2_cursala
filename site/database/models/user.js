@@ -31,8 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     tableName : 'users'
   });
   User.associate = function(models) {
-    
-    
+    User.hasMany(models.Carrito, {
+      as: 'cart',
+      foreignKey: 'id_user'
+    });
+   
   };
   
   return User;

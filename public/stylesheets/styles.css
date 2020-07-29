@@ -538,15 +538,23 @@ body {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
-.admin {
-  margin-top: 0.5em;
-}
-.cart-button {
-  padding: 1em 1em;
+.agregado {
+  background-color: #0e1856;
 }
 .cart-button:hover {
-  background-color: #0e1856;
-} 
+  background-color: crimson;
+}
+.admin-edit {
+  margin-top: 0.5em;
+  padding: 0.5em 2em;
+}
+.admin-edit:hover {
+  background-color: crimson;
+}
+.cart-button {
+  padding: 0.5em 2em;
+}
+
 /*PAGINA 404*/
 .pagina-404 {
   height: 100vh;
