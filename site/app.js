@@ -14,6 +14,9 @@ var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 
+// Api propia
+let apiProductsRouter = require('./routes/api/products');
+
 
 var app = express();
 
@@ -48,6 +51,7 @@ app.use(methodOverride('_method'));
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/api/products', apiProductsRouter);
 
 
 // Error 404

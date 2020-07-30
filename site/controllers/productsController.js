@@ -3,11 +3,6 @@ const {check, validationResult, body} = require('express-validator');
 const db = require('./../database/models');
 
 module.exports = {
-    index: (req, res) => {
-        db.Products.findAll().then((products)=>{
-            return res.render('index', {products:products});
-        })
-    },
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
         

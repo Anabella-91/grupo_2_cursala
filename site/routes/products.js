@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productsController')
 
-// Lectura
-router.get('/index', controller.index);
 
 // Formulario de creacion de productos 
 router.get('/create', controller.createProduct);
