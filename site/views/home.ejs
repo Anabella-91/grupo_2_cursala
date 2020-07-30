@@ -3,7 +3,9 @@
         <%- include('./partials/head'); %>
     <body>
         <div class="container b-gris">
+            <% if(locals.user){ %>
             <%- include('./partials/header'); %>
+            <% } %>
             <div class="search-box">
                 <input id="formulario" class="search-txt" type="text" name="" placeholder="Qué curso estás buscando?">
                 <a href="#" id="boton" class="search-btn"><i class="fas fa-search"></i></a>
@@ -11,69 +13,21 @@
 
             <div class="cuerpo-central">
                 <main>
-                <h2 class="contenedor-curso b-blanco">Resultados de la busqueda...</h2>
-            
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[0].name%></h2>
-                     <div class="todos-cursos">
-                    <% for (let i = 0; i < cursos.length; i++) { %>
-                        <% if(cursos[i].id_category == 1) {%>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=cursos[i].id%>"><%=cursos[i].name%></a>
-                        </div>
-                        <% } %>
-                    <% } %>
-                    </div>
-                    </div>
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[1].name%></h2>
-                    <div class="todos-cursos">
-                        <% for (let i = 0; i < cursos.length; i++) { %>
-                        <% if(cursos[i].id_category == 2) {%>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=cursos[i].id%>"><%=cursos[i].name%></a>
-                        </div>
-                        <% } %>
-                    <% } %>
-                    </div>
-                    </div>
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[2].name%></h2>
-                    <div class="todos-cursos">
-                        <% for (let i = 0; i < cursos.length; i++) { %>
-                        <% if(cursos[i].id_category == 3) {%>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=cursos[i].id%>"><%=cursos[i].name%></a>
-                        </div>
-                        <% } %>
-                    <% } %>
-                    </div>
-                    </div>
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[3].name%></h2>
-                    <div class="todos-cursos">
-                        <% for (let i = 0; i < cursos.length; i++) { %>
-                        <% if(cursos[i].id_category == 4) {%>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=cursos[i].id%>"><%=cursos[i].name%></a>
-                        </div>
-                        <% } %>
-                    <% } %>
-                    </div>
-                    </div>
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[3].name%></h2>
-                    <div class="todos-cursos">
-                        <% for (let i = 0; i < cursos.length; i++) { %>
-                        <% if(cursos[i].id_category == 5) {%>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=cursos[i].id%>"><%=cursos[i].name%></a>
-                        </div>
-                        <% } %>
-                    <% } %>
-                    </div>
-                    </div>
+                <h2 id="resultado" class="contenedor-curso b-blanco">Resultados de la busqueda...</h2>
+                <% for (let j = 0; j < categorias.length; j++) { %>
 
+                    <div class="contenedor-curso b-blanco">
+                        <h2 class="titulo-curso b-blanco"><%=categorias[j].name%></h2>
+                     <div class="todos-cursos">
+                    <% for (let curso of categorias[j].products) { %>
+                            <div class="curso b-rosa">
+                            <a href="/products/<%=curso.id%>"><%=curso.name%></a>
+                        </div>
+                    <% } %>
+                    </div>
+                    </div>
+                    <% } %>
+                    
                     <!--Paginas-->
                     <div class="pagination">
                         <a href="#">&laquo;</a>

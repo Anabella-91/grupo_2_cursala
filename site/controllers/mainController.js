@@ -3,10 +3,10 @@ const db = require('../database/models');
 module.exports = {
 	home: (req,res) => {
     let cursos = db.Products.findAll();
-    let categorias = db.Categories.findAll();
+    let categorias = db.Categories.findAll({include: ['products']});
     Promise.all([cursos, categorias])
     .then(function([cursos, categorias]){
-            return res.render('home', { title: 'Cursala | Home', cursos:cursos, categorias:categorias}); 
+            return res.render('home', { title: 'Cursala | Home', categorias:categorias}); 
     }) 
     },
     landing: (req,res) => {

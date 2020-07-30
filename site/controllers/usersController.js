@@ -33,7 +33,6 @@ module.exports = {
         } 
         
         db.Users.create(usuario).then(function(user){
-
             loginService.loginUser(req, res, user);
             console.log('user registrado');
             
@@ -61,7 +60,7 @@ module.exports = {
         // login user
         db.Users.findOne({where : {email : req.body.email}})
         .then( async (user) => {
-            
+
             loginService.loginUser(req, res, user);
             
             console.log('User login');
