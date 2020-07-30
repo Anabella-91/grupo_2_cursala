@@ -2,6 +2,8 @@ const { check, validationResult, body} = require('express-validator');
 const bcryptjs = require("bcryptjs");
 const loginService = require('../services/loginService');
 const db = require('./../database/models');
+const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh2M5jIaAZeuqHoJ8CGeioawXXAPu2yIv0HVo50qhSe2DwHDsMXXF00jsEEDzk7');
+
 
 
 module.exports = {
@@ -106,11 +108,27 @@ module.exports = {
         res.redirect('/users/login');
         
     },
-    agregarCarrito: function(req, res) {
+    agregarCarrito: async (req, res) => {
+        const customer = await stripe.customers.create({
+            email: req.body.stripeEmail,
+            source: req.body.stripeToken
+        })
+        const charge = await stripe.charges.create({
+            amount: '3000',
+            currency: 'usd',
+            customer: customer.id,
+            description: 'Baby Yoda'
+        })
+        console.log(charge.id);
+        res.send('Recibido');
+    
+
+        /*
         db.Carrito.create({
             id_user: req.body.user_id,
             id_producto: req.body.product_id
         })
         return res.json;
+        */
     }
 }; 

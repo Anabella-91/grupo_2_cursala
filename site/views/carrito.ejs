@@ -51,7 +51,17 @@
     <div class="detalle-pago shadow1 b-blanco border-r">
         <h2 class="titulo-carrito titulo-pago c-azul">Detalle del pago</h2>
         <div class="contenedor-pago">
-            <form class="form-pago">
+            <form class="form-pago" action="/users/carrito" method="POST">
+                <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_51HA5JWAQkSZ0OTSUW5doH9eHyQOefjURhoH1TEy9SI4JBSPMpWlzwTW8WMdLEma4Ixj9gYpvnjAvFHPaG9yVOV3t001z2uBeo9"
+                data-amount="300"
+                data-name="Store Online"
+                data-description="Pagos con Stripe"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto">
+                </script>
+
                 <label class="c-azul">Nombre del titular</label>
                 <input class="input-carrito input-largo" type="text" name="titule">
                 <label class="c-azul">Numero de la tarjeta</label>
