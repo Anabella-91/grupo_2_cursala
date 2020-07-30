@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 const loginService = require('../services/loginService');
 const db = require('../database/models');
 let productRequest = require('../requests/products');
 
 
-=======
-const db = require('../database/models');
->>>>>>> b81748638e2cd86c07e552e2cb383a7946fdb8d5
 
 module.exports = {
 	home: (req,res) => {
