@@ -27,7 +27,7 @@ body {
 }
 .b-gris {
   background-color: #f8f9fc;
-  height: 120vh;
+  height: 100%;
 }
 .b-azul {
   background-color: #0e1856;
@@ -386,13 +386,86 @@ body {
 }
 /*HOME */
 /* CUERPO PRINCIPAL */
+/* BUSCADOR */
+.search-box{
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #459cd1;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+.search-box:hover > .search-txt{
+  width: 240px;
+  padding: 0 6px;
+}
+.search-box:hover > .search-btn{
+  background: #fff;
+}
+.search-btn{
+  color: rgba(0, 0, 0, 0.808);
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #459cd1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.search-txt{
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+.search-txt::placeholder{
+  color: rgba(0, 0, 0, 0.548);
+}
+/* PAGINADOR */
+.pagination{
+  display: inline-block;
+  margin-left: 50%;
+}
+.pagination a{
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  color: black;
+}
+.pagination a.active{
+  background-color: #4CAF50;
+  border: 1px solid #4CAF50;
+  color: #fff;
+}
+.pagination a:hover:not(.active){
+  background-color: #459cd1;
+}
+.pagination a:first-child{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination a:last-child{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 .todos-cursos {
   display: flex;
 }
 .contenedor-curso {
   width: 90%;
   position: relative;
-  margin: 5% auto 5% auto;
+  margin: 16% auto 5% auto;
   border-radius: 15px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
@@ -427,13 +500,13 @@ body {
 /* Contenedor del detalle del curso */
 .detalles {
   position: relative;
-  margin: 5% 0 5% 0;
+  margin: 40% 0 5% 0;
   border-radius: 20px;
 }
 /* Texto e imagen default del curso */
 .detalle-default {
   width: 80%;
-  height: 90%;
+  height: 70%;
   margin: 0 auto;
   position: relative;
 }

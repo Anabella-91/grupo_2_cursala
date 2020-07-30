@@ -1,15 +1,23 @@
+<<<<<<< HEAD
+const loginService = require('../services/loginService');
 const db = require('../database/models');
+let productRequest = require('../requests/products');
+
+
+=======
+const db = require('../database/models');
+>>>>>>> b81748638e2cd86c07e552e2cb383a7946fdb8d5
 
 module.exports = {
-	home:function (req,res, next){
-        let cursos = db.Products.findAll();
-        let categorias = db.Categories.findAll();
-        Promise.all([cursos, categorias])
-        .then(function([cursos, categorias]){
-            res.render('home', { title: 'Cursala | Home', cursos:cursos, categorias:categorias}); 
-        })  
+	home: (req,res) => {
+    let cursos = db.Products.findAll();
+    let categorias = db.Categories.findAll();
+    Promise.all([cursos, categorias])
+    .then(function([cursos, categorias]){
+            return res.render('home', { title: 'Cursala | Home', cursos:cursos, categorias:categorias}); 
+    }) 
     },
-    landing:function (req,res,next){
+    landing: (req,res) => {
         res.render('landing', { title: 'Cursala | Landing'});
     },
     mensaje: function (req, res){

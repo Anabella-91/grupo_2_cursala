@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 /* user registro . */
-router.get('/registro', guestMid, controller.register);
+router.get('/registro', controller.register);
 router.post('/registro', guestMid, upload.single('imagen'),[
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
@@ -37,7 +37,7 @@ router.post('/registro', guestMid, upload.single('imagen'),[
 ], controller.registerUser);
 
 /* user login . */
-router.get('/login', guestMid, controller.login);
+router.get('/login', controller.login);
 router.post('/login', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
@@ -52,10 +52,12 @@ router.post('/login', guestMid, [
     
 ],controller.processLogin);
 
+/* Perfil user */ 
+router.get('/perfil/:id', controller.perfil);
 
 /* Edicion de usuarios */
-router.get('/perfil', controller.perfil);
-router.post('/perfil', controller.update);
+router.get('perfil', controller.perfil);
+router.post('perfil', controller.update);
 
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);
@@ -65,8 +67,6 @@ router.post('/addcart', controller.agregarCarrito);
 
 /* User logout*/
 router.post('/logout', controller.logOut);
-
-router.post('/eliminarProducto', controller.eliminarProducto);
 
 /*Rutas admnistrador*/
 router.get('/admin/administracion_home', controller.administracionHome);

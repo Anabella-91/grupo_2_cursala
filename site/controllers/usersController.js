@@ -1,11 +1,7 @@
 const { check, validationResult, body} = require('express-validator');
-const usersData = require('./../models/User');
 const bcryptjs = require("bcryptjs");
-const bcrypt = require("bcrypt");
 const loginService = require('../services/loginService');
-const tokenService = require('../services/tokenService');
 const db = require('./../database/models');
-
 
 
 module.exports = {
@@ -39,7 +35,7 @@ module.exports = {
             loginService.loginUser(req, res, user);
             console.log('user registrado');
             
-            return res.redirect('/users/perfil', {user:user});
+            return res.redirect('/users/perfil');
         })
         .catch(function(error){
             console.error(error);
@@ -63,40 +59,28 @@ module.exports = {
         // login user
         db.Users.findOne({where : {email : req.body.email}})
         .then( async (user) => {
-            //guardando cookie
-            if (req.body.remember) {
-                //cookie creada que expira en 90 dias
-                await tokenService.generateToken(res, user);
-            }
             
             loginService.loginUser(req, res, user);
             
             console.log('User login');
-            return res.render('profile');
+
+            return res.redirect('/users/perfil');
         }).catch((error) => {
             console.error(error);
             return res.render('login');
         });
     },
-    perfil: async (req, res) => {
+    perfil: (req, res) => {
+        console.log(req.session.user);
 
-
-        res.render('profile');
-
-        //await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
-            //res.render('profile', {user : user});
-        //});                
     },
     update: async (req, res) => {
         await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
-            res.render('profile', {user : user});
+            res.redirect('/users/perfil', {user : user});
         });
     },
     carrito: (req,res) => {
         res.render('carrito', { title: 'Cursala | Carrito'});
-    },
-    eliminarProducto: (req, res) => {
-        res.send("Deletear producto");  
     },
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});

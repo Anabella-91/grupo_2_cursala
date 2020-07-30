@@ -4,8 +4,15 @@
     <body>
         <div class="container b-gris">
             <%- include('./partials/header'); %>
+            <div class="search-box">
+                <input id="formulario" class="search-txt" type="text" name="" placeholder="Qué curso estás buscando?">
+                <a href="#" id="boton" class="search-btn"><i class="fas fa-search"></i></a>
+            </div>
+
             <div class="cuerpo-central">
                 <main>
+                <h2 class="contenedor-curso b-blanco">Resultados de la busqueda...</h2>
+            
                     <div class="contenedor-curso b-blanco">
                         <h2 class="titulo-curso b-blanco"><%=categorias[0].name%></h2>
                      <div class="todos-cursos">
@@ -55,7 +62,7 @@
                     </div>
                     </div>
                     <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[4].name%></h2>
+                        <h2 class="titulo-curso b-blanco"><%=categorias[3].name%></h2>
                     <div class="todos-cursos">
                         <% for (let i = 0; i < cursos.length; i++) { %>
                         <% if(cursos[i].id_category == 5) {%>
@@ -66,11 +73,24 @@
                     <% } %>
                     </div>
                     </div>
+
+                    <!--Paginas-->
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+
                 </main>
             </div>
             <div class="detalles shadow1 b-blanco">
             <div class="detalle-default">
-                <p class="c-ATransparente">Selecciona un curso para poder visualizar toda la informacion :)</p>
+                <p class="c-ATransparente">Selecciona un curso para visualizar toda la informacion :)</p>
                 <img class="ilustracion-detalle" src="/images/ilustracion-detalle.svg">
             </div>
             <div class="elegido-html">
@@ -78,7 +98,7 @@
                 <p class="elegido-descripcion">HTML (HyperText Markup Language) es el primer lenguaje que una persona debe conocer si desea comenzar a realizar páginas web. </p>
             <div class="resumen-detalle">
                 <img class="icono-detalle" src="/images/icono-reloj.png">
-                <p class="resumen-curso"> 10hs de video disponibles</p> 
+                <p class="resumen-curso">10hs de video disponibles</p> 
                 <img class="icono-detalle" src="/images/icono-lapiz.png" alt="icono lapiz">
                 <p class="resumen-curso">15 workbook de apuntes</p> 
                 <img class="icono-detalle" src="/images/icono-ejercicios.png" alt="icono ejercicios">
