@@ -10,6 +10,7 @@ const controller = require('../controllers/usersController');
 const db = require('./../database/models');
 
 
+
 /*  Creando almacenamiento de imagenes con Multer */
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
