@@ -105,5 +105,12 @@ module.exports = {
 
         res.redirect('/users/login');
         
+    },
+    agregarCarrito: function(req, res) {
+        db.Carrito.create({
+            id_user: req.body.user_id,
+            id_producto: req.body.product_id
+        })
+        return res.json;
     }
-};
+}; 

@@ -5,8 +5,10 @@
     <div class="container b-gris">
         <%- include('../partials/header'); %>
             <div class="detalle-titulo shadow1 b-blanco">
-                <h2 class="titulo"><%= product.name %></h2>
+                <div class="header-detalle">
+                <h2 class="titulo c-azul">< <%= product.name %> ></h2>
                 <img class="detalle-ilustracion" src="/images/ilus-html.svg" alt="ilustracion html">
+                </div>
             </div>
         <div class="container-rutas">
             <h3 class="titulo2">Contenidos del curso</h3>
@@ -29,19 +31,17 @@
         </div>
             <div class="detalle-resumen b-blanco shadow1 border-r">
                 <ul>
-                    <li><img class="detalle-icon" src="/images/reloj.svg"><p><%= product.horas %></p></li>
-                    <li><p><%= product.descripcion %></p></li>
-                    <li><img class="detalle-icon" src="/images/marketing.svg"><p><%= product.category.name %></p></li>
-                    <li><img class="detalle-icon" src="/images/ejercicios.svg"><p><%= product.ejercicios %></p></li>
-                    <li><img class="detalle-icon" src="/images/pesos.svg"><p><%= product.precio %></p></li>
+                    <li class="flex-r"><p class="detail-description"><%= product.descripcion %></p></li>
+                        <p class="incluye c-azul">Este curso incluye: </p>
+                    <li class="flex-r"><img class="detalle-icon" src="/images/reloj.svg"><p>Horas de video: <%= product.horas %></p></li>
+                    <li class="flex-r"><img class="detalle-icon" src="/images/marketing.svg"><p>Categoria: <%= product.category.name %></p></li>
+                    <li class="flex-r"><img class="detalle-icon" src="/images/ejercicios.svg"><p>Ejercicios disponibles:<%= product.ejercicios %></p></li>
+                    <li class="flex-r"><img class="detalle-icon" src="/images/download.svg"><p>Recursos descargables</p></li>
+                    <li class="flex-r"><p class="costo c-azul">$<%=product.precio %></p></li>
+                    <li class="flex-r"><a id="btn-carrito" class="cart-button b-rosa c-blanco border-r" href="#" data-productoId="<%=product.id %>">+ Agregar al carrito</a></li>
+                    <li class="flex-r"><a class=" b-celeste border-r c-blanco admin-edit" href="/products/edit/<%=product.id %>">Editar</a></li>
                 </ul>
-                <a href=""><img class="detalle-icon" src="/images/cart.svg">Agregar al carrito</a>
-                <div class="admin">
-                <a href="/products/edit/<%= product.id %>">Editar</a>
-                </div>
-    
-            
             </div>
-
+    <script src="/javascripts/carrito.js"></script>
     </div>
     </body>

@@ -14,12 +14,15 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Product.associate = function(models) {
-    
     Product.belongsTo(models.Categories, {
       as: 'category',
       foreignKey: 'id_category'
     });
-
+    Product.hasMany(models.Carrito, {
+      as: 'cart',
+      foreignKey: 'id_producto'
+    });
+  
   };
 
   return Product;

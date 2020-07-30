@@ -62,6 +62,9 @@ router.post('perfil', controller.update);
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);
 
+/*Agregar al carrito*/
+router.post('/addcart', controller.agregarCarrito);
+
 /* User logout*/
 router.post('/logout', controller.logOut);
 
