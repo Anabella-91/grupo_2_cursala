@@ -389,13 +389,19 @@ body {
 /* BUSCADOR */
 .search-box{
   position: absolute;
-  top: 16%;
+  top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #459cd1;
   height: 40px;
   border-radius: 40px;
   padding: 10px;
+  z-index: 30;
+}
+#resultado {
+  font-weight: lighter;
+  padding: 0.5em 0.5em;
+  box-sizing: border-box;
 }
 .search-box:hover > .search-txt{
   width: 240px;
@@ -432,10 +438,6 @@ body {
   color: rgba(0, 0, 0, 0.548);
 }
 /* PAGINADOR */
-.pagination{
-  display: inline-block;
-  margin-left: 50%;
-}
 .pagination a{
   float: left;
   padding: 8px 16px;
@@ -465,7 +467,7 @@ body {
 .contenedor-curso {
   width: 90%;
   position: relative;
-  margin: 16% auto 5% auto;
+  margin: 2.5em auto 3.5em auto;
   border-radius: 15px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
