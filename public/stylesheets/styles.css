@@ -961,7 +961,9 @@ body {
       width: 60vw;
       margin-top: 2em;
     }
-
+    .contenedor-h {
+      height: 100%;
+    }
   /* FORMUÑLARIO CARGA CREACION PRODUCTOS*/
   .container-carga {
     display: flex;

@@ -3,9 +3,10 @@
     <%- include('./partials/head') -%>
 <body>
  <%- include('./partials/header') -%> 
-<div class="contenedor b-gris">
+<div class="contenedor b-gris contenedor-h">
     <div class="container-Allmsj">
     <% if(mensajes.length != 0) { %>
+        <h2 class="welcome-administration"> Mensajes mas recientes: </h2>
         <% for(let i = 0; i < mensajes.length; i++) { %>
         <div class="container-msj b-blanco shadow1 border-r">
                 <p><span class="c-ATransparente">Nombre:</span> <%=mensajes[i].nombre%></p>
@@ -16,6 +17,7 @@
                 <p><span class="c-ATransparente">Mensaje:</span> <%=mensajes[i].mensaje%></p>
         </div>
         <% } %>
+        <a href="/users/admin/administracion_home"><input class="border-r" type="button" id="submitb" value="Dashboard"></a>
     <% } else { %> 
         <div class="contenedor j-c">
             <h2 class="welcome-administration">No tienes mensajes nuevos, ingresa mas tarde</h2>
