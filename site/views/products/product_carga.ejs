@@ -5,10 +5,10 @@
 <body>  
   <%- include('../partials/header'); %>
 
-  <div class="container-formRegister b-register">
-    <div class="register-container b-blanco shadow1">
+  <div class="b-register container-carga">
+    <div class="carga-form b-blanco shadow1">
       <div class="register">
-        <div class="circle-logo b-register">
+        <div class="circle-logo b-register carga-logo">
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <form action="/products/create" method="POST" class="form-create">
@@ -18,7 +18,7 @@
           <textarea placeholder="Acerca de este curso..."name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
           
           <label for="categories">Categoria del curso</label>
-          <select name="categories" id="category">
+          <select class="b-gris c-azul" name="categories" id="category">
             <option value="">Elige una</option><br>
             <% for(let category of categories ) { %>
               <option value="<%= category.id %>"><%= category.name %></option>
@@ -33,10 +33,12 @@
             
             <label for="number">Precio</label>
             <input type="text" name="precio" placeholder="$" required>
+
+            <div class="container-carga">
             <a href="/users/admin/administracion_home"><input type="button" id="submitb" value="Dashboard"></a>
             <input type="reset" name="reset" id="submitb" value="BORRAR">
             <input type="submit" name="submit" id="submitb" value="ENVIAR">
-            
+            </div>
           </form>
           
         </div>

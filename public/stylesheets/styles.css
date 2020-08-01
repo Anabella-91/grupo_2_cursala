@@ -943,6 +943,41 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4em;
   }
+  /* FORMUÑLARIO CARGA CREACION PRODUCTOS*/
+  .container-carga {
+    display: flex;
+    justify-content: center;
+  }
+  .carga-form {
+    margin: 7em 2em;
+  }
+  .carga-logo {
+    margin-left: 38%;
+  }
+#descripcion {
+  border: 1px solid #0e1856;
+}
+.form-create input{
+  margin-top: 10px;
+}
+.form-create label{
+  display: block;
+  margin-top: 10px;
+}
+.form-create select{
+  margin-top: 10px;
+}
+#submitb{
+  width: auto;
+  padding: 0.6em 1.5em;
+  font-weight: 600;
+  background-color: #459cd1;
+  font-size: 1em;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+  cursor: pointer;
+  margin-right: 3em;
+}
+
 
 /* MEDIA QUERIES */
 @media (max-width: 1024px){  
@@ -1494,33 +1529,6 @@ body {
 
 }
 
-/* Formulario Creacion productos */
-#descripcion {
-  border: 1px solid;
-}
-
-
-
-.form-create input{
-  margin-top: 10px;
-}
-.form-create label{
-  display: block;
-  margin-top: 10px;
-}
-.form-create select{
-  margin-top: 10px;
-}
-#submitb{
-  width: auto;
-  padding: 0.6em 1.5em;
-  font-weight: 600;
-  background-color: #459cd1;
-  font-size: 1em;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
-  cursor: pointer;
-  margin: 40px 55px 20px 70px;
-}
 
 /* LISTADO DE CURSOS */
 
