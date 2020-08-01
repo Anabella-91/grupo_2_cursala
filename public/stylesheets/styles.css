@@ -1327,14 +1327,19 @@ body {
     border-top-right-radius: 0px;
     padding: 0;
     width: 400px;
+    display: block 
   }
   .login h2 {
     margin-block-start: 0.3em;
     margin-block-end: 0.3em;
+    text-align: center;
   }
   .login .correo {
-    margin: 0.4em 0;
+    margin: 0.5em 3.3em;
     width: 75%;
+  }
+  .fb-btn, .tw-btn {
+    margin-bottom: 1em;
   }
   /*LOG IN */
   .container-logRegister {
@@ -1478,8 +1483,8 @@ body {
     margin: 10px 0 10px 24%;
 }
   .circle-logo {
-    height: auto;
-  }
+  margin-left: 29%;
+}
   .login .correo {
     height: 5vh;
   }
