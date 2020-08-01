@@ -409,7 +409,7 @@ body {
   height: 40px;
   border-radius: 40px;
   padding: 10px;
-  z-index: 30;
+  z-index: 10;
 }
 #resultado {
   font-weight: lighter;
@@ -690,6 +690,9 @@ body {
 #closeContacto {
   font-size: 3em;
 }
+.modal-contacto {
+  z-index: 140;
+}
 .form-contacto {
   height: 70vh;
   width: 350px;
@@ -698,6 +701,7 @@ body {
   background-color: #f2f2f2;
   border-radius: 10px;
   padding: 1em 5em;
+  z-index: 80;
   }
 .style-contacto {
   padding: 0.6em 2em;
@@ -943,6 +947,21 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4em;
   }
+  /* VISTA ADMIN DE MENSAJES */
+    .j-c {
+      justify-content: center;
+    }
+    .border-r {
+      border-radius: 10px;
+    }
+    .container-Allmsj {
+      margin-top: 2.3em;
+    }
+    .container-msj {
+      width: 60vw;
+      margin-top: 2em;
+    }
+
   /* FORMUÑLARIO CARGA CREACION PRODUCTOS*/
   .container-carga {
     display: flex;

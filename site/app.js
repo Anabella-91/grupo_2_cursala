@@ -13,6 +13,7 @@ const sessionMid = require('./middlewares/session');
 var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+var adminRouter = require('./routes/admin');
 
 // Api propia
 let apiProductsRouter = require('./routes/api/products');
@@ -55,6 +56,7 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/users', apiUsersRouter);
+app.use('/admin', adminRouter);
 
 
 

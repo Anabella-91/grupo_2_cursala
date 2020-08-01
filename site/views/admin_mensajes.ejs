@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/head') -%>
+<body>
+ <%- include('./partials/header') -%> 
+<div class="contenedor b-gris">
+    <div class="container-Allmsj">
+    <% if(mensajes.length != 0) { %>
+        <% for(let i = 0; i < mensajes.length; i++) { %>
+        <div class="container-msj b-blanco shadow1 border-r">
+                <p><span class="c-ATransparente">Nombre:</span> <%=mensajes[i].nombre%></p>
+                <p><span class="c-ATransparente">Email:</span> <%=mensajes[i].email%></p>
+                <p><span class="c-ATransparente">Telefono:</span> <%=mensajes[i].telefono%></p>
+                <p><span class="c-ATransparente">Medio de contacto:</span> <%=mensajes[i].medio_contacto%></p>
+                <p><span class="c-ATransparente">Asunto:</span> <%=mensajes[i].asunto%></p>
+                <p><span class="c-ATransparente">Mensaje:</span> <%=mensajes[i].mensaje%></p>
+        </div>
+        <% } %>
+    <% } else { %> 
+        <div class="contenedor j-c">
+            <h2 class="welcome-administration">No tienes mensajes nuevos, ingresa mas tarde</h2>
+            <a href="/users/admin/administracion_home"><input class="border-r" type="button" id="submitb" value="Dashboard"></a>
+        </div>
+    <% } %>
+    </div>
+</div>
+</body>
+</html>
