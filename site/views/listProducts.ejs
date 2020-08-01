@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head'); -%>
+<body>
+<%- include('./partials/header'); -%>
+<div class="contenedor b-gris contenedor-h">
+    <div class="container-Allmsj">
+    <h2 class="welcome-administration">Seleccione un curso para editarlo</h2>
+        <ul>
+        <% for(let i = 0; i < cursos.length; i++) {%>
+            <li class="curso b-rosa txt-center"><a href="/products/edit/<%=cursos[i].id%>"> <%= cursos[i].name %> </a></li>
+        <% } %>
+       </ul>
+    </div>
+</div>
+</body>
+</html>

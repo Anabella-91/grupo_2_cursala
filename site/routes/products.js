@@ -7,7 +7,7 @@ const controller = require('../controllers/productsController')
 router.get('/create', controller.createProduct);
 router.post('/create', controller.saveProduct);
 
-// Detalle de un producto 
+// Detalle de un producto vista del usuario
 router.get('/:id', controller.detailProduct);
 
 // Actualizacion de producto para el admin 

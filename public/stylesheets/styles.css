@@ -402,7 +402,7 @@ body {
 /* BUSCADOR */
 .search-box{
   position: absolute;
-  top: 17%;
+  top: 16%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #459cd1;
@@ -413,6 +413,7 @@ body {
 }
 #resultado {
   font-weight: lighter;
+  font-size: 1.3em;
   padding: 0.5em 0.5em;
   box-sizing: border-box;
 }
@@ -519,7 +520,7 @@ body {
 /* Contenedor del detalle del curso */
 .detalles {
   position: relative;
-  margin: 40% 0 5% 0;
+  margin: 8% 0 22% 0;
   border-radius: 20px;
 }
 /* Texto e imagen default del curso */
@@ -998,7 +999,10 @@ body {
   cursor: pointer;
   margin-right: 3em;
 }
-
+/*LISTADO DE CURSOS -administrador*/
+.txt-center {
+  text-align: center;
+}
 
 /* MEDIA QUERIES */
 @media (max-width: 1024px){  
