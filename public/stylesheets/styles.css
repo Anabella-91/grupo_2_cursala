@@ -306,9 +306,22 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-.login .register_media {
-  width: 38px;
+.login-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.login-btn {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.fb-btn, .tw-btn {
+  display: flex;
+  justify-content: center;
   margin-right: 1em;
+}
+.register_media {
+  width: 38px;
 }
 .login .correo {
   width: 100%;
@@ -438,6 +451,10 @@ body {
   color: rgba(0, 0, 0, 0.548);
 }
 /* PAGINADOR */
+.pagination{
+  display: inline-block;
+  margin-left: 50%;
+}
 .pagination a{
   float: left;
   padding: 8px 16px;
@@ -1124,6 +1141,7 @@ body {
   /* REGISTRO */
   .register-container {
     width: 700px;
+    margin
   }
   .login {
     width: 25vw;
@@ -1476,13 +1494,8 @@ body {
   border: 1px solid;
 }
 
-.register{
-  margin-top: 350px;
-}
-.circle-logo{
-  margin-left: 40%;
-  margin-top: -50%;
-}
+
+
 .form-create input{
   margin-top: 10px;
 }
@@ -1502,9 +1515,6 @@ body {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
   cursor: pointer;
   margin: 40px 55px 20px 70px;
-}
-.container-formRegister{
-  height: auto;
 }
 
 /* LISTADO DE CURSOS */
