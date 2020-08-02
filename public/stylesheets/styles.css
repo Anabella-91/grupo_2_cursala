@@ -965,13 +965,13 @@ body {
     .contenedor-h {
       height: 100%;
     }
-  /* FORMUÑLARIO CARGA CREACION PRODUCTOS*/
+  /* FORMULARIO CARGA CREACION PRODUCTOS*/
   .container-carga {
     display: flex;
     justify-content: center;
   }
   .carga-form {
-    margin: 7em 2em;
+    margin: 8em 2em;
   }
   .carga-logo {
     margin-left: 38%;
@@ -998,12 +998,12 @@ body {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
   cursor: pointer;
   margin-right: 3em;
+  border-radius: 12px;
 }
 /*LISTADO DE CURSOS -administrador*/
 .txt-center {
   text-align: center;
 }
-
 /* MEDIA QUERIES */
 @media (max-width: 1024px){  
   /* LANDING */
