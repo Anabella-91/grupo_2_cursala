@@ -65,7 +65,7 @@ module.exports = {
         }, {where : { id: req.params.id }});
 
     
-        return res.redirect('/products/index');
+        return res.redirect('/home');
     
         
 },
@@ -75,7 +75,7 @@ deleteProduct: (req, res) => {
             id: req.params.id
         }
     });
-        return res.redirect('/products/index');
+        return res.redirect('/home');
     
     }
 };

@@ -8,9 +8,7 @@ const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh
 
 module.exports = {
     register: (req,res) => {
-        
         res.render('registro', {errors : {}, body : {}});
-        
     },
     registerUser: (req, res) => { 
         const errors = validationResult(req);
@@ -63,23 +61,27 @@ module.exports = {
             res.locals.log = user;
             req.session.user = user;
             req.session.email = user.email;
-            
+
+            if (req.body.remember != undefined){
+                res.cookie('remember', user, {maxAge: 60*60*24*30});
+            }
+
             return res.redirect('/users/perfil');
+        
         }).catch((error) => {
             console.error(error);
             return res.render('login');
         });
     },
     perfil: (req, res) => {
-        db.Users.findByPk(req.params.id).then(user => {
-            console.log(user);
+        console.log(req.session.user);
+
+        db.Users.findByPk(req.session.user.id).then(user => {
             return res.render('profile', {user});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');
         });
-        
-        console.log(req.session.user);
     },
     update: (req, res) => {
         let usuario = {
