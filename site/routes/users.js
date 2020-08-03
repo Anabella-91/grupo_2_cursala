@@ -54,7 +54,7 @@ router.post('/login', guestMid, [
 ],controller.processLogin);
 
 /* Perfil user */ 
-router.get('/perfil/:id', controller.perfil);
+router.get('/perfil', controller.perfil);
 
 /* Edicion de usuarios */
 router.post('/perfil', controller.update);

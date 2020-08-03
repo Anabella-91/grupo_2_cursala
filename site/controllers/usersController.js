@@ -8,13 +8,13 @@ const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh
 
 module.exports = {
     register: (req,res) => {
-
+        
         res.render('registro', {errors : {}, body : {}});
         
     },
     registerUser: (req, res) => { 
         const errors = validationResult(req);
-
+        
         if (!errors.isEmpty()) {
             return res.render('registro', {errors : errors.mapped(), body: req.body});
         }
@@ -24,7 +24,7 @@ module.exports = {
             imagen = req.file.path.replace('public\\images\\users\\', '');        
         }
         
-
+        
         let usuario = {
             name : req.body.nombre,
             email : req.body.email,
@@ -34,7 +34,6 @@ module.exports = {
         
         db.Users.create(usuario).then(user => {
             //loginService.loginUser(req, res, user);
-            console.log(user);
             res.locals.log = user;
             req.session.user = user;
             
@@ -45,14 +44,12 @@ module.exports = {
             
             return res.redirect('/users/registro')
         });
-
+        
     },
     login: (req,res) => {
-
         res.render('login', {errors : {}, body : {}});
     },
     processLogin: (req, res) => {
-        
         let errors = validationResult(req);
         
         if(!errors.isEmpty()){
@@ -61,13 +58,13 @@ module.exports = {
         
         // login user
         db.Users.findOne({where : {email : req.body.email}})
-        .then( async user => {
-
-            loginService.loginUser(req, res, user);
+        .then(user => {
+            //loginService.loginUser(req, res, user);
+            res.locals.log = user;
+            req.session.user = user;
+            req.session.email = user.email;
             
-            console.log('User login');
-
-            return res.render('profile');
+            return res.redirect('/users/perfil');
         }).catch((error) => {
             console.error(error);
             return res.render('login');
@@ -75,18 +72,30 @@ module.exports = {
     },
     perfil: (req, res) => {
         db.Users.findByPk(req.params.id).then(user => {
+            console.log(user);
             return res.render('profile', {user});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');
         });
-
+        
         console.log(req.session.user);
     },
-    update: async (req, res) => {
-        await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
-            res.redirect('/users/perfil', {user : user});
+    update: (req, res) => {
+        let usuario = {
+            id: res.locals.log.id,
+            name: req.body.nombre,
+            email: req.body.email
+        };
+        
+        db.Users.update(usuario, {
+            where: {id: req.params.id}
         });
+        
+        res.locals.log = usuario;
+        req.session.user = usuario;
+        
+        return res.redirect('/users/perfil');
     },
     carrito: (req,res) => {
         res.render('carrito', { title: 'Cursala | Carrito'});
@@ -94,15 +103,15 @@ module.exports = {
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});
         let admin = await db.Users.findOne({where : {admin : true}})
-
-            console.log(admin);
-
-            if(user.email == admin.email){
-                res.render('admin_home', {title: 'Cursala | administracion'});
-            }else{
-                res.send('No tenes permisos para esta pagina');
-            };
-    
+        
+        console.log(admin);
+        
+        if(user.email == admin.email){
+            res.render('admin_home', {title: 'Cursala | administracion'});
+        }else{
+            res.send('No tenes permisos para esta pagina');
+        };
+        
     },
     logOut: (req, res) => {
         console.log(req.session);
@@ -111,7 +120,7 @@ module.exports = {
             req.session.cookie.expires = date;
             req.session.cookie.maxAge = -100;
         };
-
+        
         res.redirect('/users/login');
         
     },
@@ -128,8 +137,8 @@ module.exports = {
         })
         console.log(charge.id);
         res.send('Recibido');
-    
-
+        
+        
         /*
         db.Carrito.create({
             id_user: req.body.user_id,

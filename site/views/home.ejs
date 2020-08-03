@@ -3,7 +3,9 @@
         <%- include('./partials/head'); %>
     <body>
         <div class="container b-gris">
+            <% if(res.locals.log){ %>
             <%- include('./partials/header'); %>
+            <% } %>
             <div class="search-box">
                 <input id="formulario" class="search-txt" type="text" name="" placeholder="Qué curso estás buscando?">
                 <a href="#" id="boton" class="search-btn"><i class="fas fa-search"></i></a>
