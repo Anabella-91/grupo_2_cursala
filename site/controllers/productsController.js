@@ -25,8 +25,8 @@ module.exports = {
         };
         
         db.Products.create(product)
-        .then(function(){
-            return res.redirect('index');
+        .then(product => {
+            return res.redirect('/home');
         }).catch(function(error){
             console.error(error);
             return res.redirect('/products/create');
@@ -37,10 +37,11 @@ module.exports = {
         db.Products.findByPk(req.params.id, {
             include: ['category']
         }).then(product => {
-            return res.render('products/detalle', {product : product});
+            console.log(product)
+            return res.render('products/detalle', {product});
         }).catch(function(error){
             console.error(error);
-            return res.redirect('index');
+            return res.redirect('/home');
         });
         
     },

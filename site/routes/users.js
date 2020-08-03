@@ -26,7 +26,7 @@ const upload = multer({storage: storage});
 
 /* user registro . */
 router.get('/registro', controller.register);
-router.post('/registro', guestMid, upload.single('imagen'),[
+router.post('/registro', upload.single('imagen'),[
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
         return db.Users.findOne({where :{email : value}}).then(user => {
@@ -57,8 +57,7 @@ router.post('/login', guestMid, [
 router.get('/perfil/:id', controller.perfil);
 
 /* Edicion de usuarios */
-router.get('perfil', controller.perfil);
-router.post('perfil', controller.update);
+router.post('/perfil', controller.update);
 
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);

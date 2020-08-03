@@ -32,11 +32,13 @@ module.exports = {
             imagen :  imagen
         } 
         
-        db.Users.create(usuario).then(function(user){
-            loginService.loginUser(req, res, user);
-            console.log('user registrado');
+        db.Users.create(usuario).then(user => {
+            //loginService.loginUser(req, res, user);
+            console.log(user);
+            res.locals.log = user;
+            req.session.user = user;
             
-            return res.redirect('/users/perfil');
+            return res.redirect('/home');
         })
         .catch(function(error){
             console.error(error);
@@ -59,7 +61,7 @@ module.exports = {
         
         // login user
         db.Users.findOne({where : {email : req.body.email}})
-        .then( async (user) => {
+        .then( async user => {
 
             loginService.loginUser(req, res, user);
             
@@ -72,6 +74,13 @@ module.exports = {
         });
     },
     perfil: (req, res) => {
+        db.Users.findByPk(req.params.id).then(user => {
+            return res.render('profile', {user});
+        }).catch(function(error){
+            console.error(error);
+            return res.redirect('/home');
+        });
+
         console.log(req.session.user);
     },
     update: async (req, res) => {
