@@ -1,7 +1,7 @@
 const { check, validationResult, body} = require('express-validator');
 const bcryptjs = require("bcryptjs");
 const loginService = require('../services/loginService');
-const db = require('./../database/models');
+const db = require('../database/models');
 const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh2M5jIaAZeuqHoJ8CGeioawXXAPu2yIv0HVo50qhSe2DwHDsMXXF00jsEEDzk7');
 
 
@@ -65,7 +65,7 @@ module.exports = {
             
             console.log('User login');
 
-            return res.redirect('/users/perfil');
+            return res.render('profile');
         }).catch((error) => {
             console.error(error);
             return res.render('login');
@@ -73,7 +73,6 @@ module.exports = {
     },
     perfil: (req, res) => {
         console.log(req.session.user);
-
     },
     update: async (req, res) => {
         await db.Users.findOne({where : {email : req.body.email}}).then( async (user) => {
