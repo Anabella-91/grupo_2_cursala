@@ -16,6 +16,6 @@ module.exports = {
         })
         .then(function(cursos){
             return res.render('listProducts', {title: 'Cursala | productos', cursos:cursos})
-        })
+        });
     }
 };
