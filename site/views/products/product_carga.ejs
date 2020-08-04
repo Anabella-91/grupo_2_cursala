@@ -12,8 +12,10 @@
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <form action="/products/create" method="POST" class="form-create">
+          <div style="color: red;"><%= errors.name ? errors.name.msg: '' %></div>
           <label for="nombre">Nombre del curso</label>
-          <input type="text" name="nombre" placeholder="Nombre del curso" required>
+          <input id="nombre" type="text" name="nombre" placeholder="Nombre del curso" required>
+          <div style="color: red;"><%= errors.descripcion ? errors.descripcion.msg: '' %></div>
           <label for="descripcion">Descripcion del curso</label><br>
           <textarea placeholder="Acerca de este curso..."name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
           
@@ -30,9 +32,10 @@
             
             <label for="apuntes">Cantidad de ejercicios</label>
             <input type="text" name="ejercicios" placeholder="Ej. 50 ejercicios practicos">
-            
-            <label for="number">Precio</label>
-            <input type="text" name="precio" placeholder="$" required>
+
+            <div style="color: red;"><%= errors.precio ? errors.precio.msg: '' %></div>
+            <label for="precio">Precio</label>
+            <input id="precio" type="text" name="precio" placeholder="$" required>
 
             <div class="container-carga">
             <a href="/users/admin/administracion_home"><input type="button" id="submitb" value="Dashboard"></a>

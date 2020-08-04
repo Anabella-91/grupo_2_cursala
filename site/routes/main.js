@@ -8,7 +8,7 @@ const controller = require('../controllers/mainController');
 router.get('/home', controller.home);
 
 /* GET landing page. */
-router.get('/landing', controller.landing);
+router.get('/', controller.landing);
 
 router.post('/mensaje', controller.mensaje);
 

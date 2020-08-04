@@ -19,7 +19,7 @@ module.exports = {
         
         let imagen = '';
         if (req.file) {
-            imagen = req.file.path.replace('public\\images\\users\\', '');        
+            imagen = req.file.filename;        
         }
         
         
@@ -74,8 +74,6 @@ module.exports = {
         });
     },
     perfil: (req, res) => {
-        console.log(req.session.user);
-
         db.Users.findByPk(req.session.user.id).then(user => {
             return res.render('profile', {user});
         }).catch(function(error){
@@ -110,20 +108,20 @@ module.exports = {
         
         if(user.email == admin.email){
             res.render('admin_home', {title: 'Cursala | administracion'});
-        }else{
+        }else if (admin == null ){
             res.send('No tenes permisos para esta pagina');
         };
         
     },
     logOut: (req, res) => {
-        console.log(req.session);
-        if (req.session) {
-            let date = new Date(Date.now() - 100);
-            req.session.cookie.expires = date;
-            req.session.cookie.maxAge = -100;
+        console.log(req.session.user);
+        if(req.session.user){
+            req.session=null;
+            res.clearCookie('remember');
         };
-        
-        res.redirect('/users/login');
+
+        res.redirect('/landing');
+        //res.cookies.set('testtoken', {expires: Date.now()});       
         
     },
     agregarCarrito: async (req, res) => {

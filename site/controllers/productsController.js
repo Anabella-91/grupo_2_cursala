@@ -6,13 +6,13 @@ module.exports = {
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
         
-        return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories:categories});
+        return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories:categories, errors : {}, body : {}});
     },
     saveProduct: (req, res) => {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.send(errors.mapped());
+            return res.render('products/product_carga', {errors : errors.mapped(), body : req.body});
         };            
         
         let product = {
@@ -37,23 +37,27 @@ module.exports = {
         db.Products.findByPk(req.params.id, {
             include: ['category']
         }).then(product => {
-            console.log(product)
             return res.render('products/detalle', {product});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');
         });
-        
     },
     editProduct: (req, res) => {
         let product = db.Products.findByPk(req.params.id);
         let category = db.Categories.findAll();
         
         Promise.all([product, category]).then(datos => {
-            res.render('products/product_edit', {product:datos[0] , category:datos[1]});
+            res.render('products/product_edit', {product:datos[0] , category:datos[1], errors : {}, body : {}});
         })
     },
     updateProduct: (req, res) => {
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()){
+            return res.render('products/product_edit', {errors : errors.mapped(), body : req.body});
+        };            
+
             db.Products.update({
             name : req.body.nombre,
             descripcion : req.body.descripcion,
