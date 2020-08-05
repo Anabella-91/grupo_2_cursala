@@ -884,7 +884,7 @@ body {
 .boton-editar:hover {
   background-color: #459cd1;
 }
-.boton-editar:hover p {
+.boton-editar:hover p{
   color: #fff;
 }
 .boton-editar a {

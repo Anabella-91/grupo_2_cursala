@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     }, 
 });
 /* Constante para subir imagen en la ruta */
-const upload = multer({storage: storage});
+const upload = multer({storage});
 
 /* user registro . */
 router.get('/registro', controller.register);
@@ -59,7 +59,7 @@ router.post('/login', guestMid, [
 router.get('/perfil', guestMid, controller.perfil);
 
 /* Edicion de usuarios */
-router.post('/perfil', controller.update);
+router.post('/perfil', upload.single('image'), controller.update);
 
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);

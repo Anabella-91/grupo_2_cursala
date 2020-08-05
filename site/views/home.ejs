@@ -7,14 +7,14 @@
             <%- include('./partials/header'); %>
             <% } %>
             <div class="search-box">
-                <input id="formulario" class="search-txt" type="text" name="" placeholder="Qué curso estás buscando?">
+                <input id="busquedaUser" class="search-txt" type="text" name="" placeholder="Qué curso estás buscando?">
                 <a href="#" id="boton" class="search-btn"><i class="fas fa-search"></i></a>
             </div>
             <div class="cuerpo-central">
                 <main>
                 <h2 id="resultado" class="contenedor-curso b-blanco c-ATransparente">Resultados de la busqueda...</h2>
+                
                 <% for (let j = 0; j < categorias.length; j++) { %>
-
                     <div class="contenedor-curso b-blanco">
                         <h2 class="titulo-curso b-blanco"><%=categorias[j].name%></h2>
                      <div class="todos-cursos">

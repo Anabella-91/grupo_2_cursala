@@ -11,25 +11,25 @@ window.addEventListener("load", function(){
         modalContacto.style.display = "none";
     });
     */
-
+    
     // REGISTRO USER
     let formRegistro = document.querySelector('.registro');
-
+    
     formRegistro.addEventListener('submit', validateRegister);
-
+    
     function validateRegister (e){
         let passwordRegister = document.querySelector('.contraseña');
         let errores = [];
         const pass_reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-
+        
         if(!pass_reg.test(passwordRegister.value)){
             errores.push('La contraseña debe al menos tener la primera letra en mayuscula');
         };
-
+        
         if(errores.length > 0){
             e.preventDefault();
             let erroresCampo = document.querySelector('div#errores ul');
-
+            
             for (let i=0; i<errores.length;i++){
                 erroresCampo.innerHTML += '<li>' + errores[i] + '</li>';
             };
@@ -37,17 +37,18 @@ window.addEventListener("load", function(){
     };
     
     // BUSCADOR HOME
-    const formulario = document.querySelector('#formulario');
+    const busqueda = document.querySelector('#busquedaUser');
     const boton = document.querySelector('#boton');
     const resultado = document.querySelector('#resultado');
     
+    boton.addEventListener('click', list);
     
     let list = () => {
         return axios({
             method: 'GET',
             url: '/api/products/list'
         }).then(cursos => {
-            const texto = formulario.value.toLowerCase();
+            const texto = busqueda.value.toLowerCase();
             resultado.innerHTML = '';
             
             for(let i=0; i< cursos.data.data.length; i++){
@@ -62,16 +63,10 @@ window.addEventListener("load", function(){
                     resultado.innerHTML += `
                     <h2>No encontramos el curso que buscaste...</h2>
                     `
-                }
-                console.log(texto);
-                
-            }
-            console.log(resultado);
-            console.log(cursos.data.data);
+                };                
+            };
         });
     };
-    
-    boton.addEventListener('click', list);
     
     /*
     const filtrar = () => {
@@ -116,7 +111,7 @@ window.addEventListener("load", function(){
     //formulario.addEventListener('keyup', filtrar);
     
     // PAGINADOR HOME
-        
+    
     // FORMULARIO CREACION PRODUCTOS y MODIFICACION PRODUCTOS (product_carga.ejs/product_edit.ejs)
     let formProducts = document.querySelector('.form-create');
     
@@ -141,7 +136,7 @@ window.addEventListener("load", function(){
         if(isNaN(precio.value)){
             errores.push('El precio debe ser un numero');
         };
-
+        
         if(errores.length > 0){
             e.preventDefault();
             let erroresCampo = document.querySelector('div.errores ul');
@@ -152,5 +147,9 @@ window.addEventListener("load", function(){
         };
     });
     
-    
+    // SUBIR IMAGEN USER >> profile.ejs
+        
+        
+        
 });
+    
