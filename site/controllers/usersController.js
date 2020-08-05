@@ -82,6 +82,12 @@ module.exports = {
         });
     },
     update: (req, res) => {
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()) {
+            return res.render('profile', {errors : errors.mapped(), body: req.body});
+        }
+
         let usuario = {
             id: res.locals.log.id,
             name: req.body.nombre,
@@ -114,11 +120,11 @@ module.exports = {
         
     },
     logOut: (req, res) => {
-        console.log(req.session.user);
-        if(req.session.user){
-            req.session=null;
-            res.clearCookie('remember');
-        };
+        
+        let date = new Date(Date.now() - 100);
+        req.session.cookie.expires = date;
+        req.session.cookie.maxAge = -100;
+    
 
         res.redirect('/landing');
         //res.cookies.set('testtoken', {expires: Date.now()});       

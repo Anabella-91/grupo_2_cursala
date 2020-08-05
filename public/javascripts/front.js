@@ -1,4 +1,5 @@
 window.addEventListener("load", function(){
+    /*
     let btnOpenContacto = document.getElementById("openContacto");
     let modalContacto = document.getElementById("openModal");
     let btnCloseContacto = document.getElementById("closeContacto");
@@ -8,7 +9,32 @@ window.addEventListener("load", function(){
     })
     btnCloseContacto.addEventListener("click", function(){
         modalContacto.style.display = "none";
-    })
+    });
+    */
+
+    // REGISTRO USER
+    let formRegistro = document.querySelector('.registro');
+
+    formRegistro.addEventListener('submit', validateRegister);
+
+    function validateRegister (e){
+        let passwordRegister = document.querySelector('.contraseña');
+        let errores = [];
+        const pass_reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+        if(!pass_reg.test(passwordRegister.value)){
+            errores.push('La contraseña debe al menos tener la primera letra en mayuscula');
+        };
+
+        if(errores.length > 0){
+            e.preventDefault();
+            let erroresCampo = document.querySelector('div#errores ul');
+
+            for (let i=0; i<errores.length;i++){
+                erroresCampo.innerHTML += '<li>' + errores[i] + '</li>';
+            };
+        };
+    };
     
     // BUSCADOR HOME
     const formulario = document.querySelector('#formulario');
@@ -90,16 +116,11 @@ window.addEventListener("load", function(){
     //formulario.addEventListener('keyup', filtrar);
     
     // PAGINADOR HOME
+        
+    // FORMULARIO CREACION PRODUCTOS y MODIFICACION PRODUCTOS (product_carga.ejs/product_edit.ejs)
+    let formProducts = document.querySelector('.form-create');
     
-    // CIERRE DE SESION DEL USER
-    let botonCerrarSesion = document.querySelector('#form-log-out');
-    
-    // FORMULARIO CREACION PRODUCTOS (product_carga.ejs)
-    let formulario = document.querySelector('.form-create');
-    console.log(formulario.elements);
-    
-    
-    formulario.addEventListener('submit', function(e){
+    formProducts.addEventListener('submit', function(e){
         
         let errores = [];
         
@@ -120,7 +141,7 @@ window.addEventListener("load", function(){
         if(isNaN(precio.value)){
             errores.push('El precio debe ser un numero');
         };
-        
+
         if(errores.length > 0){
             e.preventDefault();
             let erroresCampo = document.querySelector('div.errores ul');
@@ -129,9 +150,6 @@ window.addEventListener("load", function(){
                 erroresCampo.innerHTML += '<li>' + errores[i] + '</li>';
             };
         };
-        
-        
-        
     });
     
     

@@ -43,19 +43,24 @@ module.exports = {
             return res.redirect('/home');
         });
     },
-    editProduct: (req, res) => {
-        let product = db.Products.findByPk(req.params.id);
-        let category = db.Categories.findAll();
+    editProduct: async (req, res) => {
+        let product = await db.Products.findByPk(req.params.id);
+        let category = await db.Categories.findAll();
         
         Promise.all([product, category]).then(datos => {
             res.render('products/product_edit', {product:datos[0] , category:datos[1], errors : {}, body : {}});
-        })
+            console.log(product)
+
+        });
     },
-    updateProduct: (req, res) => {
+    updateProduct: async (req, res) => {
+        let product = await db.Products.findByPk(req.params.id);
+        let category = await db.Categories.findAll();
+       
         const errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.render('products/product_edit', {errors : errors.mapped(), body : req.body});
+            return res.render('products/product_edit', {product, category, errors : errors.mapped(), body : req.body});
         };            
 
             db.Products.update({

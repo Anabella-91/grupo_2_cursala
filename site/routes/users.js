@@ -27,6 +27,7 @@ const upload = multer({storage: storage});
 /* user registro . */
 router.get('/registro', controller.register);
 router.post('/registro', upload.single('imagen'),[
+    check('nombre', 'Debes completar tu nombre').notEmpty(),
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
         return db.Users.findOne({where :{email : value}}).then(user => {
@@ -35,6 +36,7 @@ router.post('/registro', upload.single('imagen'),[
             }
         })
     }),
+    check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).notEmpty().bail(),
 ], controller.registerUser);
 
 /* user login . */
