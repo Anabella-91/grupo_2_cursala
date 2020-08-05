@@ -68,7 +68,7 @@ router.get('/carrito', controller.carrito);
 router.post('/addcart', controller.agregarCarrito);
 
 /* User logout*/
-router.post('/logout', controller.logOut);
+router.post('/logout', guestMid, controller.logout);
 
 /*Rutas admnistrador*/
 router.get('/admin/administracion_home', controller.administracionHome);

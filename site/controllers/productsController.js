@@ -26,12 +26,11 @@ module.exports = {
         
         db.Products.create(product)
         .then(product => {
-            return res.redirect('/home');
+            return res.redirect('/admin/listado/productos');
         }).catch(function(error){
             console.error(error);
             return res.redirect('/products/create');
         });
-        
     },
     detailProduct: (req,res) => {  
         db.Products.findByPk(req.params.id, {
@@ -49,8 +48,6 @@ module.exports = {
         
         Promise.all([product, category]).then(datos => {
             res.render('products/product_edit', {product:datos[0] , category:datos[1], errors : {}, body : {}});
-            console.log(product)
-
         });
     },
     updateProduct: async (req, res) => {
@@ -74,7 +71,7 @@ module.exports = {
         }, {where : { id: req.params.id }});
 
     
-        return res.redirect('/home');
+        return res.redirect('/admin/listado/productos');
     
         
 },
@@ -84,7 +81,7 @@ deleteProduct: (req, res) => {
             id: req.params.id
         }
     });
-        return res.redirect('/home');
+        return res.redirect('/admin/listado/productos');
     
     }
 };

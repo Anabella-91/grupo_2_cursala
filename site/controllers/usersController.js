@@ -109,9 +109,7 @@ module.exports = {
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});
         let admin = await db.Users.findOne({where : {admin : true}})
-        
-        console.log(admin);
-        
+                
         if(user.email == admin.email){
             res.render('admin_home', {title: 'Cursala | administracion'});
         }else if (admin == null ){
@@ -119,7 +117,9 @@ module.exports = {
         };
         
     },
-    logOut: (req, res) => {
+    logout: (req, res) => {
+        let expires = new Date(Date.now() - 1 );
+        res.cookie('remember', '',  {expires: expires});
         
         let date = new Date(Date.now() - 100);
         req.session.cookie.expires = date;
@@ -127,7 +127,6 @@ module.exports = {
     
 
         res.redirect('/landing');
-        //res.cookies.set('testtoken', {expires: Date.now()});       
         
     },
     agregarCarrito: async (req, res) => {

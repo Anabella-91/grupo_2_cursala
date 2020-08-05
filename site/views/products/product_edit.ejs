@@ -17,7 +17,7 @@
                     <input type="text" name="nombre" value="<%= product.name %>">
                     <div style="color: red;"><%= errors.descripcion ? errors.descripcion.msg: '' %></div>
                     <label for="descripcion">Descripcion del curso</label><br>
-                    <textarea id="descripcion" name="descripcion" value="<%= product.descripcion %>"></textarea><br>
+                    <textarea id="descripcion" name="descripcion"><%= product.descripcion %></textarea><br>
                     
                     <label for="categories">Categoria</label>
                     <select name="categories" id="category">
@@ -48,13 +48,12 @@
                                 <div class="container-carga">
                                     <a href="/users/admin/administracion_home"><button id="submitb">Dashboard</button></a>
                                     <a href="/products/edit/<%= product.id %>"><button id="submitb" type="submit">EDITAR</button></a>
-                                    <form action="/products/delete/<%= product.id %>" method="POST">
-                                        <button id="submitb" type="submit">ELIMINAR</button>
-                                    </form>
                                 </div>
                             </div>
-                            
-                            
+                        </form>
+
+                        <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
+                            <button id="submitb" type="submit">ELIMINAR</button>
                         </form>
                         
                     </div>
