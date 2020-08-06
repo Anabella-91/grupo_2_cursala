@@ -61,10 +61,12 @@ module.exports = {
             res.locals.log = user;
             req.session.user = user;
             req.session.email = user.email;
+            req.session.id = user.id;
 
             if (req.body.remember != undefined){
                 res.cookie('remember', user, {maxAge: 60*60*24*30});
             }
+            
 
             return res.redirect('/users/perfil');
         
@@ -98,7 +100,19 @@ module.exports = {
         return res.redirect('/users/perfil');
     },
     carrito: (req,res) => {
-        res.render('carrito', { title: 'Cursala | Carrito'});
+        let usuario_id = req.session.user.id;
+        
+       db.Carrito.findAll({
+            where: {
+                id_user : usuario_id,
+            },
+            include:[{association:"usuario"}, {association:"curso"}]
+        })
+        .then(function(productos){
+
+            res.render('carrito', { title: 'Cursala | Carrito', productos:productos});
+        })
+
     },
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});

@@ -2,6 +2,8 @@ const productsData = require('./../models/Product');
 const {check, validationResult, body} = require('express-validator');
 const db = require('./../database/models');
 
+
+
 module.exports = {
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
@@ -81,5 +83,21 @@ deleteProduct: (req, res) => {
     });
         return res.redirect('/home');
     
+    },
+    agregarcarrito: function(req, res) {
+        db.Carrito.create({
+            id_user: req.session.user.id,
+            id_producto: req.params.id
+        });
+        res.redirect('/users/carrito');
+    },
+    eliminarproducto: function(req,res) {
+        db.Carrito.destroy({
+            where:{
+                id_user: req.session.user.id,
+                id_producto: req.body.producto_id
+            }
+        });
+        res.redirect('/users/carrito');
     }
 };

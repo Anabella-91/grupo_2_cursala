@@ -777,12 +777,14 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  position: absolute;
   bottom: 0;
   line-height: 0.1em;
 }
 .monto-total .total {
   font-size: 1.5em;
+}
+.none {
+  display: none;
 }
 .monto-total .cantidad-total {
   font-size: 2em;

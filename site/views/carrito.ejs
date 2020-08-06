@@ -7,45 +7,31 @@
     <div class="container b-gris">
         <div class="contenedor-comprados shadow1 border-r b-blanco">
             <h1 class="titulo-carrito c-azul">Productos</h1>
-            <ul class="detalle-comprado">
-                <li class="titulo-comprado b-rosa"><span class="curso-comprado">html</span></li>
+            <% for (let i = 0; i < productos.length; i++) { %>
+                <ul class="detalle-comprado">
+                <li class="titulo-comprado b-rosa"><span class="curso-comprado"><%= productos[i].curso.name %></span></li>
                 <div class="comprado-info">
-                <li class="categoria-compra c-celeste">Front end</li>
-                <li class="precio-compra">$1500</li>
+                <li class="categoria-compra c-celeste">Categoria</li>
+                <li class="precio-compra"><%= productos[i].curso.precio %></li>
                 </div>
                 <li>
-                    <form action="/users/eliminarProducto" method="POST">
+                    <form action="/products/eliminarproducto" method="POST">
                         <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
+                        <input class="none" type="number" value="<%= productos[i].id_producto %>" name="producto_id">
                     </form>
                 </li>
-            </ul>
-            <ul class="detalle-comprado">
-                <li class="titulo-comprado b-rosa"><span class="curso-comprado">CSS</span></li>
-                <div class="comprado-info">
-                <li class="categoria-compra c-celeste">Front end</li>
-                <li>$1800</li>
-                </div>
-                <li>
-                    <form action="/users/eliminarProducto" method="POST">
-                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
-                    </form>
-                </li>
-            </ul>
-            <ul class="detalle-comprado">
-                <li class="titulo-comprado b-rosa"><span class="curso-comprado">Photoshop</span></li>
-                <div class="comprado-info">
-                <li class="categoria-compra c-celeste">Diseño digital</li>
-                <li>$2500</li>
-                </div>
-                <li class="form-delete">
-                    <form action="/users/eliminarProducto" method="POST">
-                        <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
-                    </form>
-                </li>
-            </ul>
+                </ul>
+             <% } %>
+             
         <div class="monto-total">
         <p class="total c-ATransparente">Total</p>
-        <p class="cantidad-total c-azul">$5800</p>
+        <p class="cantidad-total c-azul">
+            <% let total = 0; %>
+            <% for(let j = 0; j < productos.length; j++) { %>
+                <% total = total + productos[j].curso.precio; %>
+            <% } %>
+            <%= total %>
+        </p>
         </div>
         </div>
     <div class="detalle-pago shadow1 b-blanco border-r">

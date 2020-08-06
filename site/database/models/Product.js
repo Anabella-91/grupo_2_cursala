@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define('Products', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true
+    },
     name: DataTypes.STRING(50),
     descripcion: DataTypes.TEXT,
     horas: DataTypes.STRING(50),
@@ -19,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'id_category'
     });
     Product.hasMany(models.Carrito, {
-      as: 'cart',
+      as: 'carrito',
       foreignKey: 'id_producto'
     });
   

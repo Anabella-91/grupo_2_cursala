@@ -38,9 +38,11 @@
                     <li class="flex-r"><img class="detalle-icon" src="/images/ejercicios.svg"><p>Ejercicios disponibles:<%= product.ejercicios %></p></li>
                     <li class="flex-r"><img class="detalle-icon" src="/images/download.svg"><p>Recursos descargables</p></li>
                     <li class="flex-r"><p class="costo c-azul">$<%=product.precio %></p></li>
-                    <li class="flex-r"><a id="btn-carrito" class="cart-button b-rosa c-blanco border-r" href="#" data-productoId="<%=product.id %>">+ Agregar al carrito</a></li>
                 </ul>
+                <form action="/products/agregarcarrito/<%=product.id%>" method="POST">
+                <button id="btn-carrito" class="cart-button b-rosa c-blanco border-r" type="submit">+ Agregar al carrito</button>
+                <form>
             </div>
-    <script src="/javascripts/carrito.js"></script>
+  <!--  <script src="/javascripts/carrito.js"></script> -->
     </div>
     </body>
