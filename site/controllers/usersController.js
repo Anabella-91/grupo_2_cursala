@@ -160,5 +160,12 @@ module.exports = {
     
 
         res.redirect('/landing');
+    },
+    agregarcarrito: function(req, res) {
+        db.Carrito.create({
+            id_user: req.session.user.id,
+            id_producto: req.params.id
+        });
+        res.redirect('/users/carrito');
     }
 }; 
