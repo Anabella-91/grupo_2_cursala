@@ -27,7 +27,6 @@ router.put('/edit/:id', [
 // Accion de borrado de producto 
 router.delete('/delete/:id', controller.deleteProduct);
 
-//Accion de agregar al carrito
 router.post('/agregarcarrito/:id', controller.agregarcarrito);
 
 //Accion de eliminar un producto del carrito

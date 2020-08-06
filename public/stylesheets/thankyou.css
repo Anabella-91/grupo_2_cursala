@@ -1,0 +1,110 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    background: linear-gradient(90deg, rgba(47,54,64,1) 23%, rgba(24,27,32,1) 100%);
+  }
+  .moon {
+    background: linear-gradient(90deg, rgba(208,208,208,1) 48%, rgba(145,145,145,1) 100%);
+    position: absolute;
+    top: -100px;
+    left: -300px;
+    width: 900px;
+    height: 900px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 30px -4px rgba(0,0,0,0.5)
+  }
+  .crater {
+    position: absolute;
+    border-radius: 100%;
+    opacity: 0.6;
+    background: linear-gradient(90deg, rgba(122,122,122,1) 38%, rgba(195,195,195,1) 100%);
+  }
+  .crater1 {
+    width: 60px;
+    height: 180px;
+    top: 250px;
+    left: 500px;
+  }
+  .crater2 {
+    width: 40px;
+    height: 80px;
+    top: 650px;
+    left: 340px;
+    transform: rotate(55deg);
+  }
+  .crater3 {
+    width: 65px;
+    height: 120px;
+    top: -20px;
+    left: 40px;
+    transform: rotate(55deg);
+  }
+  .star {
+    background: grey;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    opacity: 0.4;
+  }
+  .star1 {
+    top: 40%;
+    left: 50%;
+  }
+  .star2 {
+    top: 60%;
+    left: 90%;
+  }
+  .star3 {
+    top: 10%;
+    left: 70%;
+  }
+  .star4 {
+    top: 90%;
+    left: 40%;
+  }
+  .star5 {
+    top: 20%;
+    left: 30%;
+  }
+  .error {
+    position: absolute;
+    left: 50px;
+    top: 200px;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    color: #060d33;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .description {
+    opacity: 0.3s;
+   }
+  .button {
+    min-width: 7rem;
+    margin-top: 3rem;
+    margin-right: 0.5em;
+    padding: 0.5em 2em;
+    outline: none;
+    border: 2px solid #2f3640;
+    border-radius: 8em;
+    color: #576375;
+    cursor: pointer;
+    font-size: 0.75em;
+  }
+  .button:hover {
+    color: #21252c;
+  }
+  .button--active {
+    background-color: #459cd1;
+    border: 2px solid #459cd1;
+    color: white;
+  }
+  .button--active:hover {
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5s);
+    color: white;
+    background-color: #2f3640;
+    border: 2px solid #2f3640;
+
+  }

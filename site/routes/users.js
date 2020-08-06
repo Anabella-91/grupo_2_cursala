@@ -63,6 +63,9 @@ router.post('/perfil', upload.single('image'), controller.update);
 
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);
+router.post('/confirmation', (req, res) => {
+    res.render('thankyou');
+});
 
 /* User logout*/
 router.post('/logout', guestMid, controller.logout);
