@@ -22,11 +22,12 @@ const storage = multer.diskStorage({
     }, 
 });
 /* Constante para subir imagen en la ruta */
-const upload = multer({storage: storage});
+const upload = multer({storage});
 
 /* user registro . */
 router.get('/registro', controller.register);
 router.post('/registro', upload.single('imagen'),[
+    check('nombre', 'Debes completar tu nombre').notEmpty(),
     check('email', 'Email invalido').isEmail().custom(function(value){
         //validar en la base de datos que no exista
         return db.Users.findOne({where :{email : value}}).then(user => {
@@ -35,6 +36,7 @@ router.post('/registro', upload.single('imagen'),[
             }
         })
     }),
+    check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).notEmpty().bail(),
 ], controller.registerUser);
 
 /* user login . */
@@ -57,13 +59,13 @@ router.post('/login', guestMid, [
 router.get('/perfil', guestMid, controller.perfil);
 
 /* Edicion de usuarios */
-router.post('/perfil', controller.update);
+router.post('/perfil', upload.single('image'), controller.update);
 
 /*Rutas del carrito */
 router.get('/carrito', controller.carrito);
 
 /* User logout*/
-router.post('/logout', controller.logOut);
+router.post('/logout', guestMid, controller.logout);
 
 /*Rutas admnistrador*/
 router.get('/admin/administracion_home', controller.administracionHome);

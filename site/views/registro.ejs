@@ -9,19 +9,21 @@
           <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
         <h2 class="c-celeste">No tengo cuenta</h2>
-        <div class="errores"><ul></ul></div>
         <form class="registro" action="/users/registro" method="POST" enctype="multipart/form-data">
+          <div style="color: red;"><%= errors.nombre ? errors.nombre.msg: '' %></div>
           <input class="nombre" type="text" name="nombre" placeholder="Nombre">
 
-          <div><%= errors.email ? errors.email.msg: '' %></div>
+          <div style="color: red;"><%= errors.email ? errors.email.msg: '' %></div>
           <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
+          
+          <div style="color: red;" id="errores"><ul></ul></div>
 
+          <div style="color: red;"><%= errors.password ? errors.password.msg: '' %></div>
           <input class="contraseña" type="password" name="password" placeholder="Contraseña">
-
           <input class="contraseñaB" type="password" name="password2" placeholder="Confirma contraseña">
 
           <p class="c-ATransparente">Foto de perfil</p>
-          <div><%= errors.imagen ? errors.imagen.msg: '' %></div>
+          <div style="color: red;"><%= errors.imagen ? errors.imagen.msg: '' %></div>
           <input class="register-image c-ATransparente" type="file" name="imagen">
 
           <input type="submit" name="submit" class="submit register-button" value="REGISTRARME">
@@ -37,6 +39,5 @@
       </div>
     </div>
   </div>
-  <script src="/javascripts/registro.js" type="text/javascript"></script>
 </body>
 </html>

@@ -9,11 +9,11 @@
               <img src="/images/logo.png" alt="Logo-Cursala">
         </div>
             <h2 class="c-celeste">Bienvenid@!</h2>
-            <form action="/users/login" method="POST">
-              <input type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
-              <div><%= errors.email ? errors.email.msg : ''%></div>
-              <input type="password" name="password" placeholder="Contraseña">
-              <div><%= errors.password ? errors.password.msg : ''%></div>
+            <form id="login-form" action="/users/login" method="POST">
+              <input id="email-user" type="email" name="email" placeholder="Email" value="<%= body.email ? body.email : ''%>">
+              <div style="color: red;"><%= errors.email ? errors.email.msg : ''%></div>
+              <input id="password-user" type="password" name="password" placeholder="Contraseña">
+              <div style="color: red;"><%= errors.password ? errors.password.msg : ''%></div>
               <input type="checkbox" name="remember" id="remember" class="remember">
               <label class="c-ATransparente" for="remember">Recordame</label>
               <input type="submit" name="submit" class="submit ingresar" value="INGRESAR">

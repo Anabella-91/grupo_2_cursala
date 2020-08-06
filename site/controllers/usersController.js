@@ -15,20 +15,19 @@ module.exports = {
         
         if (!errors.isEmpty()) {
             return res.render('registro', {errors : errors.mapped(), body: req.body});
-        }
+        };
         
         let imagen = '';
         if (req.file) {
             imagen = req.file.filename;        
-        }
-        
-        
+        };
+
         let usuario = {
             name : req.body.nombre,
             email : req.body.email,
             password : bcryptjs.hashSync(req.body.password, 5),
             imagen :  imagen
-        } 
+        };
         
         db.Users.create(usuario).then(user => {
             //loginService.loginUser(req, res, user);
@@ -42,7 +41,6 @@ module.exports = {
             
             return res.redirect('/users/registro')
         });
-        
     },
     login: (req,res) => {
         res.render('login', {errors : {}, body : {}});
@@ -52,7 +50,7 @@ module.exports = {
         
         if(!errors.isEmpty()){
             return res.render('login', {errors : errors.mapped(), body : req.body});
-        }
+        };
         
         // login user
         db.Users.findOne({where : {email : req.body.email}})
@@ -65,8 +63,12 @@ module.exports = {
 
             if (req.body.remember != undefined){
                 res.cookie('remember', user, {maxAge: 60*60*24*30});
+<<<<<<< HEAD
             }
             
+=======
+            };
+>>>>>>> f2a4f5fa6185c6c481e221846b700fa6c62ce3d3
 
             return res.redirect('/users/perfil');
         
@@ -84,20 +86,33 @@ module.exports = {
         });
     },
     update: (req, res) => {
-        let usuario = {
-            id: res.locals.log.id,
-            name: req.body.nombre,
-            email: req.body.email
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.render('profile', {errors : errors.mapped(), body: req.body});
+        };
+
+        
+        if(req.file){
+            req.session.user.imagen = req.file.filename;
         };
         
-        db.Users.update(usuario, {
-            where: {id: req.params.id}
+        let user = {
+            id: req.session.user.id,
+            name: req.session.user.name,
+            email: req.session.user.email,
+            imagen: req.session.user.imagen
+        };
+
+        db.Users.update(user, {
+            where: {id: req.session.user.id}
         });
         
-        res.locals.log = usuario;
-        req.session.user = usuario;
-        
+        res.locals.log = user;
+        req.session.user = user;
+
         return res.redirect('/users/perfil');
+        
     },
     carrito: (req,res) => {
         let usuario_id = req.session.user.id;
@@ -117,9 +132,7 @@ module.exports = {
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});
         let admin = await db.Users.findOne({where : {admin : true}})
-        
-        console.log(admin);
-        
+                
         if(user.email == admin.email){
             res.render('admin_home', {title: 'Cursala | administracion'});
         }else if (admin == null ){
@@ -127,15 +140,16 @@ module.exports = {
         };
         
     },
-    logOut: (req, res) => {
-        console.log(req.session.user);
-        if(req.session.user){
-            req.session=null;
-            res.clearCookie('remember');
-        };
+    logout: (req, res) => {
+        let expires = new Date(Date.now() - 1 );
+        res.cookie('remember', '',  {expires: expires});
+        
+        let date = new Date(Date.now() - 100);
+        req.session.cookie.expires = date;
+        req.session.cookie.maxAge = -100;
+    
 
         res.redirect('/landing');
-        //res.cookies.set('testtoken', {expires: Date.now()});       
         
     },
     agregarCarrito: async (req, res) => {

@@ -11,12 +11,15 @@
                     <h1>Hola <%= user.name %>!</h1>
                 <p class="campo-perfil">Nombre:</p><p class="dato-usuario"><%= user.name %></p>
                 <p class="campo-perfil">Email:</p><p class="dato-usuario"><%= user.email %></p>
-                <img src="<%= '/images/users/' + user.imagen %>" alt="imagen-perfil">
+                <img id="img-preview" src="<%= '/images/users/' + user.imagen %>" alt="imagen-perfil">
+                <div>
+                    <form action="/users/perfil" method="POST" enctype="multipart/form-data">
+                        <input id="img-upload" type="file" class="register-image c-ATransparente" name="image">
+                        <button class="boton-editar border-r">Guardar</button>
+                    </form>
+                </div>
                 <div class="boton-editar border-r">
-                    <a href="/landing" onclick="document.getElementById('form-log-out').submit();">
-                    <p>Cerrar sesion</p> 
-                    </a>
-                    <form action="/logOut" method="POST" id="form-log-out" style="display: none;"></form>
+                    <a href="/users/logout"><p>Cerrar sesion</p></a>
                 </div>
                 </div>
             
