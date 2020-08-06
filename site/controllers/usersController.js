@@ -63,12 +63,7 @@ module.exports = {
 
             if (req.body.remember != undefined){
                 res.cookie('remember', user, {maxAge: 60*60*24*30});
-<<<<<<< HEAD
-            }
-            
-=======
             };
->>>>>>> f2a4f5fa6185c6c481e221846b700fa6c62ce3d3
 
             return res.redirect('/users/perfil');
         
@@ -126,8 +121,23 @@ module.exports = {
         .then(function(productos){
 
             res.render('carrito', { title: 'Cursala | Carrito', productos:productos});
-        })
+        });
 
+    },
+    confirmation: (req, res) => {
+        /*
+        let amount = 2500
+
+            stripe.customers.create({
+                email: req.body.stripeEmail,
+                source: req.body.stripeToken
+            }).then(customer => stripe.charges.create({
+                amount,
+                description: 'Cursala',
+                currency: 'usd',
+                customer: customer.id
+              })).then(charge => res.render('success'));   
+              */
     },
     administracionHome: async (req, res) => {
         let user = await db.Users.findOne({email: req.body.email});
@@ -150,29 +160,5 @@ module.exports = {
     
 
         res.redirect('/landing');
-        
-    },
-    agregarCarrito: async (req, res) => {
-        const customer = await stripe.customers.create({
-            email: req.body.stripeEmail,
-            source: req.body.stripeToken
-        })
-        const charge = await stripe.charges.create({
-            amount: '3000',
-            currency: 'usd',
-            customer: customer.id,
-            description: 'Baby Yoda'
-        })
-        console.log(charge.id);
-        res.send('Recibido');
-        
-        
-        /*
-        db.Carrito.create({
-            id_user: req.body.user_id,
-            id_producto: req.body.product_id
-        })
-        return res.json;
-        */
     }
 }; 
