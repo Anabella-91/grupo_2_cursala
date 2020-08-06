@@ -946,9 +946,10 @@ body {
   .container-administration img {
     width: 32px;
   }
-  .container-administration a p {
+  .container-administration p {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4em;
+    text-align: center;
   }
   /* VISTA ADMIN DE MENSAJES */
     .j-c {
@@ -1105,6 +1106,12 @@ body {
     .ingresar-container {
       width: 726px;
     }
+    /*PANEL DE ADMINISTRACION */
+    .admin-home {
+      width: 80vw;
+    }
+    .container-administration {
+      width: 35vw;
    } 
 @media (max-width: 768px) {
   /* LANDING */
@@ -1213,6 +1220,15 @@ body {
   /* LOG IN */
   .register .ingresar {
     margin: 10px 0 10px 12%;
+  }
+  /* PANEL ADMINISTRACION */
+  .admin-home {
+    width: 90vw;
+  }
+  .container-administration {
+    width: 42vw;
+    height: 25vh;
+    margin-bottom: 2em;
   }
 }
 @media (max-width: 425px) {
@@ -1487,6 +1503,18 @@ body {
   }
   .container-logRegister .register .ingresar {
     margin: 10px 0 10px 18%;
+  }
+  /* PANEL DE ADMINISTRACION */
+  .welcome-administration {
+    text-align: center;
+  }
+  .admin-home {
+    width: 95vw;
+  }
+  .container-administration {
+    height: 20vh;
+    width: 90vw;
+    margin-bottom: 2em;
   }
 }
 @media (max-width: 320px) {

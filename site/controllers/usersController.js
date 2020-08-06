@@ -63,12 +63,7 @@ module.exports = {
 
             if (req.body.remember != undefined){
                 res.cookie('remember', user, {maxAge: 60*60*24*30});
-<<<<<<< HEAD
-            }
-            
-=======
             };
->>>>>>> f2a4f5fa6185c6c481e221846b700fa6c62ce3d3
 
             return res.redirect('/users/perfil');
         
