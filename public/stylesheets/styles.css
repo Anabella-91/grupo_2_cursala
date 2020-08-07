@@ -888,6 +888,7 @@ body {
 }
 .boton-editar:hover p{
   color: #fff;
+  cursor: pointer;
 }
 .boton-editar a {
   color:#459cd1;
