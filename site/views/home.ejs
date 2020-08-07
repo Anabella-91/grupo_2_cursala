@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-        <%- include('./partials/head'); %>
-    <body>
-        <div class="container b-gris">
-            <% if(locals.log){ %>
+<%- include('./partials/head'); %>
+<body>
+    <div class="container b-gris">
+        <% if(locals.log){ %>
             <%- include('./partials/header'); %>
             <% } %>
             <div class="search-box">
@@ -12,55 +12,62 @@
             </div>
             <div class="cuerpo-central">
                 <main>
-                <h2 id="resultado" class="contenedor-curso b-blanco c-ATransparente">Resultados de la busqueda...</h2>
-                
-                <% for (let j = 0; j < categorias.length; j++) { %>
-                    <div class="contenedor-curso b-blanco">
-                        <h2 class="titulo-curso b-blanco"><%=categorias[j].name%></h2>
-                     <div class="todos-cursos">
-                    <% for (let curso of categorias[j].products) { %>
-                            <div class="curso b-rosa">
-                            <a href="/products/<%=curso.id%>"><%=curso.name%></a>
-                        </div>
-                    <% } %>
-                    </div>
-                    </div>
-                    <% } %>
+                    <h2 id="resultado" class="contenedor-curso b-blanco c-ATransparente">Resultados de la busqueda...</h2>
                     
-                    <!--Paginas-->
-                    <div class="pagination">
-                        <a class="b-blanco" href="#">&laquo;</a>
-                        <a class="b-blanco" href="#">1</a>
-                        <a class="b-blanco" href="#">2</a>
-                        <a class="b-blanco" href="#">3</a>
-                        <a class="b-blanco" href="#">4</a>
-                        <a class="b-blanco" href="#">5</a>
-                        <a class="b-blanco" href="#">6</a>
-                        <a class="b-blanco" href="#">&raquo;</a>
-                    </div>
-
-                </main>
-            </div>
-            <div class="detalles shadow1 b-blanco">
-            <div class="detalle-default">
-                <p class="c-ATransparente">Selecciona un curso para visualizar toda la informacion :)</p>
-                <img class="ilustracion-detalle" src="/images/ilustracion-detalle.svg">
-            </div>
-            <div class="elegido-html">
-                <h2 class="elegido-titulo">HTML</h2>
-                <p class="elegido-descripcion">HTML (HyperText Markup Language) es el primer lenguaje que una persona debe conocer si desea comenzar a realizar páginas web. </p>
-            <div class="resumen-detalle">
-                <img class="icono-detalle" src="/images/icono-reloj.png">
-                <p class="resumen-curso">10hs de video disponibles</p> 
-                <img class="icono-detalle" src="/images/icono-lapiz.png" alt="icono lapiz">
-                <p class="resumen-curso">15 workbook de apuntes</p> 
-                <img class="icono-detalle" src="/images/icono-ejercicios.png" alt="icono ejercicios">
-                <p class="resumen-curso">20 ejercicios</p>
-                <p class="precio">$850</p>
-            </div>
-            </div>
-            </div>
-        </div>
-        <%- include('./partials/contacto'); %>
-    </body>
-</html>
+                    <% for (let j = 0; j < categorias.length; j++) { %>
+                        <div class="contenedor-curso b-blanco">
+                            <h2 class="titulo-curso b-blanco"><%=categorias[j].name%></h2>
+                            <div class="todos-cursos">
+                                <% for (let curso of categorias[j].products) { %>
+                                    <div class="curso b-rosa">
+                                        <a href="/products/<%=curso.id%>"><%=curso.name%></a>
+                                        <div class="contentBx">
+                                            <h2 class="price">$<%=curso.precio%></h2>
+                                            <a href="/products/<%=curso.id%>" class="buy">Ver mas</a>
+                                        </div>
+                                
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <% } %>
+                                                                        
+                                            
+                                            <!--Paginas-->
+                                            <div class="pagination">
+                                                <a class="b-blanco" href="#">&laquo;</a>
+                                                <a class="b-blanco" href="#">1</a>
+                                                <a class="b-blanco" href="#">2</a>
+                                                <a class="b-blanco" href="#">3</a>
+                                                <a class="b-blanco" href="#">4</a>
+                                                <a class="b-blanco" href="#">5</a>
+                                                <a class="b-blanco" href="#">6</a>
+                                                <a class="b-blanco" href="#">&raquo;</a>
+                                            </div>
+                                            
+                                        </main>
+                                        
+                                    </div>
+                                    <div class="detalles shadow1 b-blanco">
+                                        <div class="detalle-default">
+                                            <p class="c-ATransparente">Selecciona un curso para visualizar toda la informacion :)</p>
+                                            <img class="ilustracion-detalle" src="/images/ilustracion-detalle.svg">
+                                        </div>
+                                        <div class="elegido-html">
+                                            <h2 class="elegido-titulo">HTML</h2>
+                                            <p class="elegido-descripcion">HTML (HyperText Markup Language) es el primer lenguaje que una persona debe conocer si desea comenzar a realizar páginas web. </p>
+                                            <div class="resumen-detalle">
+                                                <img class="icono-detalle" src="/images/icono-reloj.png">
+                                                <p class="resumen-curso">10hs de video disponibles</p> 
+                                                <img class="icono-detalle" src="/images/icono-lapiz.png" alt="icono lapiz">
+                                                <p class="resumen-curso">15 workbook de apuntes</p> 
+                                                <img class="icono-detalle" src="/images/icono-ejercicios.png" alt="icono ejercicios">
+                                                <p class="resumen-curso">20 ejercicios</p>
+                                                <p class="precio">$850</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%- include('./partials/contacto'); %>
+                            </body>
+                            </html>
