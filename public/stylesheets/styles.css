@@ -27,6 +27,8 @@ body {
 }
 .b-gris {
   background-color: #f8f9fc;
+}
+.c-size {
   height: 100%;
 }
 .b-azul {
@@ -356,18 +358,27 @@ body {
   position: absolute;
   width: 85vw;
 }
+#menu-navegacion {
+  display: flex;
+  flex-direction: row;
+}
 #boton-menu {
-  width: 50px;
-  height: 20px;
+  width: 80px;
+  height: 40px;
   border-radius: 0 50% / 0 100%;
   background-color: #459cd1;
   border-right: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1.5em ;
+  margin-top: 1em;
+}
+#boton-menu:focus {
+  outline: none;
 }
 .icono-menu {
-  width: 80%;
+  width: 40%;
 }
 .menu ul{ 
   display: flex;
@@ -1027,12 +1038,18 @@ body {
     padding: 0px 0px;
     margin: 0px 0px;
   }
+  .menu li {
+    padding: 0.5em 1.2em;
+    margin-top: 0.4em;
+  }
   .navegacion li a {
-    font-size: 1.1em;
+    font-size: 1em;
   }
   #boton-menu {
-    width: 30px;
-    height: 15px;
+    width: 100px;
+    height: 40px;
+    margin-top: 1em;
+    margin-left: 0.5em;
   }
   #boton-menu .icono-menu {
     width: 20px;
@@ -1148,7 +1165,10 @@ body {
     margin-top: 0.5em;
   }
   .navegacion ul li {
-    padding: 0.8em 0.5em;
+    padding: 0.4em 0.2em;
+  }
+  .navegacion ul li a {
+    font-size: 1em;
   }
   #boton-menu .icono-menu {
     width: 20px;
@@ -1289,9 +1309,10 @@ body {
   .navegacion {
     width: 50vw;
   }
-  #boton.menu {
-    width: 3em;
-    height: 4em;
+  #boton-menu {
+    width: 80px;
+    height: 40px;
+    margin-top: 0;
   }
   .menu ul {
     flex-direction: column;
@@ -1299,6 +1320,9 @@ body {
   .menu ul li {
     border-left: none;
     border-bottom: 1px solid #0e1856;
+  }
+  .liMenu {
+    margin-left: 2em;
   }
   .cuerpo-central {
     width: 95%;
@@ -1329,9 +1353,6 @@ body {
   /* CARRITO */
   .form-pago {
     margin: 0 0.5em 0 0.5em;
-  }
-  .navegacion {
-    display: none;
   }
   .container {
     height: 150vh;
