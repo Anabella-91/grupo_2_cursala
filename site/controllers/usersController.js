@@ -159,7 +159,7 @@ module.exports = {
         req.session.cookie.maxAge = -100;
     
 
-        res.redirect('/landing');
+        res.redirect('/');
     },
     agregarcarrito: function(req, res) {
         db.Carrito.create({
