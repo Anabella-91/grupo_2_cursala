@@ -16,7 +16,7 @@ module.exports = {
         if (!errors.isEmpty()){
             let categories = await db.Categories.findAll();
             return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories, errors : errors.mapped(), body : req.body});
-        };            
+        };
         
         let product = {
             name : req.body.nombre,
