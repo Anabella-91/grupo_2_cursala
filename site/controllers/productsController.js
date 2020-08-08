@@ -14,7 +14,7 @@ module.exports = {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.render('products/product_carga', {errors : errors.mapped(), body : req.body});
+            return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', errors : errors.mapped(), body : req.body});
         };            
         
         let product = {
@@ -38,7 +38,7 @@ module.exports = {
         db.Products.findByPk(req.params.id, {
             include: ['category']
         }).then(product => {
-            return res.render('products/detalle', {product});
+            return res.render('products/detalle', {title: 'Cursala| detalle', product});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');
@@ -49,7 +49,7 @@ module.exports = {
         let category = await db.Categories.findAll();
         
         Promise.all([product, category]).then(datos => {
-            res.render('products/product_edit', {product:datos[0] , category:datos[1], errors : {}, body : {}});
+            res.render('products/product_edit', {title: 'Cursala | Edicion', product:datos[0] , category:datos[1], errors : {}, body : {}});
         });
     },
     updateProduct: async (req, res) => {
@@ -59,7 +59,7 @@ module.exports = {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.render('products/product_edit', {product, category, errors : errors.mapped(), body : req.body});
+            return res.render('products/product_edit', {title: 'Cursala | Edicion', product, category, errors : errors.mapped(), body : req.body});
         };            
 
             db.Products.update({
