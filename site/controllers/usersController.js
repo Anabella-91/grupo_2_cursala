@@ -8,13 +8,13 @@ const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh
 
 module.exports = {
     register: (req,res) => {
-        res.render('registro', {errors : {}, body : {}});
+        res.render('registro', {title: 'Cursala | Registro', errors : {}, body : {}});
     },
     registerUser: (req, res) => { 
         const errors = validationResult(req);
         
         if (!errors.isEmpty()) {
-            return res.render('registro', {errors : errors.mapped(), body: req.body});
+            return res.render('registro', {title: 'Cursala | Registro', errors : errors.mapped(), body: req.body});
         };
         
         let imagen = '';
@@ -43,13 +43,13 @@ module.exports = {
         });
     },
     login: (req,res) => {
-        res.render('login', {errors : {}, body : {}});
+        res.render('login', {title: 'Cursala | login', errors : {}, body : {}});
     },
     processLogin: (req, res) => {
         let errors = validationResult(req);
         
         if(!errors.isEmpty()){
-            return res.render('login', {errors : errors.mapped(), body : req.body});
+            return res.render('login', {title: 'Cursala | login', errors : errors.mapped(), body : req.body});
         };
         
         // login user
@@ -69,12 +69,12 @@ module.exports = {
         
         }).catch((error) => {
             console.error(error);
-            return res.render('login');
+            return res.render('login', {title: 'Cursala | login'});
         });
     },
     perfil: (req, res) => {
         db.Users.findByPk(req.session.user.id).then(user => {
-            return res.render('profile', {user});
+            return res.render('profile', {title: 'Cursala | Perfil', user});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');
@@ -84,7 +84,7 @@ module.exports = {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res.render('profile', {errors : errors.mapped(), body: req.body});
+            return res.render('profile', {title: 'Cursala | Perfil', errors : errors.mapped(), body: req.body});
         };
 
         
