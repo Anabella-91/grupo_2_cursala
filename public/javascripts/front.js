@@ -31,13 +31,15 @@ window.addEventListener("load", function(){
     boton.addEventListener('click', list);
     
     let list = () => {
+        console.log(busqueda.value);
+
         return axios({
             method: 'GET',
             url: '/api/products/list'
         }).then(cursos => {
             const texto = busqueda.value.toLowerCase();
             resultado.innerHTML = '';
-            
+
             for(let i=0; i< cursos.data.data.length; i++){
                 let nombre = cursos.data.data[i].name.toLowerCase();
                 
