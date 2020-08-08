@@ -928,6 +928,7 @@ body {
   width: 55vw;
   height: 70vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 7em;
@@ -935,41 +936,38 @@ body {
 .user-image {
   position: relative;
 }
-.profile-picture {
-  border-radius: 10px;
-  width: 280px;
+.profile-img {
+  width: 20vw;
+  height: 40vh;
   margin-right: 2em;
-}
-.user-data {
-  width: 20vw;
-  height: 45vh;
-}
-.user-data img{
-  width: 20vw;
-  height: 30vh;
-}
-.user-data p{
-  display: inline;
+  border-radius: 10px;
 }
 .campo-perfil {
   width: 50%;
   color: #0e1856;
   text-transform: uppercase;
 }
+.user-data {
+  width: 20vw;
+  height: 40vh;
+}
+.user-data h1 {
+  margin: 0 0;
+}
 .dato-usuario {
   color: rgba(13, 24, 88, 0.6);
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   line-height: 0.3em;
-  margin-bottom: 3.2em;
 }
-.icono-camara, .icono-lapiz {
-  width: 20px;
-  position: absolute;
-  top: 2%;
-  left: 2%;
+.user-data form input {
+  margin: 1em 0;
+  background-color: none;
 }
 .boton-editar {
   border: 1px solid #459cd1;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.3em 0;
 }
 .boton-editar:hover {
   background-color: #459cd1;
@@ -977,15 +975,6 @@ body {
 .boton-editar:hover p{
   color: #fff;
   cursor: pointer;
-}
-.boton-editar a {
-  color:#459cd1;
-  text-align: center;
-}
-.boton-editar p {
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  padding: 0.5em 0.2em;
 }
 /*HOME ADMINISTRACION */
   .contenedor {
@@ -1185,13 +1174,20 @@ body {
     .profile-contenedor {
       width: 70vw;
     }
+    .profile-img {
+      width: 30vw;
+      height: 50vh;
+    }
     .user-data {
       width: 28vw;
       height: 51vh; 
     }
     .dato-usuario {
       font-size: 1.1em;
-      margin-bottom: 2.6em;
+      margin-bottom: 1em;
+    }
+    .user-data form input {
+      margin: 1.5em 0;
     }
     /*REGISTRARSE */
     .register .register-button {
@@ -1300,11 +1296,18 @@ body {
   }
   /* VISTA PERFIL */
   .profile-contenedor {
-    width: 85vw;
+    width: 90vw;
   }
   .user-data {
     width: 38vw;
   }
+  .profile-img {
+    width: 35vw;
+    height: 45vh;
+}
+.dato-usuario {
+  margin-bottom: 0.5em;
+}
   /* REGISTRO */
   .register-container {
     width: 700px;
@@ -1470,12 +1473,12 @@ body {
     margin-top: 3em;
     flex-direction: column;
   }
-  .profile-picture {
-    width: 200px;
-    margin-right: 0;
-  }
+  .profile-img {
+    width: 50vw;
+    height: 35vh;
+}
   .user-data {
-    width: 45vw;
+    width: 60vw;
   }
   /* REGISTRO */
   .container-formRegister {
@@ -1578,7 +1581,10 @@ body {
 }
   /*Vista perfil */
   .user-data {
-    width: 52vw;
+    width: 65vw;
+  }
+  .profile-img {
+    width: 55vw;
   }
   /* REGISTER */
   .register-container {

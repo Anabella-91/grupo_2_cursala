@@ -61,8 +61,9 @@ module.exports = {
             req.session.email = user.email;
             req.session.id = user.id;
 
-            if (req.body.remember != undefined){
-                res.cookie('remember', user, {maxAge: 60*60*24*30});
+            if (req.body.remember){
+                let expires = new Date(Date.now() + 1000*60*60*24*90);
+                res.cookie('remember', user, {expires});
             };
 
             return res.redirect('/users/perfil');
@@ -127,7 +128,6 @@ module.exports = {
     confirmation: (req, res) => {
         /*
         let amount = 2500
-
             stripe.customers.create({
                 email: req.body.stripeEmail,
                 source: req.body.stripeToken

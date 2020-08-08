@@ -8,13 +8,14 @@ module.exports = {
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
         
-        return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories:categories, errors : {}, body : {}});
+        return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories, errors : {}, body : {}});
     },
-    saveProduct: (req, res) => {
+    saveProduct: async (req, res) => {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', errors : errors.mapped(), body : req.body});
+            let categories = await db.Categories.findAll();
+            return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories, errors : errors.mapped(), body : req.body});
         };            
         
         let product = {
@@ -26,7 +27,7 @@ module.exports = {
             id_category : req.body.categories,
         };
         
-        db.Products.create(product)
+        await db.Products.create(product)
         .then(product => {
             return res.redirect('/admin/listado/productos');
         }).catch(function(error){
