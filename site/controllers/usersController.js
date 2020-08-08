@@ -128,7 +128,6 @@ module.exports = {
     confirmation: (req, res) => {
         /*
         let amount = 2500
-
             stripe.customers.create({
                 email: req.body.stripeEmail,
                 source: req.body.stripeToken

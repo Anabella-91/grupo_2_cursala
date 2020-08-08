@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<title><%= title %></title>
 <%- include('../partials/head'); %>
 <body>  
   <%- include('../partials/header'); %>
@@ -18,7 +17,7 @@
           <div style="color: red;"><%= errors.descripcion ? errors.descripcion.msg: '' %></div>
           <label for="descripcion">Descripcion del curso</label><br>
           <textarea placeholder="Acerca de este curso..."name="descripcion" id="descripcion" cols="100" rows="8"></textarea><br>
-          
+     
           <label for="categories">Categoria del curso</label>
           <select class="b-gris c-azul" name="categories" id="category">
             <option value="">Elige una</option><br>
