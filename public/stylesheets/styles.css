@@ -778,6 +778,9 @@ body {
 }
 #closeContacto {
   font-size: 3em;
+  position: absolute;
+  right: 0.5em;
+  cursor: pointer;
 }
 .modal-contacto {
   z-index: 140;
@@ -791,6 +794,7 @@ body {
   border-radius: 10px;
   padding: 1em 5em;
   z-index: 80;
+  position: relative;
   }
 .style-contacto {
   padding: 0.6em 2em;
@@ -1530,6 +1534,22 @@ body {
   }
   .register .ingresar {
     margin: 10px 0 10px 9%;
+  }
+  /* FORMULARIO DE CONTACTO*/
+  .form-contacto {
+    width: 65vw;
+  }
+  .form-contacto input {
+    width: 250px;
+  }
+  .form-contacto select {
+    width: 306px;
+  }
+  .form-contacto textarea {
+    width: 60vw;
+  }
+  .boton-volver {
+    width: 74vw;
   }
 }
 @media (max-width: 375px) {
