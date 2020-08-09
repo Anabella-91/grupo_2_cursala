@@ -2,7 +2,7 @@
     <html>
          <%- include('../partials/head'); %>
     <body>
-    <div class="container b-gris">
+    <div class="container b-gris container-mq">
         <%- include('../partials/header'); %>
             <div class="detalle-titulo shadow1 b-blanco">
                 <div class="header-detalle">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         <div class="container-rutas">
-            <h3 class="titulo2">Contenidos del curso</h3>
+            <h3 class="titulo2">Acerca de este curso</h3>
                 <div class="ruta-aprendizaje shadow1 b-blanco">
                     <ul class="rutas">
                         <li class="flex-r"><p class="detail-description"><%= product.descripcion %></p></li>
@@ -20,7 +20,6 @@
         </div>
             <div class="detalle-resumen b-blanco shadow1 border-r">
                 <ul>
-                    <li class="flex-r"><p class="detail-description"><%= product.descripcion %></p></li>
                         <p class="incluye c-azul">Este curso incluye: </p>
                     <li class="flex-r"><img class="detalle-icon" src="/images/reloj.svg"><p>Horas de video: <%= product.horas %></p></li>
                     <li class="flex-r"><img class="detalle-icon" src="/images/marketing.svg"><p>Categoria: <%= product.category.name %></p></li>
@@ -28,10 +27,9 @@
                     <li class="flex-r"><img class="detalle-icon" src="/images/download.svg"><p>Recursos descargables</p></li>
                     <li class="flex-r"><p class="costo c-azul">$<%=product.precio %></p></li>
                 </ul>
-                <form action="/products/agregarcarrito/<%=product.id%>" method="POST">
+                <form class="flex-r justify-c" action="/products/agregarcarrito/<%=product.id%>" method="POST">
                 <button id="btn-carrito" class="cart-button b-rosa c-blanco border-r" type="submit">+ Agregar al carrito</button>
                 <form>
             </div>
-  <!--  <script src="/javascripts/carrito.js"></script> -->
     </div>
     </body>
