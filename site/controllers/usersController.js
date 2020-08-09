@@ -113,15 +113,17 @@ module.exports = {
     carrito: (req,res) => {
         let usuario_id = req.session.user.id;
         
-       db.Carrito.findAll({
+      let productos = db.Carrito.findAll({
             where: {
                 id_user : usuario_id,
             },
             include:[{association:"usuario"}, {association:"curso"}]
         })
-        .then(function(productos){
+       let categorias = db.Categories.findAll()
+       Promise.all([productos, categorias])
+        .then(function([productos, categorias]){
 
-            res.render('carrito', { title: 'Cursala | Carrito', productos:productos});
+            res.render('carrito', { title: 'Cursala | Carrito', productos:productos, categorias:categorias});
         });
 
     },

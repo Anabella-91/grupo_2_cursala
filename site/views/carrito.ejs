@@ -11,7 +11,15 @@
                 <ul class="detalle-comprado">
                 <li class="titulo-comprado b-rosa"><span class="curso-comprado"><%= productos[i].curso.name %></span></li>
                 <div class="comprado-info">
-                <li class="categoria-compra c-celeste">Categoria</li>
+                <li class="categoria-compra c-celeste">
+                    <% let categoriaCarrito = productos[i].curso.id_category %>
+                    <% for (let i = 0; i < categorias.length; i++) { %>
+                        <% if(categorias[i].id == categoriaCarrito) { %>
+                    <%= categorias[i].name %>
+                        <% } %>
+                    <% } %>
+        
+                </li>
                 <li class="precio-compra"><%= productos[i].curso.precio %></li>
                 </div>
                 <li>
