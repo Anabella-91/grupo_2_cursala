@@ -39,7 +39,7 @@ module.exports = {
         db.Products.findByPk(req.params.id, {
             include: ['category']
         }).then(product => {
-            return res.render('products/detalle', {title: 'Cursala| detalle', product});
+            return res.render('products/detalle', {title: 'Cursala | detalle', product});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/home');

@@ -1613,9 +1613,13 @@ body {
   .media-nav .line-li{
     display: none;
   }
+  .social-media {
+    position: absolute;
+  }
   .media-nav .social-media {
     flex-direction: row;
-    bottom: 2%;
+    right: 3%;
+    bottom: 4%;
   }
   .landing-cursoInfo .titulo-landing {
     display: none;
@@ -1693,6 +1697,7 @@ body {
     width: 90vw;
     margin-bottom: 2em;
   }
+  
 }
 @media (max-width: 320px) {
 /*landing */
