@@ -1,16 +1,15 @@
 const { check, validationResult, body} = require('express-validator');
-const bcryptjs = require("bcryptjs");
-const loginService = require('../services/loginService');
+const bcrypt = require('bcrypt');
 const db = require('../database/models');
 const stripe = require('stripe')('sk_test_51HA5JWAQkSZ0OTSU01RFJ2msoHaMMm8JcEWdh2M5jIaAZeuqHoJ8CGeioawXXAPu2yIv0HVo50qhSe2DwHDsMXXF00jsEEDzk7');
 
 
 
 module.exports = {
-    register: (req,res) => {
+    registerUser: (req,res) => {
         res.render('registro', {title: 'Cursala | Registro', errors : {}, body : {}});
     },
-    registerUser: (req, res) => { 
+    saveUser: (req, res) => { 
         const errors = validationResult(req);
         
         if (!errors.isEmpty()) {
@@ -25,7 +24,7 @@ module.exports = {
         let usuario = {
             name : req.body.nombre,
             email : req.body.email,
-            password : bcryptjs.hashSync(req.body.password, 5),
+            password : bcrypt.hashSync(req.body.password, 5),
             imagen :  imagen
         };
         
@@ -45,7 +44,7 @@ module.exports = {
     login: (req,res) => {
         res.render('login', {title: 'Cursala | login', errors : {}, body : {}});
     },
-    processLogin: (req, res) => {
+    postLogin: (req, res) => {
         let errors = validationResult(req);
         
         if(!errors.isEmpty()){
@@ -70,10 +69,10 @@ module.exports = {
         
         }).catch((error) => {
             console.error(error);
-            return res.render('login', {title: 'Cursala | login'});
+            return res.render('login', {title: 'Cursala | login', error});
         });
     },
-    perfil: (req, res) => {
+    profile: (req, res) => {
         db.Users.findByPk(req.session.user.id).then(user => {
             return res.render('profile', {title: 'Cursala | Perfil', user});
         }).catch(function(error){
@@ -81,7 +80,7 @@ module.exports = {
             return res.redirect('/home');
         });
     },
-    update: (req, res) => {
+    updateProfile: (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -127,6 +126,13 @@ module.exports = {
         });
 
     },
+    agregarcarrito: function(req, res) {
+        db.Carrito.create({
+            id_user: req.session.user.id,
+            id_producto: req.params.id
+        });
+        res.redirect('/users/carrito');
+    },
     confirmation: (req, res) => {
         /*
         let amount = 2500
@@ -162,12 +168,5 @@ module.exports = {
     
 
         res.redirect('/');
-    },
-    agregarcarrito: function(req, res) {
-        db.Carrito.create({
-            id_user: req.session.user.id,
-            id_producto: req.params.id
-        });
-        res.redirect('/users/carrito');
     }
 }; 

@@ -1,13 +1,9 @@
-const productsData = require('./../models/Product');
-const {check, validationResult, body} = require('express-validator');
+const { validationResult } = require('express-validator');
 const db = require('./../database/models');
-
-
 
 module.exports = {
     createProduct: async (req,res) => {
         let categories = await db.Categories.findAll();
-        
         return res.render('products/product_carga', {title: 'Cursala - Carga de Producto', categories, errors : {}, body : {}});
     },
     saveProduct: async (req, res) => {
@@ -29,7 +25,7 @@ module.exports = {
         
         await db.Products.create(product)
         .then(product => {
-            return res.redirect('/admin/listado/productos');
+            return res.redirect('/admin/listado/productos', {product});
         }).catch(function(error){
             console.error(error);
             return res.redirect('/products/create');
@@ -78,7 +74,7 @@ module.exports = {
     
         
 },
-deleteProduct: (req, res) => {
+    deleteProduct: (req, res) => {
     db.Products.destroy({
         where: {
             id: req.params.id
@@ -87,14 +83,14 @@ deleteProduct: (req, res) => {
         return res.redirect('/admin/listado/productos');
     
     },
-    agregarcarrito: function(req, res) {
+    addCarrito: function(req, res) {
         db.Carrito.create({
             id_user: req.session.user.id,
             id_producto: req.params.id
         });
         res.redirect('/users/carrito');
     },
-    eliminarproducto: function(req,res) {
+    deleteCarrito: function(req,res) {
         db.Carrito.destroy({
             where:{
                 id_user: req.session.user.id,

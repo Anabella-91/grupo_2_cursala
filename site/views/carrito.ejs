@@ -23,7 +23,7 @@
                 <li class="precio-compra"><%= productos[i].curso.precio %></li>
                 </div>
                 <li>
-                    <form action="/products/eliminarproducto" method="POST">
+                    <form action="/products/delCard" method="POST">
                         <button type="submit"><img src="/images/trash.svg" alt="boton eliminar"><button>
                         <input class="none" type="number" value="<%= productos[i].id_producto %>" name="producto_id">
                     </form>

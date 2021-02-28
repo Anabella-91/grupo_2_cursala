@@ -3,7 +3,7 @@ var router = express.Router();
 const path = require('path');
 const { check, validationResult, body} = require('express-validator');
 const multer = require('multer');
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const authMid = require('./../middlewares/auth');
 const guestMid = require('./../middlewares/guest');
 const controller = require('../controllers/usersController');
@@ -24,8 +24,9 @@ const storage = multer.diskStorage({
 /* Constante para subir imagen en la ruta */
 const upload = multer({storage});
 
-/* user registro . */
-router.get('/registro', controller.register);
+/* Registro del user */
+router.get('/registro', controller.registerUser);
+/* Guardando user con imagen */
 router.post('/registro', upload.single('imagen'),[
     check('nombre', 'Debes completar tu nombre').notEmpty(),
     check('email', 'Email invalido').isEmail().custom(function(value){
@@ -37,40 +38,41 @@ router.post('/registro', upload.single('imagen'),[
         })
     }),
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).notEmpty().bail(),
-], controller.registerUser);
+], controller.saveUser);
 
-/* user login . */
+/* Inicio sesión de user */
 router.get('/login', controller.login);
+/*  */
 router.post('/login', guestMid, [
     check('password', 'La contraseña debe tener al menos 6 caracteres').isLength({min:6}).bail(),
     check('email', 'Email invalido').isEmail().custom((value, { req }) => {
         return db.Users.findOne({where :{email : value}}).then(user => {
             if (user == null) {
                 return Promise.reject('Credenciales invalidas');
-            } else if (user && !bcryptjs.compareSync(req.body.password , user.password)) {
+            } else if (user && !bcrypt.compareSync(req.body.password , user.password)) {
                 return Promise.reject('Credenciales invalidas');
             }
         })
     }),
     
-],controller.processLogin);
+],controller.postLogin);
 
 /* Perfil user */ 
-router.get('/perfil', guestMid, controller.perfil);
+router.get('/perfil', guestMid, controller.profile);
 
 /* Edicion de usuarios */
-router.post('/perfil', upload.single('image'), controller.update);
+router.post('/perfil', upload.single('image'), controller.updateProfile);
 
-/*Rutas del carrito */
+/* Rutas del carrito */
 router.get('/carrito', controller.carrito);
-router.post('/confirmation', (req, res) => {
-    res.render('thankyou');
+router.post('/compra-exitosa', (req, res) => {
+    res.render('compraOk');
 });
 
-/* User logout*/
+/* User logout */
 router.post('/logout', guestMid, controller.logout);
 
-/*Rutas admnistrador*/
+/*Rutas admnistrador */
 router.get('/admin/administracion_home', controller.administracionHome);
 
 

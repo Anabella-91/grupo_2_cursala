@@ -1,6 +1,4 @@
-const loginService = require('../services/loginService');
 const db = require('../database/models');
-let productRequest = require('../requests/products');
 
 module.exports = {
 	home: (req,res) => {
