@@ -15,7 +15,7 @@ const productsRouter = require('./routes/products')
 const adminRouter = require('./routes/admin')
 
 // Configuración de plantillas EJS
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 
 // Configuración de sesión para los users
@@ -30,8 +30,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use(express.static(path.resolve('/../public')))
-
+app.use(express.static(path.join(__dirname, '../public')))
 app.use(methodOverride('_method'))
 
 // Inicializamos las rutas
